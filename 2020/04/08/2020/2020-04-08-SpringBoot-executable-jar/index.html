@@ -5,12 +5,12 @@
   
   <title>Spring Boot 特性 - Executable Jar | 两条鱼</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Spring Boot是使用 spring-boot-loader 模块构建“可执行”的jar或者war发布包的。如果在基于Maven或者Gradle插件来打包Spring Boot应用的话，一般“可执行”的jar是默认生成的，并且使用这些插件基本不需要考虑它的实现细节。 虽然使用时不需要考虑这些细节，但是不管出于何种目的，都有必要深入看一看“可执行”jar的背后的原理。">
+  <meta name="description" content="Spring Boot是使用 spring-boot-loader 模块构建“可执行”的jar或者war发布包的。如果在基于Maven或者Gradle 插件来打包Spring Boot应用的话，一般“可执行”的jar是默认生成的，并且使用这些插件基本不需要考虑它的实现细节。 虽然使用时不需要考虑这些细节，但是不管出于何种目的，都有必要深入看一看“可执行”jar的背后的原理。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Boot 特性 - Executable Jar">
 <meta property="og:url" content="https://twofishcn.github.io/blog/2020/04/08/2020/2020-04-08-SpringBoot-executable-jar/index.html">
 <meta property="og:site_name" content="两条鱼">
-<meta property="og:description" content="Spring Boot是使用 spring-boot-loader 模块构建“可执行”的jar或者war发布包的。如果在基于Maven或者Gradle插件来打包Spring Boot应用的话，一般“可执行”的jar是默认生成的，并且使用这些插件基本不需要考虑它的实现细节。 虽然使用时不需要考虑这些细节，但是不管出于何种目的，都有必要深入看一看“可执行”jar的背后的原理。">
+<meta property="og:description" content="Spring Boot是使用 spring-boot-loader 模块构建“可执行”的jar或者war发布包的。如果在基于Maven或者Gradle 插件来打包Spring Boot应用的话，一般“可执行”的jar是默认生成的，并且使用这些插件基本不需要考虑它的实现细节。 虽然使用时不需要考虑这些细节，但是不管出于何种目的，都有必要深入看一看“可执行”jar的背后的原理。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-08T08:31:00.000Z">
 <meta property="article:modified_time" content="2020-04-11T09:48:31.883Z">
@@ -19,7 +19,7 @@
 <meta property="article:tag" content="Executable Jar">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="两条鱼" type="application/atom+xml">
+    <link rel="alternate" href="/blog/atom.xml" title="两条鱼" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/static/favicon.ico">
@@ -30,7 +30,7 @@
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/blog/css/style.css">
 
 
   
@@ -74,19 +74,19 @@
     <div>
         <div class="tags">
             
-                <a class="tag" href="/tags/Spring-Boot/"
+                <a class="tag" href="/blog/tags/Spring-Boot/"
                    title="Spring Boot">Spring Boot</a>
             
-                <a class="tag" href="/tags/Executable-Jar/"
+                <a class="tag" href="/blog/tags/Executable-Jar/"
                    title="Executable Jar">Executable Jar</a>
             
         </div>
         <h1 id="logo-wrap">
-            <a href="/2020/04/08/2020/2020-04-08-SpringBoot-executable-jar/" id="logo">Spring Boot 特性 - Executable Jar</a>
+            <a href="/blog/2020/04/08/2020/2020-04-08-SpringBoot-executable-jar/" id="logo">Spring Boot 特性 - Executable Jar</a>
         </h1>
         
             <h2 id="subtitle-wrap">
-                <a href="/2020/04/08/2020/2020-04-08-SpringBoot-executable-jar/" id="subtitle"> &#34;Spring Boot 应用-关于可执行Jar/War&#34;</a>
+                <a href="/blog/2020/04/08/2020/2020-04-08-SpringBoot-executable-jar/" id="subtitle"> &#34;Spring Boot 应用-关于可执行Jar/War&#34;</a>
             </h2>
         
         <span class="meta">
@@ -105,13 +105,13 @@
                 <a id="main-nav-toggle" class="nav-icon"></a>
                 
                     <a class="main-nav-link"
-                       href="/">
+                       href="/blog/">
                         <i class="fa home-icon"></i>
                         主页
                     </a>
                 
                     <a class="main-nav-link"
-                       href="/archives">
+                       href="/blog/archives">
                         <i class="fa archives-icon"></i>
                         归档
                     </a>
@@ -119,7 +119,7 @@
             </nav>
             <nav id="sub-nav">
                 
-                    <a id="nav-rss-link" class="nav-icon" href="/atom.xml"
+                    <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml"
                        title="RSS Feed"></a>
                 
                 <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
@@ -135,7 +135,7 @@
             <section id="main"><article id="post-2020/2020-04-08-SpringBoot-executable-jar" class="article article-type-post" itemscope
          itemprop="blogPost">
     <div class="article-meta">
-        <a href="/2020/04/08/2020/2020-04-08-SpringBoot-executable-jar/" class="article-date">
+        <a href="/blog/2020/04/08/2020/2020-04-08-SpringBoot-executable-jar/" class="article-date">
   <time datetime="2020-04-08T08:31:00.000Z" itemprop="datePublished">2020-04-08</time>
 </a>
         
@@ -155,23 +155,40 @@
         
         <div class="article-entry" itemprop="articleBody">
             
-                <h1 id="Executable-Jar"><a href="#Executable-Jar" class="headerlink" title="Executable Jar"></a>Executable Jar</h1><p>Spring Boot是使用 <code>spring-boot-loader</code> 模块构建“可执行”的jar或者war发布包的。如果在基于Maven或者Gradle<br>插件来打包Spring Boot应用的话，一般“可执行”的jar是默认生成的，并且使用这些插件基本不需要考虑它的实现细节。</p>
+                <h1 id="Executable-Jar"><a href="#Executable-Jar" class="headerlink" title="Executable Jar"></a>Executable Jar</h1><p>Spring Boot是使用 <code>spring-boot-loader</code> 模块构建“可执行”的jar或者war发布包的。如果在基于Maven或者Gradle
+插件来打包Spring Boot应用的话，一般“可执行”的jar是默认生成的，并且使用这些插件基本不需要考虑它的实现细节。</p>
 <p>虽然使用时不需要考虑这些细节，但是不管出于何种目的，都有必要深入看一看“可执行”jar的背后的原理。</p>
-<h1 id="嵌套Jar-Nested-JARs"><a href="#嵌套Jar-Nested-JARs" class="headerlink" title="嵌套Jar - Nested JARs"></a>嵌套Jar - Nested JARs</h1><p>嵌套Jar指的是，Jar文件中包含的文件存在另外一些Jar文件。而且，Java本身并不提供这种嵌套Jar的加载功能。如果<br>不做特殊处理，默认的Jar文件中的这个Jar文件仅仅会被当做一般二进制文件，不会加载其内部的Class文件。</p>
-<p>要解决这种问题，很多时候是使用 shaded jars 来解决的。shaded jars 的做法其实就是把所有依赖的Jar都解压，然后<br>将所有的Class文件打入一个超级Jar文件中。这样做一定程度上解决了问题，但是也引入了一些问题。比如，很难区分打包<br>后的代码原来所属的库，又或者有相同名称的文件而内容不同也有可能引发问题。</p>
-<p>Spring Boot 使用了嵌套Jar的打包方案，并且通过自定义Class Loader的方式，来解决Java默认不加载嵌套Jar中的Class<br>的问题。</p>
+<h1 id="嵌套Jar-Nested-JARs"><a href="#嵌套Jar-Nested-JARs" class="headerlink" title="嵌套Jar - Nested JARs"></a>嵌套Jar - Nested JARs</h1><p>嵌套Jar指的是，Jar文件中包含的文件存在另外一些Jar文件。而且，Java本身并不提供这种嵌套Jar的加载功能。如果
+不做特殊处理，默认的Jar文件中的这个Jar文件仅仅会被当做一般二进制文件，不会加载其内部的Class文件。</p>
+<p>要解决这种问题，很多时候是使用 shaded jars 来解决的。shaded jars 的做法其实就是把所有依赖的Jar都解压，然后
+将所有的Class文件打入一个超级Jar文件中。这样做一定程度上解决了问题，但是也引入了一些问题。比如，很难区分打包
+后的代码原来所属的库，又或者有相同名称的文件而内容不同也有可能引发问题。</p>
+<p>Spring Boot 使用了嵌套Jar的打包方案，并且通过自定义Class Loader的方式，来解决Java默认不加载嵌套Jar中的Class
+的问题。</p>
 <h2 id="可执行Jar的文件结构"><a href="#可执行Jar的文件结构" class="headerlink" title="可执行Jar的文件结构"></a>可执行Jar的文件结构</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">example.jar</span><br><span class="line"> |</span><br><span class="line"> +-META-INF</span><br><span class="line"> |  +-MANIFEST.MF</span><br><span class="line"> +-org</span><br><span class="line"> |  +-springframework</span><br><span class="line"> |     +-boot</span><br><span class="line"> |        +-loader</span><br><span class="line"> |           +-&lt;spring boot loader classes&gt;</span><br><span class="line"> +-BOOT-INF</span><br><span class="line">    +-classes</span><br><span class="line">    |  +-mycompany</span><br><span class="line">    |     +-project</span><br><span class="line">    |        +-YourClasses.class</span><br><span class="line">    +-lib</span><br><span class="line">       +-dependency1.jar</span><br><span class="line">       +-dependency2.jar</span><br></pre></td></tr></table></figure>
 
 <h2 id="可执行War的文件结构"><a href="#可执行War的文件结构" class="headerlink" title="可执行War的文件结构"></a>可执行War的文件结构</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">example.war</span><br><span class="line"> |</span><br><span class="line"> +-META-INF</span><br><span class="line"> |  +-MANIFEST.MF</span><br><span class="line"> +-org</span><br><span class="line"> |  +-springframework</span><br><span class="line"> |     +-boot</span><br><span class="line"> |        +-loader</span><br><span class="line"> |           +-&lt;spring boot loader classes&gt;</span><br><span class="line"> +-WEB-INF</span><br><span class="line">    +-classes</span><br><span class="line">    |  +-com</span><br><span class="line">    |     +-mycompany</span><br><span class="line">    |        +-project</span><br><span class="line">    |           +-YourClasses.class</span><br><span class="line">    +-lib</span><br><span class="line">    |  +-dependency1.jar</span><br><span class="line">    |  +-dependency2.jar</span><br><span class="line">    +-lib-provided</span><br><span class="line">       +-servlet-api.jar</span><br><span class="line">       +-dependency3.jar</span><br></pre></td></tr></table></figure>
 
-<h1 id="Spring-Boot-Jar-文件"><a href="#Spring-Boot-Jar-文件" class="headerlink" title="Spring Boot Jar 文件"></a>Spring Boot Jar 文件</h1><p>Spring Boot 使用 <code>org.springframework.boot.loader.jar.JarFile</code> 来支持嵌套Jar的加载。它支持从一个独立<br>的Jar文件中加载或者从嵌套Jar中加载。 第一次加载后，会有多个 <code>JarEntry</code> 产生，每一个 <code>JarEntry</code> 都会映射物理<br>文件偏移量。掌握这些信息之后，再加载一个嵌套的内容时，就可以直接基于偏移量读取文件内容加载内容，而不需要解压<br>文件，也不需要把整个数据文件全部加载到内存中。</p>
+<h1 id="Spring-Boot-Jar-文件"><a href="#Spring-Boot-Jar-文件" class="headerlink" title="Spring Boot Jar 文件"></a>Spring Boot Jar 文件</h1><p>Spring Boot 使用 <code>org.springframework.boot.loader.jar.JarFile</code> 来支持嵌套Jar的加载。它支持从一个独立
+的Jar文件中加载或者从嵌套Jar中加载。 第一次加载后，会有多个 <code>JarEntry</code> 产生，每一个 <code>JarEntry</code> 都会映射物理
+文件偏移量。掌握这些信息之后，再加载一个嵌套的内容时，就可以直接基于偏移量读取文件内容加载内容，而不需要解压
+文件，也不需要把整个数据文件全部加载到内存中。</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">myapp.jar</span><br><span class="line">+-------------------+-------------------------+</span><br><span class="line">| /BOOT-INF/classes | /BOOT-INF/lib/mylib.jar |</span><br><span class="line">|+-----------------+||+-----------+----------+|</span><br><span class="line">||     A.class      |||  B.class  |  C.class ||</span><br><span class="line">|+-----------------+||+-----------+----------+|</span><br><span class="line">+-------------------+-------------------------+</span><br><span class="line"> ^                    ^           ^</span><br><span class="line"> 0063                 3452        3980</span><br></pre></td></tr></table></figure>
 
-<h2 id="兼容原生JarFile"><a href="#兼容原生JarFile" class="headerlink" title="兼容原生JarFile"></a>兼容原生JarFile</h2><p>Spring Boot使用的 <code>org.springframework.boot.loader.jar.JarFile</code> 继承自 <code>java.util.jar.JarFile</code><br>并用来替代原生的 JarFile，但是由兼容原生的一些操作方法。<code>getURL</code> 返回的 <code>URL</code> 打开一个连接和 <code>java.net.JarURLConnection</code><br>是完全兼容的，并且可以使用Java原生的 <code>URLClassLoader</code> 。</p>
-<h1 id="Launching-Executable-Jars"><a href="#Launching-Executable-Jars" class="headerlink" title="Launching Executable Jars"></a>Launching Executable Jars</h1><p>Spring Boot打包产生的可执行Jar内部一开始执行的Class是 <code>org.springframework.boot.loader.Launcher</code> 类。<br>它会初始话一个合适的 <code>URLClassLoader</code> 最终调用我们 Application 里面的写的哪一个 main 方法。</p>
-<p>我们有三种launcher可选，（JarLauncher, WarLauncher 和 PropertiesLauncher）。其中 JarLauncher 和<br>WarLauncher 使用嵌套绝对路径去加载。 JarLauncher 会查找 <code>BOOT-INF/lib/</code>，<code>WarLauncher</code> 会查找<br><code>WEB-INF/lib/</code> 和 <code>WEB-INF/lib-provided/</code> 路径。 相对而言 <code>PropertiesLauncher</code> 更加灵活一些。<br>首先，<code>PropertiesLauncher</code> 会扫描 <code>BOOT-INF/lib/</code>；另外，它会扫描环境变量 <code>LOADER_PATH </code> 配置的目录，<br>或者在 <code>loader.properties</code> 文件中配置的 <code>loader.path</code> 目录。这样一来，可控的面广了很多，例如可以把一些<br>一来Jar打包放入一个lib目录，通过配置添加目录的扫描，可执行Jar仅包含部分内容。这样一来，Fat Jar 就变成Thin Jar了。</p>
+<h2 id="兼容原生JarFile"><a href="#兼容原生JarFile" class="headerlink" title="兼容原生JarFile"></a>兼容原生JarFile</h2><p>Spring Boot使用的 <code>org.springframework.boot.loader.jar.JarFile</code> 继承自 <code>java.util.jar.JarFile</code>
+并用来替代原生的 JarFile，但是由兼容原生的一些操作方法。<code>getURL</code> 返回的 <code>URL</code> 打开一个连接和 <code>java.net.JarURLConnection</code>
+是完全兼容的，并且可以使用Java原生的 <code>URLClassLoader</code> 。</p>
+<h1 id="Launching-Executable-Jars"><a href="#Launching-Executable-Jars" class="headerlink" title="Launching Executable Jars"></a>Launching Executable Jars</h1><p>Spring Boot打包产生的可执行Jar内部一开始执行的Class是 <code>org.springframework.boot.loader.Launcher</code> 类。
+它会初始话一个合适的 <code>URLClassLoader</code> 最终调用我们 Application 里面的写的哪一个 main 方法。</p>
+<p>我们有三种launcher可选，（JarLauncher, WarLauncher 和 PropertiesLauncher）。其中 JarLauncher 和
+WarLauncher 使用嵌套绝对路径去加载。 JarLauncher 会查找 <code>BOOT-INF/lib/</code>，<code>WarLauncher</code> 会查找
+<code>WEB-INF/lib/</code> 和 <code>WEB-INF/lib-provided/</code> 路径。 相对而言 <code>PropertiesLauncher</code> 更加灵活一些。
+首先，<code>PropertiesLauncher</code> 会扫描 <code>BOOT-INF/lib/</code>；另外，它会扫描环境变量 <code>LOADER_PATH </code> 配置的目录，
+或者在 <code>loader.properties</code> 文件中配置的 <code>loader.path</code> 目录。这样一来，可控的面广了很多，例如可以把一些
+一来Jar打包放入一个lib目录，通过配置添加目录的扫描，可执行Jar仅包含部分内容。这样一来，Fat Jar 就变成Thin Jar了。</p>
 <p>无论使用哪一种方法，都不太可能解决所有场景，应该根据业务项目需求来选择最适当的部署打包方式。</p>
-<h2 id="Launcher-Manifest"><a href="#Launcher-Manifest" class="headerlink" title="Launcher Manifest"></a>Launcher Manifest</h2><p>可执行Jar这一项本身是Java提供的功能，通过配置Jar文件的 <code>META-INF/MANIFEST.MF</code> 来配置默认执行的main方法。<br>Spring Boot的可执行Jar的配置结构大致如下。</p>
+<h2 id="Launcher-Manifest"><a href="#Launcher-Manifest" class="headerlink" title="Launcher Manifest"></a>Launcher Manifest</h2><p>可执行Jar这一项本身是Java提供的功能，通过配置Jar文件的 <code>META-INF/MANIFEST.MF</code> 来配置默认执行的main方法。
+Spring Boot的可执行Jar的配置结构大致如下。</p>
 <p>executable jar:</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Main-Class: org.springframework.boot.loader.JarLauncher</span><br><span class="line">Start-Class: com.mycompany.project.MyApplication</span><br></pre></td></tr></table></figure>
 
@@ -179,7 +196,8 @@
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Main-Class: org.springframework.boot.loader.WarLauncher</span><br><span class="line">Start-Class: com.mycompany.project.MyApplication</span><br></pre></td></tr></table></figure>
 
 <p>当然这部分配置文件大多数时候不需要人工配置，使用Maven或者Gradle插件，它将许多步骤自动化。</p>
-<h1 id="PropertiesLauncher-Features"><a href="#PropertiesLauncher-Features" class="headerlink" title="PropertiesLauncher Features"></a>PropertiesLauncher Features</h1><p>前面提到 <code>PropertiesLauncher</code> 的灵活性，这里详细列举 <code>loader.properties</code> 可以配置的参数选项，以及<br>每一项参数表达的功能含义。</p>
+<h1 id="PropertiesLauncher-Features"><a href="#PropertiesLauncher-Features" class="headerlink" title="PropertiesLauncher Features"></a>PropertiesLauncher Features</h1><p>前面提到 <code>PropertiesLauncher</code> 的灵活性，这里详细列举 <code>loader.properties</code> 可以配置的参数选项，以及
+每一项参数表达的功能含义。</p>
 <table>
 <thead>
 <tr>
@@ -258,13 +276,16 @@
 </tbody></table>
 <p>在使用这些参数时，有一些限制规则。</p>
 <ul>
-<li><p><code>loader.properties</code> 配置会首先从 <code>loader.home</code> 查找，其次是classpath的根路径，再次是 <code>classpath:/BOOT-INF/classes</code>。<br>如果在这些路径下有多个文件，会按顺序寻找并会使用首先找到的配置文件。</p>
+<li><p><code>loader.properties</code> 配置会首先从 <code>loader.home</code> 查找，其次是classpath的根路径，再次是 <code>classpath:/BOOT-INF/classes</code>。
+如果在这些路径下有多个文件，会按顺序寻找并会使用首先找到的配置文件。</p>
 </li>
 <li><p>当没有 <code>loader.config.location</code> 配置项时，使用 <code>loader.home</code> 下的配置文件。</p>
 </li>
-<li><p><code>loader.path</code> 可以是一个目录，归档文件，归档文件的扫描路径（<code>dependencies.jar!/lib</code>），通配符。归档文件路径<br>可以是基于 <code>loader.home</code> 的相对路径，或者其他 <code>jar:file:</code> 开头的系统文件路径。</p>
+<li><p><code>loader.path</code> 可以是一个目录，归档文件，归档文件的扫描路径（<code>dependencies.jar!/lib</code>），通配符。归档文件路径
+可以是基于 <code>loader.home</code> 的相对路径，或者其他 <code>jar:file:</code> 开头的系统文件路径。</p>
 </li>
-<li><p>当 <code>loader.path</code> 未配置时，将仅有默认扫描路径 <code>BOOT-INF/lib</code>。因此，如果没有提供额外配置，<code>PropertiesLauncher</code><br>的表现行为和 <code>JarLauncher</code> 一模一样。</p>
+<li><p>当 <code>loader.path</code> 未配置时，将仅有默认扫描路径 <code>BOOT-INF/lib</code>。因此，如果没有提供额外配置，<code>PropertiesLauncher</code>
+的表现行为和 <code>JarLauncher</code> 一模一样。</p>
 </li>
 <li><p><code>loader.path</code> 并不是用来指定 <code>loader.properties</code> 的加载路径。他是在 <code>PropertiesLauncher</code> 启动之后用来加载其他资源的配置。</p>
 </li>
@@ -277,10 +298,12 @@
 <ul>
 <li><p>Zip 压缩：可执行Jar使用ZipEntry，这要求所有保存的数据应该使用 ZipEntry.STORED 方法压缩保存。</p>
 </li>
-<li><p>System classLoader：环境中应该使用 <code>Thread.getContextClassLoader()</code> 。如果使用 <code>ClassLoader.getSystemClassLoader()</code><br>去加载嵌套Jar中的class可能会失败。</p>
+<li><p>System classLoader：环境中应该使用 <code>Thread.getContextClassLoader()</code> 。如果使用 <code>ClassLoader.getSystemClassLoader()</code>
+去加载嵌套Jar中的class可能会失败。</p>
 </li>
 </ul>
-<h1 id="其他替代方案"><a href="#其他替代方案" class="headerlink" title="其他替代方案"></a>其他替代方案</h1><p>上面是Spring Boot默认提供的可执行Jar或者说 Single Jar的解决方案。如果加上各种限制以及各种灵活性，任然不能满足<br>你的需求的话，有一些其他替代方案可以选择。</p>
+<h1 id="其他替代方案"><a href="#其他替代方案" class="headerlink" title="其他替代方案"></a>其他替代方案</h1><p>上面是Spring Boot默认提供的可执行Jar或者说 Single Jar的解决方案。如果加上各种限制以及各种灵活性，任然不能满足
+你的需求的话，有一些其他替代方案可以选择。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://maven.apache.org/plugins/maven-shade-plugin/">Maven Shade Plugin</a></li>
 <li><a target="_blank" rel="noopener" href="http://www.jdotsoft.com/JarClassLoader.php">JarClassLoader</a></li>
@@ -291,11 +314,11 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://twofishcn.github.io/blog/2020/04/08/2020/2020-04-08-SpringBoot-executable-jar/" data-id="cm4z53jcq001bnguy67fte1av"
+            <a data-url="https://twofishcn.github.io/blog/2020/04/08/2020/2020-04-08-SpringBoot-executable-jar/" data-id="cm4z6hocz0013i0uyeciqeq27"
                class="article-share-link">Share</a>
             
             
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Executable-Jar/" rel="tag">Executable Jar</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Executable-Jar/" rel="tag">Executable Jar</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Spring-Boot/" rel="tag">Spring Boot</a></li></ul>
 
         </footer>
     </div>
@@ -303,7 +326,7 @@
         
 <nav id="article-nav">
   
-    <a href="/2020/04/11/2020/2020-04-11-SpringBoot-profile/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog/2020/04/11/2020/2020-04-11-SpringBoot-profile/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -313,7 +336,7 @@
     </a>
   
   
-    <a href="/2020/04/05/2020/2020-04-05-SpringBoot-Features-app/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2020/04/05/2020/2020-04-05-SpringBoot-Features-app/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Spring Boot 特性 - Application</div>
     </a>
@@ -335,23 +358,23 @@
       <ul>
         
           <li>
-            <a href="/2020/06/27/2020/2020-06-27-browser-http-Homologous/">同源政策</a>
+            <a href="/blog/2020/06/27/2020/2020-06-27-browser-http-Homologous/">同源政策</a>
           </li>
         
           <li>
-            <a href="/2020/06/14/2020/2020-06-14-ECMAScript-async-await/">ECMAScript 6 - 异步函数</a>
+            <a href="/blog/2020/06/14/2020/2020-06-14-ECMAScript-async-await/">ECMAScript 6 - 异步函数</a>
           </li>
         
           <li>
-            <a href="/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/">ECMAScript 6 - 声明关键字</a>
+            <a href="/blog/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/">ECMAScript 6 - 声明关键字</a>
           </li>
         
           <li>
-            <a href="/2020/05/30/2020/2020-05-30-ECMAScript-Generator/">ECMAScript 6 - Generator 函数</a>
+            <a href="/blog/2020/05/30/2020/2020-05-30-ECMAScript-Generator/">ECMAScript 6 - Generator 函数</a>
           </li>
         
           <li>
-            <a href="/2020/05/24/2020/2020-05-24-css-position/">CSS - Position</a>
+            <a href="/blog/2020/05/24/2020/2020-05-24-css-position/">CSS - Position</a>
           </li>
         
       </ul>
@@ -363,7 +386,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/04/">四月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">五月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -373,7 +396,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">关于我</h3>
         <div class="widget about">
-            <img src="/img/static/avatar.jpg">
+            <img src="img/static/avatar.jpg">
 
             <div>
                 <a target="_blank" href="https://github.com/HwMuTou">
@@ -397,7 +420,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 10px; color: #008080">Android</a> <a href="/tags/Apache-Kafka/" style="font-size: 10px; color: #008080">Apache Kafka</a> <a href="/tags/Aria2/" style="font-size: 10px; color: #008080">Aria2</a> <a href="/tags/Authentication/" style="font-size: 10px; color: #008080">Authentication</a> <a href="/tags/Best-Practices/" style="font-size: 11.67px; color: #006b80">Best Practices</a> <a href="/tags/Browser/" style="font-size: 10px; color: #008080">Browser</a> <a href="/tags/CSS/" style="font-size: 10px; color: #008080">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px; color: #008080">CentOS</a> <a href="/tags/Classpath/" style="font-size: 10px; color: #008080">Classpath</a> <a href="/tags/Code/" style="font-size: 10px; color: #008080">Code</a> <a href="/tags/Data-Structure/" style="font-size: 10px; color: #008080">Data Structure</a> <a href="/tags/Database/" style="font-size: 15px; color: #004080">Database</a> <a href="/tags/Docker/" style="font-size: 10px; color: #008080">Docker</a> <a href="/tags/Download/" style="font-size: 10px; color: #008080">Download</a> <a href="/tags/ECMAScript/" style="font-size: 13.33px; color: #005580">ECMAScript</a> <a href="/tags/Executable-Jar/" style="font-size: 10px; color: #008080">Executable Jar</a> <a href="/tags/FLux/" style="font-size: 10px; color: #008080">FLux</a> <a href="/tags/File-Monitor/" style="font-size: 10px; color: #008080">File Monitor</a> <a href="/tags/Flume/" style="font-size: 10px; color: #008080">Flume</a> <a href="/tags/Format/" style="font-size: 10px; color: #008080">Format</a> <a href="/tags/GIN%E7%B4%A2%E5%BC%95/" style="font-size: 10px; color: #008080">GIN索引</a> <a href="/tags/Http/" style="font-size: 10px; color: #008080">Http</a> <a href="/tags/JRuby/" style="font-size: 10px; color: #008080">JRuby</a> <a href="/tags/Java/" style="font-size: 16.67px; color: #002b80">Java</a> <a href="/tags/JavaScript/" style="font-size: 13.33px; color: #005580">JavaScript</a> <a href="/tags/Junit/" style="font-size: 10px; color: #008080">Junit</a> <a href="/tags/JupyterHub/" style="font-size: 10px; color: #008080">JupyterHub</a> <a href="/tags/KMS/" style="font-size: 10px; color: #008080">KMS</a> <a href="/tags/Libraries/" style="font-size: 10px; color: #008080">Libraries</a> <a href="/tags/Load-Resource/" style="font-size: 10px; color: #008080">Load Resource</a> <a href="/tags/Micro-Service/" style="font-size: 10px; color: #008080">Micro Service</a> <a href="/tags/Mono/" style="font-size: 10px; color: #008080">Mono</a> <a href="/tags/MySQL/" style="font-size: 11.67px; color: #006b80">MySQL</a> <a href="/tags/Mybatis/" style="font-size: 10px; color: #008080">Mybatis</a> <a href="/tags/NodeJs/" style="font-size: 10px; color: #008080">NodeJs</a> <a href="/tags/Notebook/" style="font-size: 10px; color: #008080">Notebook</a> <a href="/tags/Oauth2/" style="font-size: 11.67px; color: #006b80">Oauth2</a> <a href="/tags/Oracle-JDK/" style="font-size: 10px; color: #008080">Oracle JDK</a> <a href="/tags/Package/" style="font-size: 10px; color: #008080">Package</a> <a href="/tags/Postgre-SQL/" style="font-size: 11.67px; color: #006b80">Postgre SQL</a> <a href="/tags/Profile/" style="font-size: 10px; color: #008080">Profile</a> <a href="/tags/Project/" style="font-size: 10px; color: #008080">Project</a> <a href="/tags/Rails/" style="font-size: 15px; color: #004080">Rails</a> <a href="/tags/Redis/" style="font-size: 10px; color: #008080">Redis</a> <a href="/tags/Resources/" style="font-size: 10px; color: #008080">Resources</a> <a href="/tags/Ruby/" style="font-size: 11.67px; color: #006b80">Ruby</a> <a href="/tags/Security/" style="font-size: 11.67px; color: #006b80">Security</a> <a href="/tags/Shiro/" style="font-size: 10px; color: #008080">Shiro</a> <a href="/tags/Solr/" style="font-size: 10px; color: #008080">Solr</a> <a href="/tags/Spring-Boot/" style="font-size: 18.33px; color: #001580">Spring Boot</a> <a href="/tags/Spring-Cloud/" style="font-size: 10px; color: #008080">Spring Cloud</a> <a href="/tags/Spring-Security/" style="font-size: 10px; color: #008080">Spring Security</a> <a href="/tags/Sunsport/" style="font-size: 10px; color: #008080">Sunsport</a> <a href="/tags/Test/" style="font-size: 10px; color: #008080">Test</a> <a href="/tags/Thin-Jar/" style="font-size: 10px; color: #008080">Thin Jar</a> <a href="/tags/Tree/" style="font-size: 10px; color: #008080">Tree</a> <a href="/tags/Web/" style="font-size: 10px; color: #008080">Web</a> <a href="/tags/WebFlux/" style="font-size: 10px; color: #008080">WebFlux</a> <a href="/tags/WebSocket/" style="font-size: 10px; color: #008080">WebSocket</a> <a href="/tags/Websocket/" style="font-size: 10px; color: #008080">Websocket</a> <a href="/tags/kubernetes/" style="font-size: 11.67px; color: #006b80">kubernetes</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px; color: #008080">二叉树</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px; color: #002b80">前端</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px; color: #000080">技术</a> <a href="/tags/%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81/" style="font-size: 10px; color: #008080">摩斯电码</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px; color: #008080">数据结构</a> <a href="/tags/%E7%AB%99%E5%86%85%E6%A3%80%E7%B4%A2/" style="font-size: 10px; color: #008080">站内检索</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px; color: #008080">编码</a>
+            <a href="/blog/tags/Android/" style="font-size: 10px; color: #008080">Android</a> <a href="/blog/tags/Apache-Kafka/" style="font-size: 10px; color: #008080">Apache Kafka</a> <a href="/blog/tags/Aria2/" style="font-size: 10px; color: #008080">Aria2</a> <a href="/blog/tags/Authentication/" style="font-size: 10px; color: #008080">Authentication</a> <a href="/blog/tags/Best-Practices/" style="font-size: 11.67px; color: #006b80">Best Practices</a> <a href="/blog/tags/Browser/" style="font-size: 10px; color: #008080">Browser</a> <a href="/blog/tags/CSS/" style="font-size: 10px; color: #008080">CSS</a> <a href="/blog/tags/CentOS/" style="font-size: 10px; color: #008080">CentOS</a> <a href="/blog/tags/Classpath/" style="font-size: 10px; color: #008080">Classpath</a> <a href="/blog/tags/Code/" style="font-size: 10px; color: #008080">Code</a> <a href="/blog/tags/Data-Structure/" style="font-size: 10px; color: #008080">Data Structure</a> <a href="/blog/tags/Database/" style="font-size: 15px; color: #004080">Database</a> <a href="/blog/tags/Docker/" style="font-size: 10px; color: #008080">Docker</a> <a href="/blog/tags/Download/" style="font-size: 10px; color: #008080">Download</a> <a href="/blog/tags/ECMAScript/" style="font-size: 13.33px; color: #005580">ECMAScript</a> <a href="/blog/tags/Executable-Jar/" style="font-size: 10px; color: #008080">Executable Jar</a> <a href="/blog/tags/FLux/" style="font-size: 10px; color: #008080">FLux</a> <a href="/blog/tags/File-Monitor/" style="font-size: 10px; color: #008080">File Monitor</a> <a href="/blog/tags/Flume/" style="font-size: 10px; color: #008080">Flume</a> <a href="/blog/tags/Format/" style="font-size: 10px; color: #008080">Format</a> <a href="/blog/tags/GIN%E7%B4%A2%E5%BC%95/" style="font-size: 10px; color: #008080">GIN索引</a> <a href="/blog/tags/Http/" style="font-size: 10px; color: #008080">Http</a> <a href="/blog/tags/JRuby/" style="font-size: 10px; color: #008080">JRuby</a> <a href="/blog/tags/Java/" style="font-size: 16.67px; color: #002b80">Java</a> <a href="/blog/tags/JavaScript/" style="font-size: 13.33px; color: #005580">JavaScript</a> <a href="/blog/tags/Junit/" style="font-size: 10px; color: #008080">Junit</a> <a href="/blog/tags/JupyterHub/" style="font-size: 10px; color: #008080">JupyterHub</a> <a href="/blog/tags/KMS/" style="font-size: 10px; color: #008080">KMS</a> <a href="/blog/tags/Libraries/" style="font-size: 10px; color: #008080">Libraries</a> <a href="/blog/tags/Load-Resource/" style="font-size: 10px; color: #008080">Load Resource</a> <a href="/blog/tags/Micro-Service/" style="font-size: 10px; color: #008080">Micro Service</a> <a href="/blog/tags/Mono/" style="font-size: 10px; color: #008080">Mono</a> <a href="/blog/tags/MySQL/" style="font-size: 11.67px; color: #006b80">MySQL</a> <a href="/blog/tags/Mybatis/" style="font-size: 10px; color: #008080">Mybatis</a> <a href="/blog/tags/NodeJs/" style="font-size: 10px; color: #008080">NodeJs</a> <a href="/blog/tags/Notebook/" style="font-size: 10px; color: #008080">Notebook</a> <a href="/blog/tags/Oauth2/" style="font-size: 11.67px; color: #006b80">Oauth2</a> <a href="/blog/tags/Oracle-JDK/" style="font-size: 10px; color: #008080">Oracle JDK</a> <a href="/blog/tags/Package/" style="font-size: 10px; color: #008080">Package</a> <a href="/blog/tags/Postgre-SQL/" style="font-size: 11.67px; color: #006b80">Postgre SQL</a> <a href="/blog/tags/Profile/" style="font-size: 10px; color: #008080">Profile</a> <a href="/blog/tags/Project/" style="font-size: 10px; color: #008080">Project</a> <a href="/blog/tags/Rails/" style="font-size: 15px; color: #004080">Rails</a> <a href="/blog/tags/Redis/" style="font-size: 10px; color: #008080">Redis</a> <a href="/blog/tags/Resources/" style="font-size: 10px; color: #008080">Resources</a> <a href="/blog/tags/Ruby/" style="font-size: 11.67px; color: #006b80">Ruby</a> <a href="/blog/tags/Security/" style="font-size: 11.67px; color: #006b80">Security</a> <a href="/blog/tags/Shiro/" style="font-size: 10px; color: #008080">Shiro</a> <a href="/blog/tags/Solr/" style="font-size: 10px; color: #008080">Solr</a> <a href="/blog/tags/Spring-Boot/" style="font-size: 18.33px; color: #001580">Spring Boot</a> <a href="/blog/tags/Spring-Cloud/" style="font-size: 10px; color: #008080">Spring Cloud</a> <a href="/blog/tags/Spring-Security/" style="font-size: 10px; color: #008080">Spring Security</a> <a href="/blog/tags/Sunsport/" style="font-size: 10px; color: #008080">Sunsport</a> <a href="/blog/tags/Test/" style="font-size: 10px; color: #008080">Test</a> <a href="/blog/tags/Thin-Jar/" style="font-size: 10px; color: #008080">Thin Jar</a> <a href="/blog/tags/Tree/" style="font-size: 10px; color: #008080">Tree</a> <a href="/blog/tags/Web/" style="font-size: 10px; color: #008080">Web</a> <a href="/blog/tags/WebFlux/" style="font-size: 10px; color: #008080">WebFlux</a> <a href="/blog/tags/WebSocket/" style="font-size: 10px; color: #008080">WebSocket</a> <a href="/blog/tags/Websocket/" style="font-size: 10px; color: #008080">Websocket</a> <a href="/blog/tags/kubernetes/" style="font-size: 11.67px; color: #006b80">kubernetes</a> <a href="/blog/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px; color: #008080">二叉树</a> <a href="/blog/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px; color: #002b80">前端</a> <a href="/blog/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px; color: #000080">技术</a> <a href="/blog/tags/%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81/" style="font-size: 10px; color: #008080">摩斯电码</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px; color: #008080">数据结构</a> <a href="/blog/tags/%E7%AB%99%E5%86%85%E6%A3%80%E7%B4%A2/" style="font-size: 10px; color: #008080">站内检索</a> <a href="/blog/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px; color: #008080">编码</a>
         </div>
     </div>
 
@@ -417,7 +440,7 @@
 
     <!-- 启用 mermaid 引入js依赖 -->
     
-        <script src='/js/mermaid/8.4/mermaid.min.js'></script>
+        <script src='js/mermaid/8.4/mermaid.min.js'></script>
         <script>
             if (window.mermaid) {
                 mermaid.initialize({theme: 'forest'});
@@ -429,9 +452,9 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/blog/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
@@ -441,15 +464,15 @@
 
 
   
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
 
   
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
 
-<script src="/js/script.js"></script>
+<script src="/blog/js/script.js"></script>
 
 
 

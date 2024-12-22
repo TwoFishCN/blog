@@ -5,12 +5,12 @@
   
   <title>Trouble of Fat Jar | 两条鱼</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如果使用SpringBoot一定使用过SpringBoot提供的FatJar发布功能。 FatJar将所有的Jar依赖打包入一个Jar文件里，一个可执行的Jar包含其所有需要，非常优秀的设计。但是任然存在一些场景使用起来不方便，有困难。这个Jar文件有一个特性，那就是体积比较大。如果你的发布环境和我一样非常严苛，每一次发布都需要将软件包使用光盘刻录带入一个只有内网才可以直接操作磁盘的机房，然后把软">
+  <meta name="description" content="如果使用SpringBoot一定使用过SpringBoot提供的FatJar发布功能。 FatJar将所有的Jar依赖打包入一个Jar文件里， 一个可执行的Jar包含其所有需要，非常优秀的设计。但是任然存在一些场景使用起来不方便，有困难。这个Jar文件有一个特性，那就是体积比较大。 如果你的发布环境和我一样非常严苛，每一次发布都需要将软件包使用光盘刻录带入一个只有内网才可以直接操作磁盘的机房，然后">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Trouble of Fat Jar">
 <meta property="og:url" content="https://twofishcn.github.io/blog/2018/09/03/2018/2018-09-02-trouble-of-spring-boot-fat-jar/index.html">
 <meta property="og:site_name" content="两条鱼">
-<meta property="og:description" content="如果使用SpringBoot一定使用过SpringBoot提供的FatJar发布功能。 FatJar将所有的Jar依赖打包入一个Jar文件里，一个可执行的Jar包含其所有需要，非常优秀的设计。但是任然存在一些场景使用起来不方便，有困难。这个Jar文件有一个特性，那就是体积比较大。如果你的发布环境和我一样非常严苛，每一次发布都需要将软件包使用光盘刻录带入一个只有内网才可以直接操作磁盘的机房，然后把软">
+<meta property="og:description" content="如果使用SpringBoot一定使用过SpringBoot提供的FatJar发布功能。 FatJar将所有的Jar依赖打包入一个Jar文件里， 一个可执行的Jar包含其所有需要，非常优秀的设计。但是任然存在一些场景使用起来不方便，有困难。这个Jar文件有一个特性，那就是体积比较大。 如果你的发布环境和我一样非常严苛，每一次发布都需要将软件包使用光盘刻录带入一个只有内网才可以直接操作磁盘的机房，然后">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-09-02T18:11:00.000Z">
 <meta property="article:modified_time" content="2020-05-10T15:44:29.976Z">
@@ -20,7 +20,7 @@
 <meta property="article:tag" content="Thin Jar">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="两条鱼" type="application/atom+xml">
+    <link rel="alternate" href="/blog/atom.xml" title="两条鱼" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/static/favicon.ico">
@@ -31,7 +31,7 @@
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/blog/css/style.css">
 
 
   
@@ -75,22 +75,22 @@
     <div>
         <div class="tags">
             
-                <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF/"
+                <a class="tag" href="/blog/tags/%E6%8A%80%E6%9C%AF/"
                    title="技术">技术</a>
             
-                <a class="tag" href="/tags/Spring-Boot/"
+                <a class="tag" href="/blog/tags/Spring-Boot/"
                    title="Spring Boot">Spring Boot</a>
             
-                <a class="tag" href="/tags/Thin-Jar/"
+                <a class="tag" href="/blog/tags/Thin-Jar/"
                    title="Thin Jar">Thin Jar</a>
             
         </div>
         <h1 id="logo-wrap">
-            <a href="/2018/09/03/2018/2018-09-02-trouble-of-spring-boot-fat-jar/" id="logo">Trouble of Fat Jar</a>
+            <a href="/blog/2018/09/03/2018/2018-09-02-trouble-of-spring-boot-fat-jar/" id="logo">Trouble of Fat Jar</a>
         </h1>
         
             <h2 id="subtitle-wrap">
-                <a href="/2018/09/03/2018/2018-09-02-trouble-of-spring-boot-fat-jar/" id="subtitle"> &#34;SpringBoot Thin Jar 老式发布办法&#34;</a>
+                <a href="/blog/2018/09/03/2018/2018-09-02-trouble-of-spring-boot-fat-jar/" id="subtitle"> &#34;SpringBoot Thin Jar 老式发布办法&#34;</a>
             </h2>
         
         <span class="meta">
@@ -109,13 +109,13 @@
                 <a id="main-nav-toggle" class="nav-icon"></a>
                 
                     <a class="main-nav-link"
-                       href="/">
+                       href="/blog/">
                         <i class="fa home-icon"></i>
                         主页
                     </a>
                 
                     <a class="main-nav-link"
-                       href="/archives">
+                       href="/blog/archives">
                         <i class="fa archives-icon"></i>
                         归档
                     </a>
@@ -123,7 +123,7 @@
             </nav>
             <nav id="sub-nav">
                 
-                    <a id="nav-rss-link" class="nav-icon" href="/atom.xml"
+                    <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml"
                        title="RSS Feed"></a>
                 
                 <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
@@ -139,7 +139,7 @@
             <section id="main"><article id="post-2018/2018-09-02-trouble-of-spring-boot-fat-jar" class="article article-type-post" itemscope
          itemprop="blogPost">
     <div class="article-meta">
-        <a href="/2018/09/03/2018/2018-09-02-trouble-of-spring-boot-fat-jar/" class="article-date">
+        <a href="/blog/2018/09/03/2018/2018-09-02-trouble-of-spring-boot-fat-jar/" class="article-date">
   <time datetime="2018-09-02T18:11:00.000Z" itemprop="datePublished">2018-09-03</time>
 </a>
         
@@ -159,8 +159,12 @@
         
         <div class="article-entry" itemprop="articleBody">
             
-                <h1 id="SpringBoot-Fat-Jar-带来的困扰"><a href="#SpringBoot-Fat-Jar-带来的困扰" class="headerlink" title="SpringBoot Fat Jar 带来的困扰"></a>SpringBoot Fat Jar 带来的困扰</h1><p>如果使用SpringBoot一定使用过SpringBoot提供的FatJar发布功能。 FatJar将所有的Jar依赖打包入一个Jar文件里，<br>一个可执行的Jar包含其所有需要，非常优秀的设计。但是任然存在一些场景使用起来不方便，有困难。这个Jar文件有一个特性，那就是体积比较大。<br>如果你的发布环境和我一样非常严苛，每一次发布都需要将软件包使用光盘刻录带入一个只有内网才可以直接操作磁盘的机房，然后把软件通过不可<br>刻录光驱将光盘文件读到机器上安装的话。每一次更新都需要更新体积巨大的Jar（1G的最终发布包），似乎不是最佳选择。</p>
-<p>Spring Boot 功能强大，解决这种场景不在话下。上面的场景是每一次发布都是超大Jar文件，更新操作其实大部分内容不会变化，因此全量<br>复制会导致很多重复内容。如果可以补丁更新，每一次只更新需要变革的文件，那么必然可以很大程度上解决发布难的问题。</p>
+                <h1 id="SpringBoot-Fat-Jar-带来的困扰"><a href="#SpringBoot-Fat-Jar-带来的困扰" class="headerlink" title="SpringBoot Fat Jar 带来的困扰"></a>SpringBoot Fat Jar 带来的困扰</h1><p>如果使用SpringBoot一定使用过SpringBoot提供的FatJar发布功能。 FatJar将所有的Jar依赖打包入一个Jar文件里，
+一个可执行的Jar包含其所有需要，非常优秀的设计。但是任然存在一些场景使用起来不方便，有困难。这个Jar文件有一个特性，那就是体积比较大。
+如果你的发布环境和我一样非常严苛，每一次发布都需要将软件包使用光盘刻录带入一个只有内网才可以直接操作磁盘的机房，然后把软件通过不可
+刻录光驱将光盘文件读到机器上安装的话。每一次更新都需要更新体积巨大的Jar（1G的最终发布包），似乎不是最佳选择。</p>
+<p>Spring Boot 功能强大，解决这种场景不在话下。上面的场景是每一次发布都是超大Jar文件，更新操作其实大部分内容不会变化，因此全量
+复制会导致很多重复内容。如果可以补丁更新，每一次只更新需要变革的文件，那么必然可以很大程度上解决发布难的问题。</p>
 <p>最终，我们需要将依赖包分离出可执行FatJar 而 Spring Boot 完全可以支持。  </p>
 <h2 id="具体方案-SpringBoot-Maven-Plugin-排除Jar"><a href="#具体方案-SpringBoot-Maven-Plugin-排除Jar" class="headerlink" title="具体方案 SpringBoot Maven Plugin 排除Jar"></a>具体方案 SpringBoot Maven Plugin 排除Jar</h2><p>  <a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/maven-plugin/examples/exclude-dependency.html" title="官方文档">点这里</a>进入Maven插件功能详细描述</p>
 <h3 id="第一步排除所有依赖"><a href="#第一步排除所有依赖" class="headerlink" title="第一步排除所有依赖"></a>第一步排除所有依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.4.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- TODO Ugly solution to exclude all dependencies --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">include</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>exclude-all-dependencies<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>exclude-all-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">&lt;!-- enables PropertiesLauncher --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">layout</span>&gt;</span>ZIP<span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -179,10 +183,14 @@
 <p>然后在 src&#x2F;assembly&#x2F;assembly.xml 中将依赖放入lib文件夹</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">assembly</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/ASSEMBLY/2.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd http://maven.apache.org/ASSEMBLY/2.0.0 &quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>deploy<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">formats</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">format</span>&gt;</span>dir<span class="tag">&lt;/<span class="name">format</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">formats</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Adds dependencies to deploy package under lib directory --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencySets</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependencySet</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 不使用项目的artifact, 第三方jar不要解压, 打包进zip文件的lib目录 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">useProjectArtifact</span>&gt;</span>false<span class="tag">&lt;/<span class="name">useProjectArtifact</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span>lib<span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">unpack</span>&gt;</span>false<span class="tag">&lt;/<span class="name">unpack</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependencySet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencySets</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">includeBaseDirectory</span>&gt;</span>false<span class="tag">&lt;/<span class="name">includeBaseDirectory</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fileSets</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fileSet</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">outputDirectory</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>*.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fileSet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fileSets</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">assembly</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="第三步启动命令加入外部依赖"><a href="#第三步启动命令加入外部依赖" class="headerlink" title="第三步启动命令加入外部依赖"></a>第三步启动命令加入外部依赖</h3><p>  通过以上打包过程，将SpringBoot的FatJar所有依赖都放到了lib文件夹中。然而FatJar要正常跑起来的话，必须要加载这些依赖的<br>Jar包。此时前文采用PropertiesLauncher就尤为重要了。PropertiesLauncher支持一个-Dloader.path&#x3D;来添加额外classpath的能力，<br>这在前面的文章有详细说明。<br>  那么，此时你值需要在启动时像下面这样写即可。</p>
+<h3 id="第三步启动命令加入外部依赖"><a href="#第三步启动命令加入外部依赖" class="headerlink" title="第三步启动命令加入外部依赖"></a>第三步启动命令加入外部依赖</h3><p>  通过以上打包过程，将SpringBoot的FatJar所有依赖都放到了lib文件夹中。然而FatJar要正常跑起来的话，必须要加载这些依赖的
+Jar包。此时前文采用PropertiesLauncher就尤为重要了。PropertiesLauncher支持一个-Dloader.path&#x3D;来添加额外classpath的能力，
+这在前面的文章有详细说明。
+  那么，此时你值需要在启动时像下面这样写即可。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Dloader.path=&quot;./lib/&quot; -jar you-semi-fat-jar.jar</span><br></pre></td></tr></table></figure>
 
-<h2 id="spring-boot-maven-plugin-原理"><a href="#spring-boot-maven-plugin-原理" class="headerlink" title="spring-boot-maven-plugin 原理"></a>spring-boot-maven-plugin 原理</h2><p>  spring-boot-maven-plugin在repackage的过程中，其实是重新处理的我们普通模式生成的Jar包。重新整理了<br>原Jar包的文件结构，大致如下：</p>
+<h2 id="spring-boot-maven-plugin-原理"><a href="#spring-boot-maven-plugin-原理" class="headerlink" title="spring-boot-maven-plugin 原理"></a>spring-boot-maven-plugin 原理</h2><p>  spring-boot-maven-plugin在repackage的过程中，其实是重新处理的我们普通模式生成的Jar包。重新整理了
+原Jar包的文件结构，大致如下：</p>
 <pre><code>BOOT-INF
     classes
 META-INF
@@ -211,9 +219,11 @@ org\springframework\boot\loader\
 <p>同时修改了META-INF的MANIFEST.MF文件内容</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Manifest-Version:</span> <span class="number">1.0</span></span><br><span class="line"><span class="attr">Implementation-Title:</span> <span class="string">web-server</span></span><br><span class="line"><span class="attr">Implementation-Version:</span> <span class="number">3.0</span><span class="number">.0</span></span><br><span class="line"><span class="attr">Archiver-Version:</span> <span class="string">Plexus</span> <span class="string">Archiver</span></span><br><span class="line"><span class="attr">Built-By:</span> <span class="string">hewei</span></span><br><span class="line"><span class="attr">Implementation-Vendor-Id:</span> <span class="string">org.springframework.boot</span></span><br><span class="line"><span class="attr">Spring-Boot-Version:</span> <span class="number">2.0</span><span class="number">.4</span><span class="string">.RELEASE</span></span><br><span class="line"><span class="attr">Implementation-Vendor:</span> <span class="string">Pivotal</span> <span class="string">Software,</span> <span class="string">Inc.</span></span><br><span class="line"><span class="attr">Main-Class:</span> <span class="string">org.springframework.boot.loader.PropertiesLauncher</span></span><br><span class="line"><span class="attr">Start-Class:</span> <span class="string">com.company.project.web.WebApplication</span></span><br><span class="line"><span class="attr">Spring-Boot-Classes:</span> <span class="string">BOOT-INF/classes/</span></span><br><span class="line"><span class="attr">Spring-Boot-Lib:</span> <span class="string">BOOT-INF/lib/</span></span><br><span class="line"><span class="attr">Created-By:</span> <span class="string">Apache</span> <span class="string">Maven</span> <span class="number">3.3</span><span class="number">.9</span></span><br><span class="line"><span class="attr">Build-Jdk:</span> <span class="number">1.8</span><span class="string">.0_111</span></span><br><span class="line"><span class="attr">Implementation-URL:</span> <span class="string">http://projects.spring.io/spring-boot/web-server/</span></span><br></pre></td></tr></table></figure>
 
-<p>  这样一来 java -jar 过程就清楚了，启动Main-Class org.springframework.boot.loader.PropertiesLauncher的main方法，然后其具体实现<br>必然会加载Start-Class 了。</p>
+<p>  这样一来 java -jar 过程就清楚了，启动Main-Class org.springframework.boot.loader.PropertiesLauncher的main方法，然后其具体实现
+必然会加载Start-Class 了。</p>
 <p><em>值得注意</em></p>
-<p>  Main-Class 的选择是会根据打包插件配置的<layout>来选择。详细按<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/maven-plugin/usage.html" title="官方文档">官方文档</a><br>描述大致如下。</p>
+<p>  Main-Class 的选择是会根据打包插件配置的<layout>来选择。详细按<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/maven-plugin/usage.html" title="官方文档">官方文档</a>
+描述大致如下。</p>
 <pre><code>JAR: regular executable JAR layout.
 WAR: executable WAR layout. provided dependencies are placed in WEB-INF/lib-provided to avoid any clash when the war is deployed in a servlet container.
 ZIP (alias to DIR): similar to the JAR layout using PropertiesLauncher.
@@ -224,11 +234,11 @@ NONE: Bundle all dependencies and project resources. Does not bundle a bootstrap
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://twofishcn.github.io/blog/2018/09/03/2018/2018-09-02-trouble-of-spring-boot-fat-jar/" data-id="cm4z53jcl000nnguyb4e438vz"
+            <a data-url="https://twofishcn.github.io/blog/2018/09/03/2018/2018-09-02-trouble-of-spring-boot-fat-jar/" data-id="cm4z6hocv000mi0uy263c2q21"
                class="article-share-link">Share</a>
             
             
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thin-Jar/" rel="tag">Thin Jar</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Thin-Jar/" rel="tag">Thin Jar</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
 
         </footer>
     </div>
@@ -236,19 +246,19 @@ NONE: Bundle all dependencies and project resources. Does not bundle a bootstrap
         
 <nav id="article-nav">
   
-    <a href="/2018/09/03/2018/2018-09-05-springboot-nodejs-webSocket/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog/2018/09/15/2018/2018-09-15-springboot-web-flux/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          NodeJs with SpringBoot 实现 WebSocket
+          WebFlux 初识
         
       </div>
     </a>
   
   
-    <a href="/2018/08/12/2018/2018-06-12-spring-external-classpath/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2018/09/03/2018/2018-09-05-springboot-nodejs-webSocket/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">SpringBoot Fat Jar 设置Classpath</div>
+      <div class="article-nav-title">NodeJs with SpringBoot 实现 WebSocket</div>
     </a>
   
 </nav>
@@ -268,23 +278,23 @@ NONE: Bundle all dependencies and project resources. Does not bundle a bootstrap
       <ul>
         
           <li>
-            <a href="/2020/06/27/2020/2020-06-27-browser-http-Homologous/">同源政策</a>
+            <a href="/blog/2020/06/27/2020/2020-06-27-browser-http-Homologous/">同源政策</a>
           </li>
         
           <li>
-            <a href="/2020/06/14/2020/2020-06-14-ECMAScript-async-await/">ECMAScript 6 - 异步函数</a>
+            <a href="/blog/2020/06/14/2020/2020-06-14-ECMAScript-async-await/">ECMAScript 6 - 异步函数</a>
           </li>
         
           <li>
-            <a href="/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/">ECMAScript 6 - 声明关键字</a>
+            <a href="/blog/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/">ECMAScript 6 - 声明关键字</a>
           </li>
         
           <li>
-            <a href="/2020/05/30/2020/2020-05-30-ECMAScript-Generator/">ECMAScript 6 - Generator 函数</a>
+            <a href="/blog/2020/05/30/2020/2020-05-30-ECMAScript-Generator/">ECMAScript 6 - Generator 函数</a>
           </li>
         
           <li>
-            <a href="/2020/05/24/2020/2020-05-24-css-position/">CSS - Position</a>
+            <a href="/blog/2020/05/24/2020/2020-05-24-css-position/">CSS - Position</a>
           </li>
         
       </ul>
@@ -296,7 +306,7 @@ NONE: Bundle all dependencies and project resources. Does not bundle a bootstrap
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/04/">四月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">五月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -306,7 +316,7 @@ NONE: Bundle all dependencies and project resources. Does not bundle a bootstrap
     <div class="widget-wrap">
         <h3 class="widget-title">关于我</h3>
         <div class="widget about">
-            <img src="/img/static/avatar.jpg">
+            <img src="img/static/avatar.jpg">
 
             <div>
                 <a target="_blank" href="https://github.com/HwMuTou">
@@ -330,7 +340,7 @@ NONE: Bundle all dependencies and project resources. Does not bundle a bootstrap
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 10px; color: #008080">Android</a> <a href="/tags/Apache-Kafka/" style="font-size: 10px; color: #008080">Apache Kafka</a> <a href="/tags/Aria2/" style="font-size: 10px; color: #008080">Aria2</a> <a href="/tags/Authentication/" style="font-size: 10px; color: #008080">Authentication</a> <a href="/tags/Best-Practices/" style="font-size: 11.67px; color: #006b80">Best Practices</a> <a href="/tags/Browser/" style="font-size: 10px; color: #008080">Browser</a> <a href="/tags/CSS/" style="font-size: 10px; color: #008080">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px; color: #008080">CentOS</a> <a href="/tags/Classpath/" style="font-size: 10px; color: #008080">Classpath</a> <a href="/tags/Code/" style="font-size: 10px; color: #008080">Code</a> <a href="/tags/Data-Structure/" style="font-size: 10px; color: #008080">Data Structure</a> <a href="/tags/Database/" style="font-size: 15px; color: #004080">Database</a> <a href="/tags/Docker/" style="font-size: 10px; color: #008080">Docker</a> <a href="/tags/Download/" style="font-size: 10px; color: #008080">Download</a> <a href="/tags/ECMAScript/" style="font-size: 13.33px; color: #005580">ECMAScript</a> <a href="/tags/Executable-Jar/" style="font-size: 10px; color: #008080">Executable Jar</a> <a href="/tags/FLux/" style="font-size: 10px; color: #008080">FLux</a> <a href="/tags/File-Monitor/" style="font-size: 10px; color: #008080">File Monitor</a> <a href="/tags/Flume/" style="font-size: 10px; color: #008080">Flume</a> <a href="/tags/Format/" style="font-size: 10px; color: #008080">Format</a> <a href="/tags/GIN%E7%B4%A2%E5%BC%95/" style="font-size: 10px; color: #008080">GIN索引</a> <a href="/tags/Http/" style="font-size: 10px; color: #008080">Http</a> <a href="/tags/JRuby/" style="font-size: 10px; color: #008080">JRuby</a> <a href="/tags/Java/" style="font-size: 16.67px; color: #002b80">Java</a> <a href="/tags/JavaScript/" style="font-size: 13.33px; color: #005580">JavaScript</a> <a href="/tags/Junit/" style="font-size: 10px; color: #008080">Junit</a> <a href="/tags/JupyterHub/" style="font-size: 10px; color: #008080">JupyterHub</a> <a href="/tags/KMS/" style="font-size: 10px; color: #008080">KMS</a> <a href="/tags/Libraries/" style="font-size: 10px; color: #008080">Libraries</a> <a href="/tags/Load-Resource/" style="font-size: 10px; color: #008080">Load Resource</a> <a href="/tags/Micro-Service/" style="font-size: 10px; color: #008080">Micro Service</a> <a href="/tags/Mono/" style="font-size: 10px; color: #008080">Mono</a> <a href="/tags/MySQL/" style="font-size: 11.67px; color: #006b80">MySQL</a> <a href="/tags/Mybatis/" style="font-size: 10px; color: #008080">Mybatis</a> <a href="/tags/NodeJs/" style="font-size: 10px; color: #008080">NodeJs</a> <a href="/tags/Notebook/" style="font-size: 10px; color: #008080">Notebook</a> <a href="/tags/Oauth2/" style="font-size: 11.67px; color: #006b80">Oauth2</a> <a href="/tags/Oracle-JDK/" style="font-size: 10px; color: #008080">Oracle JDK</a> <a href="/tags/Package/" style="font-size: 10px; color: #008080">Package</a> <a href="/tags/Postgre-SQL/" style="font-size: 11.67px; color: #006b80">Postgre SQL</a> <a href="/tags/Profile/" style="font-size: 10px; color: #008080">Profile</a> <a href="/tags/Project/" style="font-size: 10px; color: #008080">Project</a> <a href="/tags/Rails/" style="font-size: 15px; color: #004080">Rails</a> <a href="/tags/Redis/" style="font-size: 10px; color: #008080">Redis</a> <a href="/tags/Resources/" style="font-size: 10px; color: #008080">Resources</a> <a href="/tags/Ruby/" style="font-size: 11.67px; color: #006b80">Ruby</a> <a href="/tags/Security/" style="font-size: 11.67px; color: #006b80">Security</a> <a href="/tags/Shiro/" style="font-size: 10px; color: #008080">Shiro</a> <a href="/tags/Solr/" style="font-size: 10px; color: #008080">Solr</a> <a href="/tags/Spring-Boot/" style="font-size: 18.33px; color: #001580">Spring Boot</a> <a href="/tags/Spring-Cloud/" style="font-size: 10px; color: #008080">Spring Cloud</a> <a href="/tags/Spring-Security/" style="font-size: 10px; color: #008080">Spring Security</a> <a href="/tags/Sunsport/" style="font-size: 10px; color: #008080">Sunsport</a> <a href="/tags/Test/" style="font-size: 10px; color: #008080">Test</a> <a href="/tags/Thin-Jar/" style="font-size: 10px; color: #008080">Thin Jar</a> <a href="/tags/Tree/" style="font-size: 10px; color: #008080">Tree</a> <a href="/tags/Web/" style="font-size: 10px; color: #008080">Web</a> <a href="/tags/WebFlux/" style="font-size: 10px; color: #008080">WebFlux</a> <a href="/tags/WebSocket/" style="font-size: 10px; color: #008080">WebSocket</a> <a href="/tags/Websocket/" style="font-size: 10px; color: #008080">Websocket</a> <a href="/tags/kubernetes/" style="font-size: 11.67px; color: #006b80">kubernetes</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px; color: #008080">二叉树</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px; color: #002b80">前端</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px; color: #000080">技术</a> <a href="/tags/%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81/" style="font-size: 10px; color: #008080">摩斯电码</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px; color: #008080">数据结构</a> <a href="/tags/%E7%AB%99%E5%86%85%E6%A3%80%E7%B4%A2/" style="font-size: 10px; color: #008080">站内检索</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px; color: #008080">编码</a>
+            <a href="/blog/tags/Android/" style="font-size: 10px; color: #008080">Android</a> <a href="/blog/tags/Apache-Kafka/" style="font-size: 10px; color: #008080">Apache Kafka</a> <a href="/blog/tags/Aria2/" style="font-size: 10px; color: #008080">Aria2</a> <a href="/blog/tags/Authentication/" style="font-size: 10px; color: #008080">Authentication</a> <a href="/blog/tags/Best-Practices/" style="font-size: 11.67px; color: #006b80">Best Practices</a> <a href="/blog/tags/Browser/" style="font-size: 10px; color: #008080">Browser</a> <a href="/blog/tags/CSS/" style="font-size: 10px; color: #008080">CSS</a> <a href="/blog/tags/CentOS/" style="font-size: 10px; color: #008080">CentOS</a> <a href="/blog/tags/Classpath/" style="font-size: 10px; color: #008080">Classpath</a> <a href="/blog/tags/Code/" style="font-size: 10px; color: #008080">Code</a> <a href="/blog/tags/Data-Structure/" style="font-size: 10px; color: #008080">Data Structure</a> <a href="/blog/tags/Database/" style="font-size: 15px; color: #004080">Database</a> <a href="/blog/tags/Docker/" style="font-size: 10px; color: #008080">Docker</a> <a href="/blog/tags/Download/" style="font-size: 10px; color: #008080">Download</a> <a href="/blog/tags/ECMAScript/" style="font-size: 13.33px; color: #005580">ECMAScript</a> <a href="/blog/tags/Executable-Jar/" style="font-size: 10px; color: #008080">Executable Jar</a> <a href="/blog/tags/FLux/" style="font-size: 10px; color: #008080">FLux</a> <a href="/blog/tags/File-Monitor/" style="font-size: 10px; color: #008080">File Monitor</a> <a href="/blog/tags/Flume/" style="font-size: 10px; color: #008080">Flume</a> <a href="/blog/tags/Format/" style="font-size: 10px; color: #008080">Format</a> <a href="/blog/tags/GIN%E7%B4%A2%E5%BC%95/" style="font-size: 10px; color: #008080">GIN索引</a> <a href="/blog/tags/Http/" style="font-size: 10px; color: #008080">Http</a> <a href="/blog/tags/JRuby/" style="font-size: 10px; color: #008080">JRuby</a> <a href="/blog/tags/Java/" style="font-size: 16.67px; color: #002b80">Java</a> <a href="/blog/tags/JavaScript/" style="font-size: 13.33px; color: #005580">JavaScript</a> <a href="/blog/tags/Junit/" style="font-size: 10px; color: #008080">Junit</a> <a href="/blog/tags/JupyterHub/" style="font-size: 10px; color: #008080">JupyterHub</a> <a href="/blog/tags/KMS/" style="font-size: 10px; color: #008080">KMS</a> <a href="/blog/tags/Libraries/" style="font-size: 10px; color: #008080">Libraries</a> <a href="/blog/tags/Load-Resource/" style="font-size: 10px; color: #008080">Load Resource</a> <a href="/blog/tags/Micro-Service/" style="font-size: 10px; color: #008080">Micro Service</a> <a href="/blog/tags/Mono/" style="font-size: 10px; color: #008080">Mono</a> <a href="/blog/tags/MySQL/" style="font-size: 11.67px; color: #006b80">MySQL</a> <a href="/blog/tags/Mybatis/" style="font-size: 10px; color: #008080">Mybatis</a> <a href="/blog/tags/NodeJs/" style="font-size: 10px; color: #008080">NodeJs</a> <a href="/blog/tags/Notebook/" style="font-size: 10px; color: #008080">Notebook</a> <a href="/blog/tags/Oauth2/" style="font-size: 11.67px; color: #006b80">Oauth2</a> <a href="/blog/tags/Oracle-JDK/" style="font-size: 10px; color: #008080">Oracle JDK</a> <a href="/blog/tags/Package/" style="font-size: 10px; color: #008080">Package</a> <a href="/blog/tags/Postgre-SQL/" style="font-size: 11.67px; color: #006b80">Postgre SQL</a> <a href="/blog/tags/Profile/" style="font-size: 10px; color: #008080">Profile</a> <a href="/blog/tags/Project/" style="font-size: 10px; color: #008080">Project</a> <a href="/blog/tags/Rails/" style="font-size: 15px; color: #004080">Rails</a> <a href="/blog/tags/Redis/" style="font-size: 10px; color: #008080">Redis</a> <a href="/blog/tags/Resources/" style="font-size: 10px; color: #008080">Resources</a> <a href="/blog/tags/Ruby/" style="font-size: 11.67px; color: #006b80">Ruby</a> <a href="/blog/tags/Security/" style="font-size: 11.67px; color: #006b80">Security</a> <a href="/blog/tags/Shiro/" style="font-size: 10px; color: #008080">Shiro</a> <a href="/blog/tags/Solr/" style="font-size: 10px; color: #008080">Solr</a> <a href="/blog/tags/Spring-Boot/" style="font-size: 18.33px; color: #001580">Spring Boot</a> <a href="/blog/tags/Spring-Cloud/" style="font-size: 10px; color: #008080">Spring Cloud</a> <a href="/blog/tags/Spring-Security/" style="font-size: 10px; color: #008080">Spring Security</a> <a href="/blog/tags/Sunsport/" style="font-size: 10px; color: #008080">Sunsport</a> <a href="/blog/tags/Test/" style="font-size: 10px; color: #008080">Test</a> <a href="/blog/tags/Thin-Jar/" style="font-size: 10px; color: #008080">Thin Jar</a> <a href="/blog/tags/Tree/" style="font-size: 10px; color: #008080">Tree</a> <a href="/blog/tags/Web/" style="font-size: 10px; color: #008080">Web</a> <a href="/blog/tags/WebFlux/" style="font-size: 10px; color: #008080">WebFlux</a> <a href="/blog/tags/WebSocket/" style="font-size: 10px; color: #008080">WebSocket</a> <a href="/blog/tags/Websocket/" style="font-size: 10px; color: #008080">Websocket</a> <a href="/blog/tags/kubernetes/" style="font-size: 11.67px; color: #006b80">kubernetes</a> <a href="/blog/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px; color: #008080">二叉树</a> <a href="/blog/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px; color: #002b80">前端</a> <a href="/blog/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px; color: #000080">技术</a> <a href="/blog/tags/%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81/" style="font-size: 10px; color: #008080">摩斯电码</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px; color: #008080">数据结构</a> <a href="/blog/tags/%E7%AB%99%E5%86%85%E6%A3%80%E7%B4%A2/" style="font-size: 10px; color: #008080">站内检索</a> <a href="/blog/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px; color: #008080">编码</a>
         </div>
     </div>
 
@@ -350,7 +360,7 @@ NONE: Bundle all dependencies and project resources. Does not bundle a bootstrap
 
     <!-- 启用 mermaid 引入js依赖 -->
     
-        <script src='/js/mermaid/8.4/mermaid.min.js'></script>
+        <script src='js/mermaid/8.4/mermaid.min.js'></script>
         <script>
             if (window.mermaid) {
                 mermaid.initialize({theme: 'forest'});
@@ -362,9 +372,9 @@ NONE: Bundle all dependencies and project resources. Does not bundle a bootstrap
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/blog/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
@@ -374,15 +384,15 @@ NONE: Bundle all dependencies and project resources. Does not bundle a bootstrap
 
 
   
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
 
   
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
 
-<script src="/js/script.js"></script>
+<script src="/blog/js/script.js"></script>
 
 
 

@@ -5,12 +5,12 @@
   
   <title>单元测试 Junit 5 | 两条鱼</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="和之前的版本不同，Junit 5 由三个主要模块组成：JUnit 5 &#x3D; JUnit Platform + JUnit Jupiter + JUnit Vintage  测试框架可以和Maven, Gradle 等构建工具配合使用。仅需要在构建配置文件中加入合适的配置。如果你使用spring boot这样的框架，这些配置也都被隐式的加入到了构建配置中。">
+  <meta name="description" content="和之前的版本不同，Junit 5 由三个主要模块组成： JUnit 5 &#x3D; JUnit Platform + JUnit Jupiter + JUnit Vintage  测试框架可以和Maven, Gradle 等构建工具配合使用。仅需要在构建配置文件中加入合适的配置。 如果你使用spring boot这样的框架，这些配置也都被隐式的加入到了构建配置中。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单元测试 Junit 5">
 <meta property="og:url" content="https://twofishcn.github.io/blog/2020/03/29/2020/2020-03-29-junit5-guide/index.html">
 <meta property="og:site_name" content="两条鱼">
-<meta property="og:description" content="和之前的版本不同，Junit 5 由三个主要模块组成：JUnit 5 &#x3D; JUnit Platform + JUnit Jupiter + JUnit Vintage  测试框架可以和Maven, Gradle 等构建工具配合使用。仅需要在构建配置文件中加入合适的配置。如果你使用spring boot这样的框架，这些配置也都被隐式的加入到了构建配置中。">
+<meta property="og:description" content="和之前的版本不同，Junit 5 由三个主要模块组成： JUnit 5 &#x3D; JUnit Platform + JUnit Jupiter + JUnit Vintage  测试框架可以和Maven, Gradle 等构建工具配合使用。仅需要在构建配置文件中加入合适的配置。 如果你使用spring boot这样的框架，这些配置也都被隐式的加入到了构建配置中。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-29T03:54:00.000Z">
 <meta property="article:modified_time" content="2020-03-29T09:09:22.971Z">
@@ -20,7 +20,7 @@
 <meta property="article:tag" content="Test">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="两条鱼" type="application/atom+xml">
+    <link rel="alternate" href="/blog/atom.xml" title="两条鱼" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/static/favicon.ico">
@@ -31,7 +31,7 @@
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/blog/css/style.css">
 
 
   
@@ -75,22 +75,22 @@
     <div>
         <div class="tags">
             
-                <a class="tag" href="/tags/Java/"
+                <a class="tag" href="/blog/tags/Java/"
                    title="Java">Java</a>
             
-                <a class="tag" href="/tags/Junit/"
+                <a class="tag" href="/blog/tags/Junit/"
                    title="Junit">Junit</a>
             
-                <a class="tag" href="/tags/Test/"
+                <a class="tag" href="/blog/tags/Test/"
                    title="Test">Test</a>
             
         </div>
         <h1 id="logo-wrap">
-            <a href="/2020/03/29/2020/2020-03-29-junit5-guide/" id="logo">单元测试 Junit 5</a>
+            <a href="/blog/2020/03/29/2020/2020-03-29-junit5-guide/" id="logo">单元测试 Junit 5</a>
         </h1>
         
             <h2 id="subtitle-wrap">
-                <a href="/2020/03/29/2020/2020-03-29-junit5-guide/" id="subtitle"> &#34;Junit 指南&#34;</a>
+                <a href="/blog/2020/03/29/2020/2020-03-29-junit5-guide/" id="subtitle"> &#34;Junit 指南&#34;</a>
             </h2>
         
         <span class="meta">
@@ -109,13 +109,13 @@
                 <a id="main-nav-toggle" class="nav-icon"></a>
                 
                     <a class="main-nav-link"
-                       href="/">
+                       href="/blog/">
                         <i class="fa home-icon"></i>
                         主页
                     </a>
                 
                     <a class="main-nav-link"
-                       href="/archives">
+                       href="/blog/archives">
                         <i class="fa archives-icon"></i>
                         归档
                     </a>
@@ -123,7 +123,7 @@
             </nav>
             <nav id="sub-nav">
                 
-                    <a id="nav-rss-link" class="nav-icon" href="/atom.xml"
+                    <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml"
                        title="RSS Feed"></a>
                 
                 <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
@@ -139,7 +139,7 @@
             <section id="main"><article id="post-2020/2020-03-29-junit5-guide" class="article article-type-post" itemscope
          itemprop="blogPost">
     <div class="article-meta">
-        <a href="/2020/03/29/2020/2020-03-29-junit5-guide/" class="article-date">
+        <a href="/blog/2020/03/29/2020/2020-03-29-junit5-guide/" class="article-date">
   <time datetime="2020-03-29T03:54:00.000Z" itemprop="datePublished">2020-03-29</time>
 </a>
         
@@ -159,29 +159,36 @@
         
         <div class="article-entry" itemprop="articleBody">
             
-                <h1 id="Junit-5"><a href="#Junit-5" class="headerlink" title="Junit 5"></a>Junit 5</h1><p>和之前的版本不同，Junit 5 由三个主要模块组成：<br>JUnit 5 &#x3D; JUnit Platform + JUnit Jupiter + JUnit Vintage</p>
+                <h1 id="Junit-5"><a href="#Junit-5" class="headerlink" title="Junit 5"></a>Junit 5</h1><p>和之前的版本不同，Junit 5 由三个主要模块组成：
+JUnit 5 &#x3D; JUnit Platform + JUnit Jupiter + JUnit Vintage</p>
 <ul>
-<li><p>JUnit Platform是从JVM上启动测试的基础。它定义了用于开发在平台上运行的测试框架的TestEngine API。此外，<br>平台还提供了一个控制台启动程序，用于从命令行启动平台，以及一个基于JUnit 4的运行程序，<br>用于在基于junit4的环境中运行平台上的任何TestEngine。</p>
+<li><p>JUnit Platform是从JVM上启动测试的基础。它定义了用于开发在平台上运行的测试框架的TestEngine API。此外，
+平台还提供了一个控制台启动程序，用于从命令行启动平台，以及一个基于JUnit 4的运行程序，
+用于在基于junit4的环境中运行平台上的任何TestEngine。</p>
 </li>
-<li><p>JUnit Jupiter是新的编程模型和扩展模型的组合，用于在JUnit 5中编写测试和扩展。Jupiter子项目为在平台上<br>运行基于Jupiter的测试提供了一个测试引擎。</p>
+<li><p>JUnit Jupiter是新的编程模型和扩展模型的组合，用于在JUnit 5中编写测试和扩展。Jupiter子项目为在平台上
+运行基于Jupiter的测试提供了一个测试引擎。</p>
 </li>
 <li><p>JUnit Vintage提供了一个用于在平台上运行基于JUnit 3和JUnit 4的测试引擎。</p>
 </li>
 </ul>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>测试框架可以和Maven, Gradle 等构建工具配合使用。仅需要在构建配置文件中加入合适的配置。<br>如果你使用spring boot这样的框架，这些配置也都被隐式的加入到了构建配置中。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>测试框架可以和Maven, Gradle 等构建工具配合使用。仅需要在构建配置文件中加入合适的配置。
+如果你使用spring boot这样的框架，这些配置也都被隐式的加入到了构建配置中。</p>
 <h2 id="Build-With-Maven"><a href="#Build-With-Maven" class="headerlink" title="Build With Maven"></a>Build With Maven</h2><p>和Maven配合使用仅需要在pom.xml中加入合适的配置。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.22.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-failsafe-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.22.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-engine<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="Build-With-Gradle"><a href="#Build-With-Gradle" class="headerlink" title="Build With Gradle"></a>Build With Gradle</h2><p>如果你的Gradle版本高于 4.6 你只需要加入下面的这个配置到你的build.gradle配置文件。</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test &#123;</span><br><span class="line">    useJUnitPlatform()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>不仅如此，你还可以配置一些参数，来过滤一些测试。例如支持 Junit tags 或者 engines 过滤测试任务。<br>这里提到的 Tag 和 engines 是Junit 提供内容，给测试标记Tag，详细请参考JUnit</p>
+<p>不仅如此，你还可以配置一些参数，来过滤一些测试。例如支持 Junit tags 或者 engines 过滤测试任务。
+这里提到的 Tag 和 engines 是Junit 提供内容，给测试标记Tag，详细请参考JUnit</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">test &#123;</span><br><span class="line">    useJUnitPlatform &#123;</span><br><span class="line">        includeTags <span class="string">&#x27;fast&#x27;</span>, <span class="string">&#x27;smoke &amp; feature-a&#x27;</span></span><br><span class="line">        <span class="comment">// excludeTags &#x27;slow&#x27;, &#x27;ci&#x27;</span></span><br><span class="line">        includeEngines <span class="string">&#x27;junit-jupiter&#x27;</span></span><br><span class="line">        <span class="comment">// excludeEngines &#x27;junit-vintage&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>如果你需要自己选择Junit版本时，加入如下配置来选择版本。</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    testImplementation(<span class="string">&quot;org.junit.jupiter:junit-jupiter-api:5.6.1&quot;</span>)</span><br><span class="line">    testRuntimeOnly(<span class="string">&quot;org.junit.jupiter:junit-jupiter-engine:5.6.1&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="功能详解"><a href="#功能详解" class="headerlink" title="功能详解"></a>功能详解</h1><p>由于官方文档有详细描述Junit提供的所有功能。包括每一个注解的详细含义及其功能说明。我解释的一定不会比官网文档清楚。<br>所以本文不去解释有哪些功能，提供了哪些注解，详细的请参考Junit User Guide。</p>
+<h1 id="功能详解"><a href="#功能详解" class="headerlink" title="功能详解"></a>功能详解</h1><p>由于官方文档有详细描述Junit提供的所有功能。包括每一个注解的详细含义及其功能说明。我解释的一定不会比官网文档清楚。
+所以本文不去解释有哪些功能，提供了哪些注解，详细的请参考Junit User Guide。</p>
 <ul>
 <li>Home <a target="_blank" rel="noopener" href="https://junit.org/junit5/">https://junit.org/junit5/</a></li>
 <li>Github <a target="_blank" rel="noopener" href="https://github.com/junit-team/junit5/">https://github.com/junit-team/junit5/</a></li>
@@ -190,16 +197,17 @@
 <h1 id="每一个测试一个实例"><a href="#每一个测试一个实例" class="headerlink" title="每一个测试一个实例"></a>每一个测试一个实例</h1><p>按照Junit的做法会对每一个测试都创建一个独立的实例去执行，所以下面的这个测试会通过。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assertions.assertEquals;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestDemo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> List&lt;String&gt; demo = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test_add_with_once</span><span class="params">()</span> &#123;</span><br><span class="line">        demo.add(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">        assertEquals(<span class="number">1</span>, demo.size());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test_add_with_multiple_times</span><span class="params">()</span>&#123;</span><br><span class="line">        demo.add(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">        demo.add(<span class="string">&quot;world&quot;</span>);</span><br><span class="line">        demo.add(<span class="string">&quot;.&quot;</span>);</span><br><span class="line"></span><br><span class="line">        assertEquals(<span class="number">3</span>, demo.size());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>正因为每一个测试都有独立实例，如果你使用了Spring框架，一定需要配合Spring Test这种框架来配合。否则一定会导致诸多困扰。<br>比如，手动初始化Spring Context造成的Spring Context反复被初始话，进而导致测试速度很慢。</p>
+<p>正因为每一个测试都有独立实例，如果你使用了Spring框架，一定需要配合Spring Test这种框架来配合。否则一定会导致诸多困扰。
+比如，手动初始化Spring Context造成的Spring Context反复被初始话，进而导致测试速度很慢。</p>
 
             
         </div>
         <footer class="article-footer">
-            <a data-url="https://twofishcn.github.io/blog/2020/03/29/2020/2020-03-29-junit5-guide/" data-id="cm4z53jco0011nguyb0ujezfe"
+            <a data-url="https://twofishcn.github.io/blog/2020/03/29/2020/2020-03-29-junit5-guide/" data-id="cm4z6hocx000ui0uy36bh8oly"
                class="article-share-link">Share</a>
             
             
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Junit/" rel="tag">Junit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Test/" rel="tag">Test</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Junit/" rel="tag">Junit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Test/" rel="tag">Test</a></li></ul>
 
         </footer>
     </div>
@@ -207,7 +215,7 @@
         
 <nav id="article-nav">
   
-    <a href="/2020/03/31/2020/2020-03-31-Postgresql-full-text-search/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog/2020/03/31/2020/2020-03-31-Postgresql-full-text-search/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -217,7 +225,7 @@
     </a>
   
   
-    <a href="/2020/03/28/2020/2020-03-28-data-structure-tree-two-fork-tree/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2020/03/28/2020/2020-03-28-data-structure-tree-two-fork-tree/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">树 - 二叉树</div>
     </a>
@@ -239,23 +247,23 @@
       <ul>
         
           <li>
-            <a href="/2020/06/27/2020/2020-06-27-browser-http-Homologous/">同源政策</a>
+            <a href="/blog/2020/06/27/2020/2020-06-27-browser-http-Homologous/">同源政策</a>
           </li>
         
           <li>
-            <a href="/2020/06/14/2020/2020-06-14-ECMAScript-async-await/">ECMAScript 6 - 异步函数</a>
+            <a href="/blog/2020/06/14/2020/2020-06-14-ECMAScript-async-await/">ECMAScript 6 - 异步函数</a>
           </li>
         
           <li>
-            <a href="/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/">ECMAScript 6 - 声明关键字</a>
+            <a href="/blog/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/">ECMAScript 6 - 声明关键字</a>
           </li>
         
           <li>
-            <a href="/2020/05/30/2020/2020-05-30-ECMAScript-Generator/">ECMAScript 6 - Generator 函数</a>
+            <a href="/blog/2020/05/30/2020/2020-05-30-ECMAScript-Generator/">ECMAScript 6 - Generator 函数</a>
           </li>
         
           <li>
-            <a href="/2020/05/24/2020/2020-05-24-css-position/">CSS - Position</a>
+            <a href="/blog/2020/05/24/2020/2020-05-24-css-position/">CSS - Position</a>
           </li>
         
       </ul>
@@ -267,7 +275,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/04/">四月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/05/">五月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -277,7 +285,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">关于我</h3>
         <div class="widget about">
-            <img src="/img/static/avatar.jpg">
+            <img src="img/static/avatar.jpg">
 
             <div>
                 <a target="_blank" href="https://github.com/HwMuTou">
@@ -301,7 +309,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 10px; color: #008080">Android</a> <a href="/tags/Apache-Kafka/" style="font-size: 10px; color: #008080">Apache Kafka</a> <a href="/tags/Aria2/" style="font-size: 10px; color: #008080">Aria2</a> <a href="/tags/Authentication/" style="font-size: 10px; color: #008080">Authentication</a> <a href="/tags/Best-Practices/" style="font-size: 11.67px; color: #006b80">Best Practices</a> <a href="/tags/Browser/" style="font-size: 10px; color: #008080">Browser</a> <a href="/tags/CSS/" style="font-size: 10px; color: #008080">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px; color: #008080">CentOS</a> <a href="/tags/Classpath/" style="font-size: 10px; color: #008080">Classpath</a> <a href="/tags/Code/" style="font-size: 10px; color: #008080">Code</a> <a href="/tags/Data-Structure/" style="font-size: 10px; color: #008080">Data Structure</a> <a href="/tags/Database/" style="font-size: 15px; color: #004080">Database</a> <a href="/tags/Docker/" style="font-size: 10px; color: #008080">Docker</a> <a href="/tags/Download/" style="font-size: 10px; color: #008080">Download</a> <a href="/tags/ECMAScript/" style="font-size: 13.33px; color: #005580">ECMAScript</a> <a href="/tags/Executable-Jar/" style="font-size: 10px; color: #008080">Executable Jar</a> <a href="/tags/FLux/" style="font-size: 10px; color: #008080">FLux</a> <a href="/tags/File-Monitor/" style="font-size: 10px; color: #008080">File Monitor</a> <a href="/tags/Flume/" style="font-size: 10px; color: #008080">Flume</a> <a href="/tags/Format/" style="font-size: 10px; color: #008080">Format</a> <a href="/tags/GIN%E7%B4%A2%E5%BC%95/" style="font-size: 10px; color: #008080">GIN索引</a> <a href="/tags/Http/" style="font-size: 10px; color: #008080">Http</a> <a href="/tags/JRuby/" style="font-size: 10px; color: #008080">JRuby</a> <a href="/tags/Java/" style="font-size: 16.67px; color: #002b80">Java</a> <a href="/tags/JavaScript/" style="font-size: 13.33px; color: #005580">JavaScript</a> <a href="/tags/Junit/" style="font-size: 10px; color: #008080">Junit</a> <a href="/tags/JupyterHub/" style="font-size: 10px; color: #008080">JupyterHub</a> <a href="/tags/KMS/" style="font-size: 10px; color: #008080">KMS</a> <a href="/tags/Libraries/" style="font-size: 10px; color: #008080">Libraries</a> <a href="/tags/Load-Resource/" style="font-size: 10px; color: #008080">Load Resource</a> <a href="/tags/Micro-Service/" style="font-size: 10px; color: #008080">Micro Service</a> <a href="/tags/Mono/" style="font-size: 10px; color: #008080">Mono</a> <a href="/tags/MySQL/" style="font-size: 11.67px; color: #006b80">MySQL</a> <a href="/tags/Mybatis/" style="font-size: 10px; color: #008080">Mybatis</a> <a href="/tags/NodeJs/" style="font-size: 10px; color: #008080">NodeJs</a> <a href="/tags/Notebook/" style="font-size: 10px; color: #008080">Notebook</a> <a href="/tags/Oauth2/" style="font-size: 11.67px; color: #006b80">Oauth2</a> <a href="/tags/Oracle-JDK/" style="font-size: 10px; color: #008080">Oracle JDK</a> <a href="/tags/Package/" style="font-size: 10px; color: #008080">Package</a> <a href="/tags/Postgre-SQL/" style="font-size: 11.67px; color: #006b80">Postgre SQL</a> <a href="/tags/Profile/" style="font-size: 10px; color: #008080">Profile</a> <a href="/tags/Project/" style="font-size: 10px; color: #008080">Project</a> <a href="/tags/Rails/" style="font-size: 15px; color: #004080">Rails</a> <a href="/tags/Redis/" style="font-size: 10px; color: #008080">Redis</a> <a href="/tags/Resources/" style="font-size: 10px; color: #008080">Resources</a> <a href="/tags/Ruby/" style="font-size: 11.67px; color: #006b80">Ruby</a> <a href="/tags/Security/" style="font-size: 11.67px; color: #006b80">Security</a> <a href="/tags/Shiro/" style="font-size: 10px; color: #008080">Shiro</a> <a href="/tags/Solr/" style="font-size: 10px; color: #008080">Solr</a> <a href="/tags/Spring-Boot/" style="font-size: 18.33px; color: #001580">Spring Boot</a> <a href="/tags/Spring-Cloud/" style="font-size: 10px; color: #008080">Spring Cloud</a> <a href="/tags/Spring-Security/" style="font-size: 10px; color: #008080">Spring Security</a> <a href="/tags/Sunsport/" style="font-size: 10px; color: #008080">Sunsport</a> <a href="/tags/Test/" style="font-size: 10px; color: #008080">Test</a> <a href="/tags/Thin-Jar/" style="font-size: 10px; color: #008080">Thin Jar</a> <a href="/tags/Tree/" style="font-size: 10px; color: #008080">Tree</a> <a href="/tags/Web/" style="font-size: 10px; color: #008080">Web</a> <a href="/tags/WebFlux/" style="font-size: 10px; color: #008080">WebFlux</a> <a href="/tags/WebSocket/" style="font-size: 10px; color: #008080">WebSocket</a> <a href="/tags/Websocket/" style="font-size: 10px; color: #008080">Websocket</a> <a href="/tags/kubernetes/" style="font-size: 11.67px; color: #006b80">kubernetes</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px; color: #008080">二叉树</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px; color: #002b80">前端</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px; color: #000080">技术</a> <a href="/tags/%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81/" style="font-size: 10px; color: #008080">摩斯电码</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px; color: #008080">数据结构</a> <a href="/tags/%E7%AB%99%E5%86%85%E6%A3%80%E7%B4%A2/" style="font-size: 10px; color: #008080">站内检索</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px; color: #008080">编码</a>
+            <a href="/blog/tags/Android/" style="font-size: 10px; color: #008080">Android</a> <a href="/blog/tags/Apache-Kafka/" style="font-size: 10px; color: #008080">Apache Kafka</a> <a href="/blog/tags/Aria2/" style="font-size: 10px; color: #008080">Aria2</a> <a href="/blog/tags/Authentication/" style="font-size: 10px; color: #008080">Authentication</a> <a href="/blog/tags/Best-Practices/" style="font-size: 11.67px; color: #006b80">Best Practices</a> <a href="/blog/tags/Browser/" style="font-size: 10px; color: #008080">Browser</a> <a href="/blog/tags/CSS/" style="font-size: 10px; color: #008080">CSS</a> <a href="/blog/tags/CentOS/" style="font-size: 10px; color: #008080">CentOS</a> <a href="/blog/tags/Classpath/" style="font-size: 10px; color: #008080">Classpath</a> <a href="/blog/tags/Code/" style="font-size: 10px; color: #008080">Code</a> <a href="/blog/tags/Data-Structure/" style="font-size: 10px; color: #008080">Data Structure</a> <a href="/blog/tags/Database/" style="font-size: 15px; color: #004080">Database</a> <a href="/blog/tags/Docker/" style="font-size: 10px; color: #008080">Docker</a> <a href="/blog/tags/Download/" style="font-size: 10px; color: #008080">Download</a> <a href="/blog/tags/ECMAScript/" style="font-size: 13.33px; color: #005580">ECMAScript</a> <a href="/blog/tags/Executable-Jar/" style="font-size: 10px; color: #008080">Executable Jar</a> <a href="/blog/tags/FLux/" style="font-size: 10px; color: #008080">FLux</a> <a href="/blog/tags/File-Monitor/" style="font-size: 10px; color: #008080">File Monitor</a> <a href="/blog/tags/Flume/" style="font-size: 10px; color: #008080">Flume</a> <a href="/blog/tags/Format/" style="font-size: 10px; color: #008080">Format</a> <a href="/blog/tags/GIN%E7%B4%A2%E5%BC%95/" style="font-size: 10px; color: #008080">GIN索引</a> <a href="/blog/tags/Http/" style="font-size: 10px; color: #008080">Http</a> <a href="/blog/tags/JRuby/" style="font-size: 10px; color: #008080">JRuby</a> <a href="/blog/tags/Java/" style="font-size: 16.67px; color: #002b80">Java</a> <a href="/blog/tags/JavaScript/" style="font-size: 13.33px; color: #005580">JavaScript</a> <a href="/blog/tags/Junit/" style="font-size: 10px; color: #008080">Junit</a> <a href="/blog/tags/JupyterHub/" style="font-size: 10px; color: #008080">JupyterHub</a> <a href="/blog/tags/KMS/" style="font-size: 10px; color: #008080">KMS</a> <a href="/blog/tags/Libraries/" style="font-size: 10px; color: #008080">Libraries</a> <a href="/blog/tags/Load-Resource/" style="font-size: 10px; color: #008080">Load Resource</a> <a href="/blog/tags/Micro-Service/" style="font-size: 10px; color: #008080">Micro Service</a> <a href="/blog/tags/Mono/" style="font-size: 10px; color: #008080">Mono</a> <a href="/blog/tags/MySQL/" style="font-size: 11.67px; color: #006b80">MySQL</a> <a href="/blog/tags/Mybatis/" style="font-size: 10px; color: #008080">Mybatis</a> <a href="/blog/tags/NodeJs/" style="font-size: 10px; color: #008080">NodeJs</a> <a href="/blog/tags/Notebook/" style="font-size: 10px; color: #008080">Notebook</a> <a href="/blog/tags/Oauth2/" style="font-size: 11.67px; color: #006b80">Oauth2</a> <a href="/blog/tags/Oracle-JDK/" style="font-size: 10px; color: #008080">Oracle JDK</a> <a href="/blog/tags/Package/" style="font-size: 10px; color: #008080">Package</a> <a href="/blog/tags/Postgre-SQL/" style="font-size: 11.67px; color: #006b80">Postgre SQL</a> <a href="/blog/tags/Profile/" style="font-size: 10px; color: #008080">Profile</a> <a href="/blog/tags/Project/" style="font-size: 10px; color: #008080">Project</a> <a href="/blog/tags/Rails/" style="font-size: 15px; color: #004080">Rails</a> <a href="/blog/tags/Redis/" style="font-size: 10px; color: #008080">Redis</a> <a href="/blog/tags/Resources/" style="font-size: 10px; color: #008080">Resources</a> <a href="/blog/tags/Ruby/" style="font-size: 11.67px; color: #006b80">Ruby</a> <a href="/blog/tags/Security/" style="font-size: 11.67px; color: #006b80">Security</a> <a href="/blog/tags/Shiro/" style="font-size: 10px; color: #008080">Shiro</a> <a href="/blog/tags/Solr/" style="font-size: 10px; color: #008080">Solr</a> <a href="/blog/tags/Spring-Boot/" style="font-size: 18.33px; color: #001580">Spring Boot</a> <a href="/blog/tags/Spring-Cloud/" style="font-size: 10px; color: #008080">Spring Cloud</a> <a href="/blog/tags/Spring-Security/" style="font-size: 10px; color: #008080">Spring Security</a> <a href="/blog/tags/Sunsport/" style="font-size: 10px; color: #008080">Sunsport</a> <a href="/blog/tags/Test/" style="font-size: 10px; color: #008080">Test</a> <a href="/blog/tags/Thin-Jar/" style="font-size: 10px; color: #008080">Thin Jar</a> <a href="/blog/tags/Tree/" style="font-size: 10px; color: #008080">Tree</a> <a href="/blog/tags/Web/" style="font-size: 10px; color: #008080">Web</a> <a href="/blog/tags/WebFlux/" style="font-size: 10px; color: #008080">WebFlux</a> <a href="/blog/tags/WebSocket/" style="font-size: 10px; color: #008080">WebSocket</a> <a href="/blog/tags/Websocket/" style="font-size: 10px; color: #008080">Websocket</a> <a href="/blog/tags/kubernetes/" style="font-size: 11.67px; color: #006b80">kubernetes</a> <a href="/blog/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px; color: #008080">二叉树</a> <a href="/blog/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px; color: #002b80">前端</a> <a href="/blog/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px; color: #000080">技术</a> <a href="/blog/tags/%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81/" style="font-size: 10px; color: #008080">摩斯电码</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px; color: #008080">数据结构</a> <a href="/blog/tags/%E7%AB%99%E5%86%85%E6%A3%80%E7%B4%A2/" style="font-size: 10px; color: #008080">站内检索</a> <a href="/blog/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px; color: #008080">编码</a>
         </div>
     </div>
 
@@ -321,7 +329,7 @@
 
     <!-- 启用 mermaid 引入js依赖 -->
     
-        <script src='/js/mermaid/8.4/mermaid.min.js'></script>
+        <script src='js/mermaid/8.4/mermaid.min.js'></script>
         <script>
             if (window.mermaid) {
                 mermaid.initialize({theme: 'forest'});
@@ -333,9 +341,9 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/blog/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
@@ -345,15 +353,15 @@
 
 
   
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
 
   
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
 
-<script src="/js/script.js"></script>
+<script src="/blog/js/script.js"></script>
 
 
 

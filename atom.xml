@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>两条鱼</title>
+  <icon>https://twofishcn.github.io/blog/icon.png</icon>
+  <subtitle>Java 大数据 Web全栈</subtitle>
+  <link href="https://twofishcn.github.io/blog/atom.xml" rel="self"/>
+  
+  <link href="https://twofishcn.github.io/blog/"/>
+  <updated>2020-06-27T10:46:51.633Z</updated>
+  <id>https://twofishcn.github.io/blog/</id>
+  
+  <author>
+    <name>MuTou</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>同源政策</title>
+    <link href="https://twofishcn.github.io/blog/2020/06/27/2020/2020-06-27-browser-http-Homologous/"/>
+    <id>https://twofishcn.github.io/blog/2020/06/27/2020/2020-06-27-browser-http-Homologous/</id>
+    <published>2020-06-27T12:38:00.000Z</published>
+    <updated>2020-06-27T10:46:51.633Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;浏览器为了在多服务访问之间保证安全，加入了一些限制 &lt;a href=&quot;https://en.wikipedia.org/wiki/Same-origin_policy&quot;&gt;同源政策&lt;/a&gt;。&lt;br&gt;据说，在1995年，同源政策由 Netscape 公司引入浏览器。目前，所有浏览器都实行这个政策。&lt;/p&gt;
+&lt;p&gt;“同源”指的是“三个相同”。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="技术" scheme="https://twofishcn.github.io/blog/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="前端" scheme="https://twofishcn.github.io/blog/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Browser" scheme="https://twofishcn.github.io/blog/tags/Browser/"/>
+    
+    <category term="Http" scheme="https://twofishcn.github.io/blog/tags/Http/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ECMAScript 6 - 异步函数</title>
+    <link href="https://twofishcn.github.io/blog/2020/06/14/2020/2020-06-14-ECMAScript-async-await/"/>
+    <id>https://twofishcn.github.io/blog/2020/06/14/2020/2020-06-14-ECMAScript-async-await/</id>
+    <published>2020-06-14T12:38:00.000Z</published>
+    <updated>2020-06-14T13:51:29.966Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在ES6中Promise是我们的异步方案，但是可以感受到编程时任然存在一些语义，思考方式等带来的成本。而Generator函数也由于其返回迭代器，&lt;br&gt;以及执行时需要执行器而带来诸多编程上的复杂度。&lt;/p&gt;
+&lt;p&gt;ES2017 标准引入了 async 函数，使得异步操作变得更加的方便。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="技术" scheme="https://twofishcn.github.io/blog/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="JavaScript" scheme="https://twofishcn.github.io/blog/tags/JavaScript/"/>
+    
+    <category term="ECMAScript" scheme="https://twofishcn.github.io/blog/tags/ECMAScript/"/>
+    
+    <category term="前端" scheme="https://twofishcn.github.io/blog/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ECMAScript 6 - 声明关键字</title>
+    <link href="https://twofishcn.github.io/blog/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/"/>
+    <id>https://twofishcn.github.io/blog/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/</id>
+    <published>2020-06-07T09:13:00.000Z</published>
+    <updated>2020-06-14T13:49:51.097Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;保留了var、function，新增加let、const、class和import。&lt;/p&gt;
+&lt;p&gt;这其中function、class、import有着特殊场景，本文主要讨论 var、let与const这几个声明之间的异同点。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="技术" scheme="https://twofishcn.github.io/blog/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="JavaScript" scheme="https://twofishcn.github.io/blog/tags/JavaScript/"/>
+    
+    <category term="ECMAScript" scheme="https://twofishcn.github.io/blog/tags/ECMAScript/"/>
+    
+    <category term="前端" scheme="https://twofishcn.github.io/blog/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ECMAScript 6 - Generator 函数</title>
+    <link href="https://twofishcn.github.io/blog/2020/05/30/2020/2020-05-30-ECMAScript-Generator/"/>
+    <id>https://twofishcn.github.io/blog/2020/05/30/2020/2020-05-30-ECMAScript-Generator/</id>
+    <published>2020-05-30T11:33:00.000Z</published>
+    <updated>2020-05-30T12:31:10.694Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;ECMAScript 6.0是JavaScript语言的下一代标准，已经在2015年6月正式发布了。它的目标，&lt;br&gt;是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业级开发语言。&lt;/p&gt;
+&lt;p&gt;在学习过程中看到 ECMAScript 6 提供一个有趣的特性Generator 函数，结合yield关键字使用。yield 关键字曾经在Ruby语言中看到过，但两门&lt;br&gt;语言在功能上截然不同。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="技术" scheme="https://twofishcn.github.io/blog/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="JavaScript" scheme="https://twofishcn.github.io/blog/tags/JavaScript/"/>
+    
+    <category term="ECMAScript" scheme="https://twofishcn.github.io/blog/tags/ECMAScript/"/>
+    
+    <category term="前端" scheme="https://twofishcn.github.io/blog/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS - Position</title>
+    <link href="https://twofishcn.github.io/blog/2020/05/24/2020/2020-05-24-css-position/"/>
+    <id>https://twofishcn.github.io/blog/2020/05/24/2020/2020-05-24-css-position/</id>
+    <published>2020-05-24T03:25:00.000Z</published>
+    <updated>2020-05-24T03:56:19.999Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;CSS position属性用于指定一个元素在文档中的定位方式。top，right，bottom 和 left 属性则决定了该元素的最终位置。&lt;/p&gt;
+&lt;p&gt;该关键字指定元素使用正常的布局行为，即元素在文档常规流中当前的布局位置。此时 top, right, bottom, left 和 z-index 属性无效。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="前端" scheme="https://twofishcn.github.io/blog/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="CSS" scheme="https://twofishcn.github.io/blog/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot With Mybatis</title>
+    <link href="https://twofishcn.github.io/blog/2020/05/16/2020/2020-05-16-mybatis-dao-plan/"/>
+    <id>https://twofishcn.github.io/blog/2020/05/16/2020/2020-05-16-mybatis-dao-plan/</id>
+    <published>2020-05-16T13:25:00.000Z</published>
+    <updated>2020-05-16T13:02:21.594Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;总体上来看, Mybatis 生态提供了很多功能, 已经基本完善可以完全作为DAO层的解决方案使用了。&lt;br&gt;下面展示具体的操作细节。&lt;/p&gt;
+&lt;p&gt;提供一个完整的 &lt;a href=&quot;https://github.com/HwMuTou/spring-mybatis-dev-example&quot;&gt;项目示例&lt;/a&gt; ，建议结合代码来了解使用方法。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="技术" scheme="https://twofishcn.github.io/blog/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="Spring Boot" scheme="https://twofishcn.github.io/blog/tags/Spring-Boot/"/>
+    
+    <category term="Mybatis" scheme="https://twofishcn.github.io/blog/tags/Mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>摩斯电码</title>
+    <link href="https://twofishcn.github.io/blog/2020/05/10/2020/2020-05-10-morse-code/"/>
+    <id>https://twofishcn.github.io/blog/2020/05/10/2020/2020-05-10-morse-code/</id>
+    <published>2020-05-10T13:25:00.000Z</published>
+    <updated>2020-05-10T15:43:57.957Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;摩斯电码是一种时通时断的信号代码，通过不同的排列顺序来表达不同的英文字母、数字和标点符号。摩尔斯电码是一种早期的数字化通信形式，&lt;br&gt;它的代码包括五种： 点、划、点和划之间的停顿、每个字符之间短的停顿、每个词之间中等的停顿以及句子之间长的停顿。&lt;/p&gt;
+&lt;p&gt;如果用灯光来表示，我们可以约定：&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="编码" scheme="https://twofishcn.github.io/blog/tags/%E7%BC%96%E7%A0%81/"/>
+    
+    <category term="摩斯电码" scheme="https://twofishcn.github.io/blog/tags/%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Flume - 日志采集 </title>
+    <link href="https://twofishcn.github.io/blog/2020/04/29/2020/2020-04-29-file-monitor-flume/"/>
+    <id>https://twofishcn.github.io/blog/2020/04/29/2020/2020-04-29-file-monitor-flume/</id>
+    <published>2020-04-29T13:25:00.000Z</published>
+    <updated>2020-05-10T15:44:29.977Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;各种软件系统形态各异，操作系统存在差异，Un*x、Linux、Window、MacOS、AndroidOS等等。服务器软件也部署在各种不同的服务器中。&lt;br&gt;这种时候需要收集各系统的日志，可以通过监听日志文件的变化，将变化数据以消息的模式输送到目标日志系统。这样做可以最大限度的降低&lt;br&gt;对原有系统的侵入性。&lt;/p&gt;
+&lt;p&gt;Apache Common IO 库提供一个文件监控的API，使用方便，其采用了一种定时轮询的方式，检查目录和文件的变化以达到监听的目的。&lt;br&gt;这种方式造成的困扰是CPU的时间消耗巨大，如果文件数量特别多的情况下，情况会更糟糕。如果需要监听的文件数目很少，例如 几个文件，并且&lt;br&gt;文件本身又十分巨大的话，那还是值得一试。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Java" scheme="https://twofishcn.github.io/blog/tags/Java/"/>
+    
+    <category term="File Monitor" scheme="https://twofishcn.github.io/blog/tags/File-Monitor/"/>
+    
+    <category term="Flume" scheme="https://twofishcn.github.io/blog/tags/Flume/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot 特性 - Configuration </title>
+    <link href="https://twofishcn.github.io/blog/2020/04/24/2020/2020-04-24-SpringBoot-config-search/"/>
+    <id>https://twofishcn.github.io/blog/2020/04/24/2020/2020-04-24-SpringBoot-config-search/</id>
+    <published>2020-04-24T13:25:00.000Z</published>
+    <updated>2020-04-24T15:49:39.549Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Spring Boot使配置外部化，以便可以在不同环境中使用相同的应用程序代码。可以使用&lt;code&gt;properties &lt;/code&gt;文件，&lt;code&gt;YAML&lt;/code&gt;文件，&lt;br&gt;环境变量和命令行参数来使用外部化配置。可以使用&lt;code&gt;@Value&lt;/code&gt;批注将属性值直接注入到&lt;code&gt;bean&lt;/code&gt;中，可以通过&lt;code&gt;Spring&lt;/code&gt;的&lt;code&gt;Environment&lt;/code&gt;&lt;br&gt;访问，也可以通过&lt;code&gt;@ConfigurationProperties&lt;/code&gt;绑定到结构化对象。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Spring Boot&lt;/code&gt;使用一个特殊的&lt;code&gt;PropertySource&lt;/code&gt;顺序，该顺序旨在允许合理地覆盖值。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://twofishcn.github.io/blog/tags/Spring-Boot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot 特性 - Apache Kafka Support </title>
+    <link href="https://twofishcn.github.io/blog/2020/04/18/2020/2020-04-18-SpringBoot-Kafka/"/>
+    <id>https://twofishcn.github.io/blog/2020/04/18/2020/2020-04-18-SpringBoot-Kafka/</id>
+    <published>2020-04-18T03:23:00.000Z</published>
+    <updated>2020-04-18T07:03:40.436Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Apache Kafka 是一个常用的分布式消息中间件，因其优异的性能被广泛采用。&lt;/p&gt;
+&lt;p&gt;Spring Boot 有专门针对 Kafka 做针对性的支持。仅需要在项目中引入 &lt;code&gt;spring-kafka&lt;/code&gt; 依赖就可以启用Spring Boot对&lt;br&gt;Kafka的支持。这里说的支持，主要是是 auto-configuration 。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://twofishcn.github.io/blog/tags/Spring-Boot/"/>
+    
+    <category term="Apache Kafka" scheme="https://twofishcn.github.io/blog/tags/Apache-Kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot 特性 - Profiles</title>
+    <link href="https://twofishcn.github.io/blog/2020/04/11/2020/2020-04-11-SpringBoot-profile/"/>
+    <id>https://twofishcn.github.io/blog/2020/04/11/2020/2020-04-11-SpringBoot-profile/</id>
+    <published>2020-04-11T09:05:00.000Z</published>
+    <updated>2020-04-11T09:37:17.418Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Spring Boot 的 Profile 功能和其他地方的Profile功能有神似支持。它允许将部分内容分离出来，仅允许在指定环境下被使用。也可以理解为给&lt;br&gt;指定的资源打上Tag，之后可以根据Tag来控制这部分内容是被使用。在Spring Boot环境下，&lt;code&gt;@Component, @Configuration, @ConfigurationProperties&lt;/code&gt;&lt;br&gt;可以被 &lt;code&gt;@Profile&lt;/code&gt; 标记，来指定这项资源的 Profile 内容。&lt;/p&gt;
+
+
+&lt;p&gt;之后可以通过在 application.yml 中加入 &lt;code&gt;spring.profiles.active&lt;/code&gt; 配置来控制激活的Profile。 &lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://twofishcn.github.io/blog/tags/Spring-Boot/"/>
+    
+    <category term="Profile" scheme="https://twofishcn.github.io/blog/tags/Profile/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot 特性 - Executable Jar</title>
+    <link href="https://twofishcn.github.io/blog/2020/04/08/2020/2020-04-08-SpringBoot-executable-jar/"/>
+    <id>https://twofishcn.github.io/blog/2020/04/08/2020/2020-04-08-SpringBoot-executable-jar/</id>
+    <published>2020-04-08T08:31:00.000Z</published>
+    <updated>2020-04-11T09:48:31.883Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Spring Boot是使用 &lt;code&gt;spring-boot-loader&lt;/code&gt; 模块构建“可执行”的jar或者war发布包的。如果在基于Maven或者Gradle&lt;br&gt;插件来打包Spring Boot应用的话，一般“可执行”的jar是默认生成的，并且使用这些插件基本不需要考虑它的实现细节。&lt;/p&gt;
+&lt;p&gt;虽然使用时不需要考虑这些细节，但是不管出于何种目的，都有必要深入看一看“可执行”jar的背后的原理。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://twofishcn.github.io/blog/tags/Spring-Boot/"/>
+    
+    <category term="Executable Jar" scheme="https://twofishcn.github.io/blog/tags/Executable-Jar/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot 特性 - Application</title>
+    <link href="https://twofishcn.github.io/blog/2020/04/05/2020/2020-04-05-SpringBoot-Features-app/"/>
+    <id>https://twofishcn.github.io/blog/2020/04/05/2020/2020-04-05-SpringBoot-Features-app/</id>
+    <published>2020-04-05T09:13:00.000Z</published>
+    <updated>2020-04-11T09:48:31.882Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Spring Boot 提供了很多特性，可以满足很多应用场景的功能需求。一个Spring Boot Application，一般的做法是在 Application 主类中&lt;br&gt;提供一个main函数入口，然后调用SpringApplication.run方法。&lt;/p&gt;
+
+
+&lt;p&gt;SpringBootApplication提供一个懒加载的功能，当启用这个功能时，Spring管理的Bean不会在系统启动的时候创建。使用懒加载的好处&lt;br&gt;在于可以减少应用程序的启动时间。在一个Web应用中，当开启懒加载功能时，很多关于网络的Bean不会被初始话，直到接受到一个Http请求。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://twofishcn.github.io/blog/tags/Spring-Boot/"/>
+    
+    <category term="Best Practices" scheme="https://twofishcn.github.io/blog/tags/Best-Practices/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot 特性 - 最佳实践</title>
+    <link href="https://twofishcn.github.io/blog/2020/04/04/2020/2020-04-04-SpringBoot-best-practices/"/>
+    <id>https://twofishcn.github.io/blog/2020/04/04/2020/2020-04-04-SpringBoot-best-practices/</id>
+    <published>2020-04-04T06:43:00.000Z</published>
+    <updated>2020-04-24T15:54:12.539Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;虽然Spring Boot不要求代码有特殊的结构，但是也推荐一些最佳的组织方式。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TIPS: 下面是一个典型的组织方式：&lt;/strong&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Spring Boot" scheme="https://twofishcn.github.io/blog/tags/Spring-Boot/"/>
+    
+    <category term="Best Practices" scheme="https://twofishcn.github.io/blog/tags/Best-Practices/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgresQL 全文搜索</title>
+    <link href="https://twofishcn.github.io/blog/2020/03/31/2020/2020-03-31-Postgresql-full-text-search/"/>
+    <id>https://twofishcn.github.io/blog/2020/03/31/2020/2020-03-31-Postgresql-full-text-search/</id>
+    <published>2020-03-31T07:46:00.000Z</published>
+    <updated>2020-04-03T13:11:08.962Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;以下内容有部分引用自 &lt;code&gt;http://www.postgres.cn/docs/11/index.html&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;PostgreSQL提供了多种索引类型： B-tree、Hash、GiST、SP-GiST 、GIN 和 BRIN。&lt;br&gt;每一种索引类型使用了一种不同的算法来适应不同类型的查询。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Postgre SQL" scheme="https://twofishcn.github.io/blog/tags/Postgre-SQL/"/>
+    
+    <category term="Database" scheme="https://twofishcn.github.io/blog/tags/Database/"/>
+    
+    <category term="GIN索引" scheme="https://twofishcn.github.io/blog/tags/GIN%E7%B4%A2%E5%BC%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单元测试 Junit 5</title>
+    <link href="https://twofishcn.github.io/blog/2020/03/29/2020/2020-03-29-junit5-guide/"/>
+    <id>https://twofishcn.github.io/blog/2020/03/29/2020/2020-03-29-junit5-guide/</id>
+    <published>2020-03-29T03:54:00.000Z</published>
+    <updated>2020-03-29T09:09:22.971Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;和之前的版本不同，Junit 5 由三个主要模块组成：&lt;br&gt;JUnit 5 &amp;#x3D; JUnit Platform + JUnit Jupiter + JUnit Vintage&lt;/p&gt;
+
+&lt;p&gt;测试框架可以和Maven, Gradle 等构建工具配合使用。仅需要在构建配置文件中加入合适的配置。&lt;br&gt;如果你使用spring boot这样的框架，这些配置也都被隐式的加入到了构建配置中。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Java" scheme="https://twofishcn.github.io/blog/tags/Java/"/>
+    
+    <category term="Junit" scheme="https://twofishcn.github.io/blog/tags/Junit/"/>
+    
+    <category term="Test" scheme="https://twofishcn.github.io/blog/tags/Test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>树 - 二叉树</title>
+    <link href="https://twofishcn.github.io/blog/2020/03/28/2020/2020-03-28-data-structure-tree-two-fork-tree/"/>
+    <id>https://twofishcn.github.io/blog/2020/03/28/2020/2020-03-28-data-structure-tree-two-fork-tree/</id>
+    <published>2020-03-28T03:54:00.000Z</published>
+    <updated>2020-03-30T13:02:08.942Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;二叉树是每个结点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。&lt;/p&gt;
+&lt;p&gt;一棵深度为k，且有2^k-1个结点的二叉树，称为满二叉树。这种树的特点是每一层上的结点数都是最大结点数。而在一棵二叉树中，&lt;br&gt;除最后一层外，若其余层都是满的，并且或者最后一层是满的，或者是在右边缺少连续若干结点，则此二叉树为完全二叉树。&lt;br&gt;具有n个结点的完全二叉树的深度为floor(&lt;mjx-container class=&quot;MathJax&quot; jax=&quot;SVG&quot;&gt;&lt;svg style=&quot;vertical-align: -0.464ex;&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;5.196ex&quot; height=&quot;2.034ex&quot; role=&quot;img&quot; focusable=&quot;false&quot; viewBox=&quot;0 -694 2296.6 899&quot;&gt;&lt;g stroke=&quot;currentColor&quot; fill=&quot;currentColor&quot; stroke-width=&quot;0&quot; transform=&quot;scale(1,-1)&quot;&gt;&lt;g data-mml-node=&quot;math&quot;&gt;&lt;g data-mml-node=&quot;mi&quot;&gt;&lt;path data-c=&quot;1D459&quot; d=&quot;M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z&quot;/&gt;&lt;/g&gt;&lt;g data-mml-node=&quot;mi&quot; transform=&quot;translate(298,0)&quot;&gt;&lt;path data-c=&quot;1D45C&quot; d=&quot;M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z&quot;/&gt;&lt;/g&gt;&lt;g data-mml-node=&quot;msub&quot; transform=&quot;translate(783,0)&quot;&gt;&lt;g data-mml-node=&quot;mi&quot;&gt;&lt;path data-c=&quot;1D454&quot; d=&quot;M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z&quot;/&gt;&lt;/g&gt;&lt;g data-mml-node=&quot;mn&quot; transform=&quot;translate(510,-150) scale(0.707)&quot;&gt;&lt;path data-c=&quot;32&quot; d=&quot;M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z&quot;/&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-mml-node=&quot;mi&quot; transform=&quot;translate(1696.6,0)&quot;&gt;&lt;path data-c=&quot;1D45B&quot; d=&quot;M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z&quot;/&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/mjx-container&gt;)+1。深度为k的完全二叉树，至少有 2^(k-1) 个叶子结点，至多有2^k-1个结点。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Tree" scheme="https://twofishcn.github.io/blog/tags/Tree/"/>
+    
+    <category term="Data Structure" scheme="https://twofishcn.github.io/blog/tags/Data-Structure/"/>
+    
+    <category term="二叉树" scheme="https://twofishcn.github.io/blog/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL 之 索引</title>
+    <link href="https://twofishcn.github.io/blog/2020/03/24/2020/2020-03-24-MySQL-data-structure-index/"/>
+    <id>https://twofishcn.github.io/blog/2020/03/24/2020/2020-03-24-MySQL-data-structure-index/</id>
+    <published>2020-03-24T03:31:00.000Z</published>
+    <updated>2020-03-25T03:40:38.995Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;MySQL存储引擎大致有：&lt;/p&gt;
+
+&lt;p&gt;不同的引擎主要是区别在于数据的组织存储方式的不同，这导致提供的功能有所差异。因此针对使用场景上的不同，可以&lt;br&gt;选择最适合的存储引擎。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Database" scheme="https://twofishcn.github.io/blog/tags/Database/"/>
+    
+    <category term="MySQL" scheme="https://twofishcn.github.io/blog/tags/MySQL/"/>
+    
+    <category term="数据结构" scheme="https://twofishcn.github.io/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL 之 事务与锁</title>
+    <link href="https://twofishcn.github.io/blog/2020/03/21/2020/2020-03-22-MySQL-transaction-lock/"/>
+    <id>https://twofishcn.github.io/blog/2020/03/21/2020/2020-03-22-MySQL-transaction-lock/</id>
+    <published>2020-03-21T03:31:00.000Z</published>
+    <updated>2020-03-24T15:36:01.358Z</updated>
+    
+    
+    <summary type="html">&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;事务隔离级别&lt;/th&gt;
+&lt;th&gt;脏读&lt;/th&gt;
+&lt;th&gt;不可重复读&lt;/th&gt;
+&lt;th&gt;幻读&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;Read uncommitted&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Read committed&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Repeatable read&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;td&gt;√&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Serializable&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;td&gt;×&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;脏读就是指当一个事务正在访问数据，并且对数据进行了修改，而这种修改还没有提交到数据库中，&lt;br&gt;这时，另外一个事务也访问这个数据，然后使用了这个数据。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Database" scheme="https://twofishcn.github.io/blog/tags/Database/"/>
+    
+    <category term="MySQL" scheme="https://twofishcn.github.io/blog/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jupyter Hub On K8s</title>
+    <link href="https://twofishcn.github.io/blog/2019/02/12/2019/2019-02-12-jupyterHub-on-k8s/"/>
+    <id>https://twofishcn.github.io/blog/2019/02/12/2019/2019-02-12-jupyterHub-on-k8s/</id>
+    <published>2019-02-11T18:11:00.000Z</published>
+    <updated>2020-03-22T12:02:28.325Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;  官方文档详细说明了从头开始搭建部署JupyterHub到Kubernetes的流程与方法。地址是 &lt;a href=&quot;https://zero-to-jupyterhub.readthedocs.io/en/latest/index.html&quot;&gt;https://zero-to-jupyterhub.readthedocs.io/en/latest/index.html&lt;/a&gt;&lt;br&gt;本文章不会无限期维护，所以这个地址可能后续无法使用，届时请直接访问jupyter hub 官网寻找相关文档。&lt;/p&gt;
+
+
+&lt;p&gt;  从上面的的注解中可以看到许多定制化的配置内容，结合具体的应用场景，Jupyter可以做到高度定制。包括授权模式及方案，&lt;br&gt;以及在kubernetes上启动的Notebook服务的参数，环境变量等等。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="技术" scheme="https://twofishcn.github.io/blog/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="kubernetes" scheme="https://twofishcn.github.io/blog/tags/kubernetes/"/>
+    
+    <category term="Oauth2" scheme="https://twofishcn.github.io/blog/tags/Oauth2/"/>
+    
+    <category term="JupyterHub" scheme="https://twofishcn.github.io/blog/tags/JupyterHub/"/>
+    
+    <category term="Notebook" scheme="https://twofishcn.github.io/blog/tags/Notebook/"/>
+    
+  </entry>
+  
+</feed>

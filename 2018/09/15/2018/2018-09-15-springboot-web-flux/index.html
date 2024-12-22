@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>WebFlux 初识 | 两条鱼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Spring 发布了5.0, 同时发布了SpringBoot2.0; 推出了Web on Reactive Stack, 响应式Web框架,适合微服务架构的Web框架。       Demo Project">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebFlux 初识">
+<meta property="og:url" content="https://twofishcn.github.io/blog/2018/09/15/2018/2018-09-15-springboot-web-flux/index.html">
+<meta property="og:site_name" content="两条鱼">
+<meta property="og:description" content="Spring 发布了5.0, 同时发布了SpringBoot2.0; 推出了Web on Reactive Stack, 响应式Web框架,适合微服务架构的Web框架。       Demo Project">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://twofishcn.github.io/img/post/2018/diagram-boot-reactor.svg">
+<meta property="article:published_time" content="2018-09-14T18:11:00.000Z">
+<meta property="article:modified_time" content="2020-03-25T03:23:23.175Z">
+<meta property="article:author" content="MuTou">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="WebFlux">
+<meta property="article:tag" content="FLux">
+<meta property="article:tag" content="Mono">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://twofishcn.github.io/img/post/2018/diagram-boot-reactor.svg">
+  
+    <link rel="alternate" href="/atom.xml" title="两条鱼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/static/favicon.ico">
+  
+  
+
+  <!--TODO if google api is too slow. have to change css config.-->
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163343208-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-163343208-1');
+</script>
+<!-- End Google Analytics -->
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+<div id="container">
+    <div id="wrap">
+        <style type="text/css">
+    
+
+    
+
+    #banner {
+        background: url(/img/bg/post-bg-reboot-k8s-machine.jpg) center #000;
+    }
+</style>
+<header id="header">
+
+    <div id="banner"></div>
+
+    <div id="header-outer" class="outer">
+
+        <div id="header-title" class="inner">
+            
+
+                <div class="post-header-title">
+    <div>
+        <div class="tags">
+            
+                <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF/"
+                   title="技术">技术</a>
+            
+                <a class="tag" href="/tags/Spring-Boot/"
+                   title="Spring Boot">Spring Boot</a>
+            
+                <a class="tag" href="/tags/WebFlux/"
+                   title="WebFlux">WebFlux</a>
+            
+                <a class="tag" href="/tags/FLux/"
+                   title="FLux">FLux</a>
+            
+                <a class="tag" href="/tags/Mono/"
+                   title="Mono">Mono</a>
+            
+        </div>
+        <h1 id="logo-wrap">
+            <a href="/2018/09/15/2018/2018-09-15-springboot-web-flux/" id="logo">WebFlux 初识</a>
+        </h1>
+        
+            <h2 id="subtitle-wrap">
+                <a href="/2018/09/15/2018/2018-09-15-springboot-web-flux/" id="subtitle"> &#34;SpringBoot 响应式Web框架&#34;</a>
+            </h2>
+        
+        <span class="meta">
+        Posted by Hw on
+        2018-09-15
+    </span>
+    </div>
+</div>
+
+
+            
+        </div>
+
+        <div id="header-inner" class="inner">
+            <nav id="main-nav">
+                <a id="main-nav-toggle" class="nav-icon"></a>
+                
+                    <a class="main-nav-link"
+                       href="/">
+                        <i class="fa home-icon"></i>
+                        主页
+                    </a>
+                
+                    <a class="main-nav-link"
+                       href="/archives">
+                        <i class="fa archives-icon"></i>
+                        归档
+                    </a>
+                
+            </nav>
+            <nav id="sub-nav">
+                
+                    <a id="nav-rss-link" class="nav-icon" href="/atom.xml"
+                       title="RSS Feed"></a>
+                
+                <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+            </nav>
+            <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://twofishcn.github.io/blog"></form>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="outer">
+            <section id="main"><article id="post-2018/2018-09-15-springboot-web-flux" class="article article-type-post" itemscope
+         itemprop="blogPost">
+    <div class="article-meta">
+        <a href="/2018/09/15/2018/2018-09-15-springboot-web-flux/" class="article-date">
+  <time datetime="2018-09-14T18:11:00.000Z" itemprop="datePublished">2018-09-15</time>
+</a>
+        
+    </div>
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      WebFlux 初识
+    </h1>
+  
+
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                <h1 id="Spring-Framework-5"><a href="#Spring-Framework-5" class="headerlink" title="Spring Framework 5"></a>Spring Framework 5</h1><p>  Spring 发布了5.0, 同时发布了SpringBoot2.0; 推出了Web on Reactive Stack, 响应式Web框架,<br>适合微服务架构的Web框架。</p>
+<img src="/img/post/2018/diagram-boot-reactor.svg" width="100%" height="500px">
+
+<div class="sidebyside text diagram-text">
+<h4 class="uppercase">The Right Technology Stack for the Job at Hand</h4>
+<p>Developers are constantly challenged with choosing the most effective runtime, programming model and architecture for their application's requirements and team's skill-set. For example, some <a href="/blog/2016/06/07/notes-on-reactive-programming-part-i-the-reactive-landscape#reactive-use-cases">use cases</a> are best handled by a technology stack based on synchronous blocking I/O architecture while others would be better served by an asynchronous, and non-blocking stack built on the reactive design principles described in the <a target="_blank" rel="noopener" href="http://www.reactive-streams.org/">Reactive Streams Specification</a>.</p>
+<p>Reactive Spring represents a platform wide initiative to deliver reactive support at every level of the development stack—web, security, data, messaging, etc. Spring Framework 5 delivers on this vision by providing a new reactive web stack called, Spring WebFlux, which is offered side-by-side with the traditional Spring MVC web stack. The choice is yours!</p>
+<p>
+<a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#spring-webflux"><i class="icon-file-text"></i> WebFlux Reference Documentation</a>
+</p>
+</div>
+
+<h1 id="WebFlux"><a href="#WebFlux" class="headerlink" title="WebFlux"></a>WebFlux</h1><p>  <a target="_blank" rel="noopener" href="https://github.com/HwMuTou/webflux-start.git">Demo Project</a></p>
+<p>  Controller 代码必须使用Flux和Mono库,以实现异步响应式的内容</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.webflux.reactive.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.webflux.reactive.controller.request.body.HelloWorkParam;</span><br><span class="line"><span class="keyword">import</span> com.webflux.reactive.domian.HelloWord;</span><br><span class="line"><span class="keyword">import</span> com.webflux.reactive.repository.HelloWordRepository;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.MediaType;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"><span class="keyword">import</span> reactor.core.publisher.Flux;</span><br><span class="line"><span class="keyword">import</span> reactor.core.publisher.Mono;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.time.Duration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/helloWord&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWordController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> HelloWordRepository helloWordRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HelloWordController</span><span class="params">(HelloWordRepository helloWordRepository)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.helloWordRepository = helloWordRepository;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span></span><br><span class="line">    <span class="keyword">public</span> Flux&lt;HelloWord&gt; <span class="title function_">index</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> helloWordRepository.findAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Use MediaType.APPLICATION_STREAM_JSON_VALUE Header</span></span><br><span class="line"><span class="comment">     * 2秒返回一个Object, 直到结束</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Flux&lt;HelloWord&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(value = &quot;/steam&quot;, produces = MediaType.APPLICATION_STREAM_JSON_VALUE)</span></span><br><span class="line">    <span class="keyword">public</span> Flux&lt;HelloWord&gt; <span class="title function_">indexDelay</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> helloWordRepository.findAll().delayElements(Duration.ofSeconds(<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Mono&lt;HelloWord&gt; <span class="title function_">show</span><span class="params">(<span class="meta">@PathVariable</span> String id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> helloWordRepository.findById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping</span></span><br><span class="line">    <span class="keyword">public</span> Mono&lt;HelloWord&gt; <span class="title function_">create</span><span class="params">(<span class="meta">@RequestBody</span> HelloWord helloWord)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> helloWordRepository.save(helloWord);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PutMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Mono&lt;HelloWord&gt; <span class="title function_">update</span><span class="params">(<span class="meta">@RequestBody</span> HelloWorkParam param,</span></span><br><span class="line"><span class="params">                                  <span class="meta">@PathVariable</span> String id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> helloWordRepository</span><br><span class="line">                .findById(id)</span><br><span class="line">                .flatMap(helloWord -&gt; &#123;</span><br><span class="line">                    helloWord.setValue(param.getValue());</span><br><span class="line">                    helloWord.setName(param.getName());</span><br><span class="line">                    <span class="keyword">return</span> helloWordRepository.save(helloWord);</span><br><span class="line">                &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DeleteMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Mono&lt;Void&gt; <span class="title function_">delete</span><span class="params">(<span class="meta">@PathVariable</span> String id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> helloWordRepository.deleteById(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="https://twofishcn.github.io/blog/2018/09/15/2018/2018-09-15-springboot-web-flux/" data-id="cm4z53jcl000pnguy691wd7zj"
+               class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FLux/" rel="tag">FLux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mono/" rel="tag">Mono</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebFlux/" rel="tag">WebFlux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+  
+    <a href="/2019/01/22/2019/2019-01-22-spring-secrity-oauth-resource/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spring Security With Oauth2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/03/2018/2018-09-05-springboot-nodejs-webSocket/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">NodeJs with SpringBoot 实现 WebSocket</div>
+    </a>
+  
+</nav>
+
+    
+</article>
+
+
+</section>
+            
+                <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/27/2020/2020-06-27-browser-http-Homologous/">同源政策</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/14/2020/2020-06-14-ECMAScript-async-await/">ECMAScript 6 - 异步函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/">ECMAScript 6 - 声明关键字</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/30/2020/2020-05-30-ECMAScript-Generator/">ECMAScript 6 - Generator 函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/2020/2020-05-24-css-position/">CSS - Position</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+    <div class="widget-wrap">
+        <h3 class="widget-title">关于我</h3>
+        <div class="widget about">
+            <img src="/img/static/avatar.jpg">
+
+            <div>
+                <a target="_blank" href="https://github.com/HwMuTou">
+                    <i class="fa fa-2x fa-github"></i> GitHub
+                </a>
+
+                <a target="_blank" href="mailto:hw-hewei@foxmail.com">
+                    <i class="fa fa-2x fa-email"></i>
+                    Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 10px; color: #008080">Android</a> <a href="/tags/Apache-Kafka/" style="font-size: 10px; color: #008080">Apache Kafka</a> <a href="/tags/Aria2/" style="font-size: 10px; color: #008080">Aria2</a> <a href="/tags/Authentication/" style="font-size: 10px; color: #008080">Authentication</a> <a href="/tags/Best-Practices/" style="font-size: 11.67px; color: #006b80">Best Practices</a> <a href="/tags/Browser/" style="font-size: 10px; color: #008080">Browser</a> <a href="/tags/CSS/" style="font-size: 10px; color: #008080">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px; color: #008080">CentOS</a> <a href="/tags/Classpath/" style="font-size: 10px; color: #008080">Classpath</a> <a href="/tags/Code/" style="font-size: 10px; color: #008080">Code</a> <a href="/tags/Data-Structure/" style="font-size: 10px; color: #008080">Data Structure</a> <a href="/tags/Database/" style="font-size: 15px; color: #004080">Database</a> <a href="/tags/Docker/" style="font-size: 10px; color: #008080">Docker</a> <a href="/tags/Download/" style="font-size: 10px; color: #008080">Download</a> <a href="/tags/ECMAScript/" style="font-size: 13.33px; color: #005580">ECMAScript</a> <a href="/tags/Executable-Jar/" style="font-size: 10px; color: #008080">Executable Jar</a> <a href="/tags/FLux/" style="font-size: 10px; color: #008080">FLux</a> <a href="/tags/File-Monitor/" style="font-size: 10px; color: #008080">File Monitor</a> <a href="/tags/Flume/" style="font-size: 10px; color: #008080">Flume</a> <a href="/tags/Format/" style="font-size: 10px; color: #008080">Format</a> <a href="/tags/GIN%E7%B4%A2%E5%BC%95/" style="font-size: 10px; color: #008080">GIN索引</a> <a href="/tags/Http/" style="font-size: 10px; color: #008080">Http</a> <a href="/tags/JRuby/" style="font-size: 10px; color: #008080">JRuby</a> <a href="/tags/Java/" style="font-size: 16.67px; color: #002b80">Java</a> <a href="/tags/JavaScript/" style="font-size: 13.33px; color: #005580">JavaScript</a> <a href="/tags/Junit/" style="font-size: 10px; color: #008080">Junit</a> <a href="/tags/JupyterHub/" style="font-size: 10px; color: #008080">JupyterHub</a> <a href="/tags/KMS/" style="font-size: 10px; color: #008080">KMS</a> <a href="/tags/Libraries/" style="font-size: 10px; color: #008080">Libraries</a> <a href="/tags/Load-Resource/" style="font-size: 10px; color: #008080">Load Resource</a> <a href="/tags/Micro-Service/" style="font-size: 10px; color: #008080">Micro Service</a> <a href="/tags/Mono/" style="font-size: 10px; color: #008080">Mono</a> <a href="/tags/MySQL/" style="font-size: 11.67px; color: #006b80">MySQL</a> <a href="/tags/Mybatis/" style="font-size: 10px; color: #008080">Mybatis</a> <a href="/tags/NodeJs/" style="font-size: 10px; color: #008080">NodeJs</a> <a href="/tags/Notebook/" style="font-size: 10px; color: #008080">Notebook</a> <a href="/tags/Oauth2/" style="font-size: 11.67px; color: #006b80">Oauth2</a> <a href="/tags/Oracle-JDK/" style="font-size: 10px; color: #008080">Oracle JDK</a> <a href="/tags/Package/" style="font-size: 10px; color: #008080">Package</a> <a href="/tags/Postgre-SQL/" style="font-size: 11.67px; color: #006b80">Postgre SQL</a> <a href="/tags/Profile/" style="font-size: 10px; color: #008080">Profile</a> <a href="/tags/Project/" style="font-size: 10px; color: #008080">Project</a> <a href="/tags/Rails/" style="font-size: 15px; color: #004080">Rails</a> <a href="/tags/Redis/" style="font-size: 10px; color: #008080">Redis</a> <a href="/tags/Resources/" style="font-size: 10px; color: #008080">Resources</a> <a href="/tags/Ruby/" style="font-size: 11.67px; color: #006b80">Ruby</a> <a href="/tags/Security/" style="font-size: 11.67px; color: #006b80">Security</a> <a href="/tags/Shiro/" style="font-size: 10px; color: #008080">Shiro</a> <a href="/tags/Solr/" style="font-size: 10px; color: #008080">Solr</a> <a href="/tags/Spring-Boot/" style="font-size: 18.33px; color: #001580">Spring Boot</a> <a href="/tags/Spring-Cloud/" style="font-size: 10px; color: #008080">Spring Cloud</a> <a href="/tags/Spring-Security/" style="font-size: 10px; color: #008080">Spring Security</a> <a href="/tags/Sunsport/" style="font-size: 10px; color: #008080">Sunsport</a> <a href="/tags/Test/" style="font-size: 10px; color: #008080">Test</a> <a href="/tags/Thin-Jar/" style="font-size: 10px; color: #008080">Thin Jar</a> <a href="/tags/Tree/" style="font-size: 10px; color: #008080">Tree</a> <a href="/tags/Web/" style="font-size: 10px; color: #008080">Web</a> <a href="/tags/WebFlux/" style="font-size: 10px; color: #008080">WebFlux</a> <a href="/tags/WebSocket/" style="font-size: 10px; color: #008080">WebSocket</a> <a href="/tags/Websocket/" style="font-size: 10px; color: #008080">Websocket</a> <a href="/tags/kubernetes/" style="font-size: 11.67px; color: #006b80">kubernetes</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px; color: #008080">二叉树</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px; color: #002b80">前端</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px; color: #000080">技术</a> <a href="/tags/%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81/" style="font-size: 10px; color: #008080">摩斯电码</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px; color: #008080">数据结构</a> <a href="/tags/%E7%AB%99%E5%86%85%E6%A3%80%E7%B4%A2/" style="font-size: 10px; color: #008080">站内检索</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px; color: #008080">编码</a>
+        </div>
+    </div>
+
+
+  
+</aside>
+            
+        </div>
+        <footer id="footer">
+    
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2024 MuTou<br>
+            Powered by <a href="/" target="_blank">HW</a>
+        </div>
+    </div>
+
+    <!-- 启用 mermaid 引入js依赖 -->
+    
+        <script src='/js/mermaid/8.4/mermaid.min.js'></script>
+        <script>
+            if (window.mermaid) {
+                mermaid.initialize({theme: 'forest'});
+            }
+        </script>
+    
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!--TODO choose the fast cdn of jquery.-->
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+</div>
+</body>
+</html>

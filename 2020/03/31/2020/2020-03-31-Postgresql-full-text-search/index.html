@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PostgresQL 全文搜索 | 两条鱼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="以下内容有部分引用自 http:&#x2F;&#x2F;www.postgres.cn&#x2F;docs&#x2F;11&#x2F;index.html 。 PostgreSQL提供了多种索引类型： B-tree、Hash、GiST、SP-GiST 、GIN 和 BRIN。每一种索引类型使用了一种不同的算法来适应不同类型的查询。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgresQL 全文搜索">
+<meta property="og:url" content="https://twofishcn.github.io/blog/2020/03/31/2020/2020-03-31-Postgresql-full-text-search/index.html">
+<meta property="og:site_name" content="两条鱼">
+<meta property="og:description" content="以下内容有部分引用自 http:&#x2F;&#x2F;www.postgres.cn&#x2F;docs&#x2F;11&#x2F;index.html 。 PostgreSQL提供了多种索引类型： B-tree、Hash、GiST、SP-GiST 、GIN 和 BRIN。每一种索引类型使用了一种不同的算法来适应不同类型的查询。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-31T07:46:00.000Z">
+<meta property="article:modified_time" content="2020-04-03T13:11:08.962Z">
+<meta property="article:author" content="MuTou">
+<meta property="article:tag" content="Postgre SQL">
+<meta property="article:tag" content="Database">
+<meta property="article:tag" content="GIN索引">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="两条鱼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/static/favicon.ico">
+  
+  
+
+  <!--TODO if google api is too slow. have to change css config.-->
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163343208-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-163343208-1');
+</script>
+<!-- End Google Analytics -->
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+<div id="container">
+    <div id="wrap">
+        <style type="text/css">
+    
+
+    
+
+    #banner {
+        background: url(/img/bg/post-bg-nature-forest-sky-with-river.jpg) center #000;
+    }
+</style>
+<header id="header">
+
+    <div id="banner"></div>
+
+    <div id="header-outer" class="outer">
+
+        <div id="header-title" class="inner">
+            
+
+                <div class="post-header-title">
+    <div>
+        <div class="tags">
+            
+                <a class="tag" href="/tags/Postgre-SQL/"
+                   title="Postgre SQL">Postgre SQL</a>
+            
+                <a class="tag" href="/tags/Database/"
+                   title="Database">Database</a>
+            
+                <a class="tag" href="/tags/GIN%E7%B4%A2%E5%BC%95/"
+                   title="GIN索引">GIN索引</a>
+            
+        </div>
+        <h1 id="logo-wrap">
+            <a href="/2020/03/31/2020/2020-03-31-Postgresql-full-text-search/" id="logo">PostgresQL 全文搜索</a>
+        </h1>
+        
+            <h2 id="subtitle-wrap">
+                <a href="/2020/03/31/2020/2020-03-31-Postgresql-full-text-search/" id="subtitle"> &#34;全文搜索 GIN索引&#34;</a>
+            </h2>
+        
+        <span class="meta">
+        Posted by Hw on
+        2020-03-31
+    </span>
+    </div>
+</div>
+
+
+            
+        </div>
+
+        <div id="header-inner" class="inner">
+            <nav id="main-nav">
+                <a id="main-nav-toggle" class="nav-icon"></a>
+                
+                    <a class="main-nav-link"
+                       href="/">
+                        <i class="fa home-icon"></i>
+                        主页
+                    </a>
+                
+                    <a class="main-nav-link"
+                       href="/archives">
+                        <i class="fa archives-icon"></i>
+                        归档
+                    </a>
+                
+            </nav>
+            <nav id="sub-nav">
+                
+                    <a id="nav-rss-link" class="nav-icon" href="/atom.xml"
+                       title="RSS Feed"></a>
+                
+                <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+            </nav>
+            <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://twofishcn.github.io/blog"></form>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="outer">
+            <section id="main"><article id="post-2020/2020-03-31-Postgresql-full-text-search" class="article article-type-post" itemscope
+         itemprop="blogPost">
+    <div class="article-meta">
+        <a href="/2020/03/31/2020/2020-03-31-Postgresql-full-text-search/" class="article-date">
+  <time datetime="2020-03-31T07:46:00.000Z" itemprop="datePublished">2020-03-31</time>
+</a>
+        
+    </div>
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      PostgresQL 全文搜索
+    </h1>
+  
+
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>以下内容有部分引用自 <code>http://www.postgres.cn/docs/11/index.html</code> 。</p>
+<h1 id="PostgresQL-索引"><a href="#PostgresQL-索引" class="headerlink" title="PostgresQL 索引"></a>PostgresQL 索引</h1><p>PostgreSQL提供了多种索引类型： B-tree、Hash、GiST、SP-GiST 、GIN 和 BRIN。<br>每一种索引类型使用了一种不同的算法来适应不同类型的查询。</p>
+<p>有两种索引可以被用来加速全文搜索，GIN 和 GiST 索引类型。如果没有特殊的需求GIN更适合全文检索的索引。<br>虽然全文搜索并非一定需要索引，但是在一个定期会被搜索的列上，通常需要有一个索引。</p>
+<p>创建一个基于 GIN（通用倒排索引）的索引。注意，column必须是tsvector类型。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX name <span class="keyword">ON</span> <span class="keyword">table</span> <span class="keyword">USING</span> GIN(<span class="keyword">column</span>);</span><br></pre></td></tr></table></figure>
+
+<p>创建一个基于 GiST（通用搜索树）的索引。注意，column可以是tsvector或tsquery类型。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX name <span class="keyword">ON</span> <span class="keyword">table</span> <span class="keyword">USING</span> GIST(<span class="keyword">column</span>);</span><br></pre></td></tr></table></figure>
+
+<p>GIN 索引是更好的文本搜索索引类型。作为倒排索引，每个词（词位）在 其中都有一个索引项，<br>其中有压缩过的匹配位置的列表。多词搜索可以找到 第一个匹配，然后使用该索引移除缺少额外词的行。<br>GIN 索引只存储 tsvector值的词（词位），并且不存储它们的权重标签。<br>因此， 在使用涉及权重的查询时需要一次在表行上的重新检查。</p>
+<p>在GiST 索引中，每一个文档被表示为一个定长的签名。该签名通过哈希值映射每一个词到一个 n 位串中的一个单一位来产生，<br>通过将所有这些位 OR 在一起产生一个 n 位的文档签名。当两个词哈希值映射到同一个位位置时就会产生假匹配。<br>如果查询中所有词都有匹配（真或假），则必须检索表行查看匹配是否正确。<br>因此GiST 索引是有损的，可能产生假匹配，并且有必要检查真实的表行来消除这种假匹配（PostgreSQL在需要时会自动做这一步）。</p>
+<h1 id="PostgresQL-全文检索"><a href="#PostgresQL-全文检索" class="headerlink" title="PostgresQL 全文检索"></a>PostgresQL 全文检索</h1><p>在提到全文检索时，我通常会想到 Lucene，Solr， Elasticsearch。确实这些工具在解决全文检索方面是专业专长。<br>实际上，在MySQL，PostgresQL这些关系型数据库中也包含了全文检索的功能。同样使用了倒排索引这样的索引技术。<br>不同的是实现环境不同，数据存储的细节 有所不同，集群配置使用有所不同，查寻API有所不同。</p>
+<h2 id="搜索一个表"><a href="#搜索一个表" class="headerlink" title="搜索一个表"></a>搜索一个表</h2><p>可以在没有一个索引的情况下做全文搜索。下面是一个简单的查询，将打印每一个行的title，这些行在其body域中包含词friend：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> pgweb</span><br><span class="line"><span class="keyword">WHERE</span> to_tsvector(<span class="string">&#x27;english&#x27;</span>, body) @@ to_tsquery(<span class="string">&#x27;english&#x27;</span>, <span class="string">&#x27;friend&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这将还会找到相关的词例如friends和friendly，因为这些都被约减到同一个正规化的词位。<br>以上的查询指定要使用english配置来解析和正规化字符串。我们也可以忽略配置参数：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> pgweb</span><br><span class="line"><span class="keyword">WHERE</span> to_tsvector(body) @@ to_tsquery(<span class="string">&#x27;friend&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这个查询将使用由default_text_search_config设置的配置。</p>
+<p>一个更复杂的例子是选择 10 个最近的文档，要求它们在title或body中包含create和table：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> pgweb</span><br><span class="line"><span class="keyword">WHERE</span> to_tsvector(title <span class="operator">||</span> <span class="string">&#x27; &#x27;</span> <span class="operator">||</span> body) @@ to_tsquery(<span class="string">&#x27;create &amp; table&#x27;</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> last_mod_date <span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<p>为了清晰，我们忽略coalesce函数调用，它可能需要被用来查找在这两个域之中包含NULL的行。</p>
+<p>尽管这些查询可以在没有索引的情况下工作，大部分应用会发现这种方法太慢了，除了偶尔的临时搜索。实际使用文本搜索通常要求创建一个索引。</p>
+<h2 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h2><p>我们可以创建一个GIN索引来加速文本搜索：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX pgweb_idx <span class="keyword">ON</span> pgweb <span class="keyword">USING</span> GIN(to_tsvector(<span class="string">&#x27;english&#x27;</span>, body));</span><br></pre></td></tr></table></figure>
+
+<p>只有指定了一个配置名称的文本搜索函数可以被用在表达式索引中。这是因为索引内容必须是没有被default_text_search_config影响的。<br>如果它们被影响，索引内容可能会不一致因为不同的项可能包含被使用不同文本搜索配置创建的tsvector，并且没有办法猜测哪个是哪个。<br>也没有可能正确地转储和恢复这样的一个索引。</p>
+<p>由于to_tsvector的双参数版本被使用在上述的索引中，只有一个使用了带有相同配置名的双参数版to_tsvector的查询引用才能使用该索引。<br>即，<br><code>WHERE to_tsvector(&#39;english&#39;, body) @@ &#39;a &amp; b&#39; </code><br>可以使用该索引，但<br><code>WHERE to_tsvector(body) @@ &#39;a &amp; b&#39;</code><br>不能。这保证一个索引只能和创建索引项时所用的相同配置一起使用。</p>
+<p>可以建立更复杂的表达式索引，在其中配置名被另一个列指定，例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX pgweb_idx <span class="keyword">ON</span> pgweb <span class="keyword">USING</span> GIN(to_tsvector(config_name, body));</span><br></pre></td></tr></table></figure>
+
+<p>这里config_name是pgweb表中的一个列。这允许在同一个索引中有混合配置，同时记录哪个配置被用于每一个索引项。<br>例如，如果文档集合包含不同语言的文档，这就可能会有用。同样，要使用索引的查询必须被措辞成匹配，例如<br><code>WHERE to_tsvector(config_name, body) @@ &#39;a &amp; b&#39;</code></p>
+<p>索引甚至可以连接列：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX pgweb_idx <span class="keyword">ON</span> pgweb <span class="keyword">USING</span> GIN(to_tsvector(<span class="string">&#x27;english&#x27;</span>, title <span class="operator">||</span> <span class="string">&#x27; &#x27;</span> <span class="operator">||</span> body));</span><br></pre></td></tr></table></figure>
+
+<p>另一种方法是创建一个单独的tsvector列来保存to_tsvector的输出。这个例子是title和body的连接，<br>使用coalesce来保证当其他域为NULL时一个域仍然能留在索引中：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER TABLE</span> pgweb <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> textsearchable_index_col tsvector;</span><br><span class="line"><span class="keyword">UPDATE</span> pgweb <span class="keyword">SET</span> textsearchable_index_col <span class="operator">=</span></span><br><span class="line">     to_tsvector(<span class="string">&#x27;english&#x27;</span>, <span class="built_in">coalesce</span>(title,<span class="string">&#x27;&#x27;</span>) <span class="operator">||</span> <span class="string">&#x27; &#x27;</span> <span class="operator">||</span> <span class="built_in">coalesce</span>(body,<span class="string">&#x27;&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>然后我们创建一个GIN索引来加速搜索：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX textsearch_idx <span class="keyword">ON</span> pgweb <span class="keyword">USING</span> GIN(textsearchable_index_col);</span><br></pre></td></tr></table></figure>
+
+<p>现在我们准备好执行一个快速的全文搜索了：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title</span><br><span class="line"><span class="keyword">FROM</span> pgweb</span><br><span class="line"><span class="keyword">WHERE</span> textsearchable_index_col @@ to_tsquery(<span class="string">&#x27;create &amp; table&#x27;</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> last_mod_date <span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在使用一个单独的列来存储tsvector表示时，有必要创建一个触发器在title或body改变时保证tsvector列为当前值。</p>
+<p>单独列方法相对于表达式索引的一个优势在于，它不必为了利用索引而在查询中显式地指定文本搜索配置。如上述例子所示，<br>查询可以依赖default_text_search_config。另一个优势是搜索将会更快，因为它不必重做to_tsvector调用来验证索引匹配<br>（在使用 GiST 索引时这一点比使用 GIN 索引时更重要）。表达式索引方法更容易建立，但是它要求更少的磁盘空间，<br>因为tsvector表示不会被显式地存储下来。</p>
+<h2 id="排名搜索结果"><a href="#排名搜索结果" class="headerlink" title="排名搜索结果"></a>排名搜索结果</h2><p>对搜索结果排名是全文搜索中比较关注的内容，我们总是期望把最好的内容排在前面。</p>
+<p>排名处理尝试度量文档和一个特定查询的接近程度，这样当有很多匹配时最相关的那些可以被先显示。<br>PostgreSQL提供了两种预定义的排名函数，它们考虑词法、临近性和结构信息；即，它们考虑查询词在文档中出现得有多频繁，<br>文档中的词有多接近，以及词出现的文档部分有多重要。不过，相关性的概念是模糊的并且与应用非常相关。<br>不同的应用可能要求额外的信息用于排名，例如，文档修改时间。内建的排名函数只是例子。<br>你可以编写你自己的排名函数和&#x2F;或把它们的结果与附加因素整合在一起来适应你的特定需求。</p>
+<p>目前（参考PostgresQL 11）可用的两种排名函数是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts_rank([ weights float4[], ] vector tsvector, query tsquery [, normalization <span class="type">integer</span> ]) <span class="keyword">returns</span> float4</span><br></pre></td></tr></table></figure>
+
+<p>基于向量的匹配词位的频率来排名向量。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts_rank_cd([ weights float4[], ] vector tsvector, query tsquery [, normalization <span class="type">integer</span> ]) <span class="keyword">returns</span> float4</span><br></pre></td></tr></table></figure>
+<p>这个函数为给定文档向量和查询计算覆盖密度排名，该方法在 Clarke、Cormack 和 Tudhope 于 1999 年在<br>期刊 “Information Processing and Management” 上的文章 “Relevance Ranking for One to Three Term Queries” 文章中有描述。<br>覆盖密度类似于ts_rank排名，不过它会考虑匹配词位相互之间的接近度。</p>
+<p>这个函数要求词位的位置信息来执行其计算。因此它会忽略tsvector中任何“被剥离的”词位。如果在输入中有未被剥离的词位，结果将会是零。</p>
+<p>对这两个函数，可选的权重参数提供了为词实例赋予更多或更少权重的能力，这种能力是依据它们被标注的情况的。<br>权重数组指定每一类词应该得到多重的权重，按照如下的顺序：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;D-权重, C-权重, B-权重, A-权重&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果没有提供权重，那么将使用这些默认值：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;0.1, 0.2, 0.4, 1.0&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通常权重被用来标记来自文档特别区域的词，如标题或一个初始的摘要，这样它们可以被认为比来自文档正文的词更重要或更不重要。</p>
+<p>由于一个较长的文档有更多的机会包含一个查询术语，因此考虑文档的尺寸是合理的，<br>例如一个一百个词的文档中有一个搜索词的五个实例而另外个一千个词的文档中有该搜索词的十个实例，<br>按比例前者是5%后者是1%，因此前者比后者更相关。两种排名函数都采用一个整数正规化选项，它指定文档长度是否影响其排名以及如何影响。<br>该整数选项控制多个行为，因此它是一个位掩码：你可以使用|指定一个或多个行为（例如，2|4）。</p>
+<ul>
+<li>0（默认值）忽略文档长度</li>
+<li>1 用 1 + 文档长度的对数除排名</li>
+<li>2 用文档长度除排名</li>
+<li>4 用长度之间的平均调和距离除排名（只被ts_rank_cd实现）</li>
+<li>8 用文档中唯一词的数量除排名</li>
+<li>16 用 1 + 文档中唯一词数量的对数除排名</li>
+<li>32 用排名 + 1 除排名</li>
+</ul>
+<p>如果多于一个标志位被指定，转换将根据列出的顺序被应用。</p>
+<p>值得注意的是排名函数并不使用任何全局信息，因此它不可能按照某些时候期望地产生一个公平的正规化，从 1% 或 100%。<br>正规化选项 32 （rank&#x2F;(rank+1)）可以被应用来缩放所有的排名到范围零到一，但是当然这只是一个外观上的改变；它不会影响搜索结果的顺序。</p>
+<p>这里是一个例子，它只选择十个最高排名的匹配：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title, ts_rank_cd(textsearch, query) <span class="keyword">AS</span> rank</span><br><span class="line"><span class="keyword">FROM</span> apod, to_tsquery(<span class="string">&#x27;neutrino|(dark &amp; matter)&#x27;</span>) query</span><br><span class="line"><span class="keyword">WHERE</span> query @@ textsearch</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> rank <span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="number">10</span>;</span><br><span class="line">                     title                     <span class="operator">|</span>   rank</span><br><span class="line"><span class="comment">-----------------------------------------------+----------</span></span><br><span class="line"> Neutrinos <span class="keyword">in</span> the Sun                          <span class="operator">|</span>      <span class="number">3.1</span></span><br><span class="line"> The Sudbury Neutrino Detector                 <span class="operator">|</span>      <span class="number">2.4</span></span><br><span class="line"> A MACHO <span class="keyword">View</span> <span class="keyword">of</span> Galactic Dark Matter          <span class="operator">|</span>  <span class="number">2.01317</span></span><br><span class="line"> Hot Gas <span class="keyword">and</span> Dark Matter                       <span class="operator">|</span>  <span class="number">1.91171</span></span><br><span class="line"> The Virgo Cluster: Hot Plasma <span class="keyword">and</span> Dark Matter <span class="operator">|</span>  <span class="number">1.90953</span></span><br><span class="line"> Rafting <span class="keyword">for</span> Solar Neutrinos                   <span class="operator">|</span>      <span class="number">1.9</span></span><br><span class="line"> NGC <span class="number">4650</span>A: Strange Galaxy <span class="keyword">and</span> Dark Matter     <span class="operator">|</span>  <span class="number">1.85774</span></span><br><span class="line"> Hot Gas <span class="keyword">and</span> Dark Matter                       <span class="operator">|</span>   <span class="number">1.6123</span></span><br><span class="line"> Ice Fishing <span class="keyword">for</span> Cosmic Neutrinos              <span class="operator">|</span>      <span class="number">1.6</span></span><br><span class="line"> Weak Lensing Distorts the Universe            <span class="operator">|</span> <span class="number">0.818218</span></span><br></pre></td></tr></table></figure>
+
+<p>这是相同的例子使用正规化的排名：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> title, ts_rank_cd(textsearch, query, <span class="number">32</span> <span class="comment">/* rank/(rank+1) */</span> ) <span class="keyword">AS</span> rank</span><br><span class="line"><span class="keyword">FROM</span> apod, to_tsquery(<span class="string">&#x27;neutrino|(dark &amp; matter)&#x27;</span>) query</span><br><span class="line"><span class="keyword">WHERE</span>  query @@ textsearch</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> rank <span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="number">10</span>;</span><br><span class="line">                     title                     <span class="operator">|</span>        rank</span><br><span class="line"><span class="comment">-----------------------------------------------+-------------------</span></span><br><span class="line"> Neutrinos <span class="keyword">in</span> the Sun                          <span class="operator">|</span> <span class="number">0.756097569485493</span></span><br><span class="line"> The Sudbury Neutrino Detector                 <span class="operator">|</span> <span class="number">0.705882361190954</span></span><br><span class="line"> A MACHO <span class="keyword">View</span> <span class="keyword">of</span> Galactic Dark Matter          <span class="operator">|</span> <span class="number">0.668123210574724</span></span><br><span class="line"> Hot Gas <span class="keyword">and</span> Dark Matter                       <span class="operator">|</span>  <span class="number">0.65655958650282</span></span><br><span class="line"> The Virgo Cluster: Hot Plasma <span class="keyword">and</span> Dark Matter <span class="operator">|</span> <span class="number">0.656301290640973</span></span><br><span class="line"> Rafting <span class="keyword">for</span> Solar Neutrinos                   <span class="operator">|</span> <span class="number">0.655172410958162</span></span><br><span class="line"> NGC <span class="number">4650</span>A: Strange Galaxy <span class="keyword">and</span> Dark Matter     <span class="operator">|</span> <span class="number">0.650072921219637</span></span><br><span class="line"> Hot Gas <span class="keyword">and</span> Dark Matter                       <span class="operator">|</span> <span class="number">0.617195790024749</span></span><br><span class="line"> Ice Fishing <span class="keyword">for</span> Cosmic Neutrinos              <span class="operator">|</span> <span class="number">0.615384618911517</span></span><br><span class="line"> Weak Lensing Distorts the Universe            <span class="operator">|</span> <span class="number">0.450010798361481</span></span><br></pre></td></tr></table></figure>
+
+<p>排名可能会非常昂贵的操作，因为它要求查询每一个匹配文档的tsvector，这可能会涉及很多I&#x2F;O因而很慢。不幸的是，这几乎不可能避免，<br>因为实际查询常常导致巨大数目的匹配。</p>
+<h2 id="加亮结果"><a href="#加亮结果" class="headerlink" title="加亮结果"></a>加亮结果</h2><p>要表示搜索结果，理想的方式是显示每一个文档的一个部分并且显示它是怎样与查询相关的。<br>通常，搜索引擎显示文档片段时会对其中的搜索术语进行标记。PostgresQL提供了一个函数ts_headline来实现这个功能。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts_headline([ config regconfig, ] document text, query tsquery [, options text ]) <span class="keyword">returns</span> text</span><br></pre></td></tr></table></figure>
+
+<p>ts_headline接受一个文档和一个查询，并且从该文档返回一个引用，在其中来自查询的术语会被加亮。<br>被用来解析该文档的配置可以用config指定；如果config被忽略，将会使用default_text_search_config配置。<br>如果一个options字符串被指定，它必须由一个逗号分隔的列表组成，列表中是一个或多个option&#x3D;value对。可用的选项是：</p>
+<ul>
+<li>StartSel、StopSel：用来定界文档中出现的查询词的字符串，这用来把它们与其他被引用的词区分开。<br>如果这些字符串包含空格或逗号，你必须把它们加上双引号。</li>
+<li>MaxWords、MinWords：这些数字决定要输出的最长和最短 headline。</li>
+<li>ShortWord：headline 的开头或结尾处长度小于等于这个值的词将被丢掉。</li>
+<li>HighlightAll：布尔标志，如果为true整个文档将被用作 headline，并忽略前面的三个参数。</li>
+<li>MaxFragments：要显示的文本引用或片段的最大数量。默认值是0，表示选择一种非片段倾向的 headline 生成方法。<br>一个大于零的值，表示选择基于片段的 headline 生成。这种方法找到有尽可能多查询词的文本片段并且展开查询词周围的那些片段。<br>结果是查询词会靠近每个片段的中间并且在其两侧都有词。每一个片段将是最多MaxWords并且每个片段的开头或结尾长度小于等于ShortWord的词被<br>丢弃。如果不是所有的查询词都在该文档中找到，文档中第一个MinWords的单一片段将被显示。</li>
+<li>FragmentDelimiter：当多于一个片段被显示时，片段将被这个字符串所分隔。</li>
+</ul>
+<p>这些选项名称不区分大小写。任何未指定的选项将收到这些默认值：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">StartSel=&lt;b&gt;, StopSel=&lt;/b&gt;,</span><br><span class="line">MaxWords=35, MinWords=15, ShortWord=3, HighlightAll=FALSE,</span><br><span class="line">MaxFragments=0, FragmentDelimiter=&quot; ... &quot;</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> ts_headline(<span class="string">&#x27;english&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;The most common type of search is to find all documents containing given query terms and return them in order of their similarity to the query.&#x27;</span>,</span><br><span class="line">  to_tsquery(<span class="string">&#x27;query &amp; similarity&#x27;</span>)</span><br><span class="line">);</span><br><span class="line">                        ts_headline                         </span><br><span class="line"><span class="comment">------------------------------------------------------------</span></span><br><span class="line"> containing given <span class="operator">&lt;</span>b<span class="operator">&gt;</span>query<span class="operator">&lt;</span><span class="operator">/</span>b<span class="operator">&gt;</span> terms <span class="keyword">and</span> <span class="keyword">return</span> them <span class="keyword">in</span> <span class="keyword">order</span> <span class="keyword">of</span> their <span class="operator">&lt;</span>b<span class="operator">&gt;</span>similarity<span class="operator">&lt;</span><span class="operator">/</span>b<span class="operator">&gt;</span> <span class="keyword">to</span> the <span class="operator">&lt;</span>b<span class="operator">&gt;</span>query<span class="operator">&lt;</span><span class="operator">/</span>b<span class="operator">&gt;</span>.</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> ts_headline(<span class="string">&#x27;english&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;The most common type of search is to find all documents containing given query terms and return them in order of their similarity to the query.&#x27;</span>,</span><br><span class="line">  to_tsquery(<span class="string">&#x27;query &amp; similarity&#x27;</span>),</span><br><span class="line">  <span class="string">&#x27;StartSel = &lt;, StopSel = &gt;&#x27;</span></span><br><span class="line">);</span><br><span class="line">                      ts_headline                      </span><br><span class="line"><span class="comment">-------------------------------------------------------</span></span><br><span class="line"> containing given <span class="operator">&lt;</span>query<span class="operator">&gt;</span> terms <span class="keyword">and</span> <span class="keyword">return</span> them <span class="keyword">in</span> <span class="keyword">order</span> <span class="keyword">of</span> their <span class="operator">&lt;</span>similarity<span class="operator">&gt;</span> <span class="keyword">to</span> the <span class="operator">&lt;</span>query<span class="operator">&gt;</span>.</span><br></pre></td></tr></table></figure>
+
+<p>ts_headline使用原始文档，而不是一个tsvector摘要，因此它可能很慢，所以应该被小心使用。</p>
+<h1 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h1><p>PostgreSQL的文本搜索特性的当前限制是：</p>
+<ul>
+<li>每一个词位的长度必须小于 2K 字节</li>
+<li>一个tsvector（词位 + 位置）的长度必须小于 1 兆字节</li>
+<li>词位的数量必须小于 264</li>
+<li>tsvector中的位置值必须大于 0 并且小于 16,383</li>
+<li>tsquery操作符中的匹配距离不能超过 16,384</li>
+<li>每个词位不超过 256 个位置</li>
+<li>一个tsquery中结点（词位 + 操作符）的个数必须小于 32,768</li>
+</ul>
+<h2 id="关于中文搜索"><a href="#关于中文搜索" class="headerlink" title="关于中文搜索"></a>关于中文搜索</h2><p>PostgresQL默认的分词字典并不包括中文，但是我们可以手动导入一些中文支持。</p>
+<p>Google 搜索可以看到不少可选项。初略搜索结果有</p>
+<pre><code>https://github.com/amutu/zhparser
+https://github.com/pgroonga/pgroonga
+</code></pre>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>从PostgresQL支持全文检索的描述可以看到，在做全文搜索的时候，需要关注的功能点包括通过倒排索引加快检索<br>速度，使用计分算法排序文档顺序，高亮匹配词等等。</p>
+
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="https://twofishcn.github.io/blog/2020/03/31/2020/2020-03-31-Postgresql-full-text-search/" data-id="cm4z53jcp0013nguydo3bcg6s"
+               class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GIN%E7%B4%A2%E5%BC%95/" rel="tag">GIN索引</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Postgre-SQL/" rel="tag">Postgre SQL</a></li></ul>
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+  
+    <a href="/2020/04/04/2020/2020-04-04-SpringBoot-best-practices/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spring Boot 特性 - 最佳实践
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/29/2020/2020-03-29-junit5-guide/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">单元测试 Junit 5</div>
+    </a>
+  
+</nav>
+
+    
+</article>
+
+
+</section>
+            
+                <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/27/2020/2020-06-27-browser-http-Homologous/">同源政策</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/14/2020/2020-06-14-ECMAScript-async-await/">ECMAScript 6 - 异步函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/">ECMAScript 6 - 声明关键字</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/30/2020/2020-05-30-ECMAScript-Generator/">ECMAScript 6 - Generator 函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/2020/2020-05-24-css-position/">CSS - Position</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+    <div class="widget-wrap">
+        <h3 class="widget-title">关于我</h3>
+        <div class="widget about">
+            <img src="/img/static/avatar.jpg">
+
+            <div>
+                <a target="_blank" href="https://github.com/HwMuTou">
+                    <i class="fa fa-2x fa-github"></i> GitHub
+                </a>
+
+                <a target="_blank" href="mailto:hw-hewei@foxmail.com">
+                    <i class="fa fa-2x fa-email"></i>
+                    Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 10px; color: #008080">Android</a> <a href="/tags/Apache-Kafka/" style="font-size: 10px; color: #008080">Apache Kafka</a> <a href="/tags/Aria2/" style="font-size: 10px; color: #008080">Aria2</a> <a href="/tags/Authentication/" style="font-size: 10px; color: #008080">Authentication</a> <a href="/tags/Best-Practices/" style="font-size: 11.67px; color: #006b80">Best Practices</a> <a href="/tags/Browser/" style="font-size: 10px; color: #008080">Browser</a> <a href="/tags/CSS/" style="font-size: 10px; color: #008080">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px; color: #008080">CentOS</a> <a href="/tags/Classpath/" style="font-size: 10px; color: #008080">Classpath</a> <a href="/tags/Code/" style="font-size: 10px; color: #008080">Code</a> <a href="/tags/Data-Structure/" style="font-size: 10px; color: #008080">Data Structure</a> <a href="/tags/Database/" style="font-size: 15px; color: #004080">Database</a> <a href="/tags/Docker/" style="font-size: 10px; color: #008080">Docker</a> <a href="/tags/Download/" style="font-size: 10px; color: #008080">Download</a> <a href="/tags/ECMAScript/" style="font-size: 13.33px; color: #005580">ECMAScript</a> <a href="/tags/Executable-Jar/" style="font-size: 10px; color: #008080">Executable Jar</a> <a href="/tags/FLux/" style="font-size: 10px; color: #008080">FLux</a> <a href="/tags/File-Monitor/" style="font-size: 10px; color: #008080">File Monitor</a> <a href="/tags/Flume/" style="font-size: 10px; color: #008080">Flume</a> <a href="/tags/Format/" style="font-size: 10px; color: #008080">Format</a> <a href="/tags/GIN%E7%B4%A2%E5%BC%95/" style="font-size: 10px; color: #008080">GIN索引</a> <a href="/tags/Http/" style="font-size: 10px; color: #008080">Http</a> <a href="/tags/JRuby/" style="font-size: 10px; color: #008080">JRuby</a> <a href="/tags/Java/" style="font-size: 16.67px; color: #002b80">Java</a> <a href="/tags/JavaScript/" style="font-size: 13.33px; color: #005580">JavaScript</a> <a href="/tags/Junit/" style="font-size: 10px; color: #008080">Junit</a> <a href="/tags/JupyterHub/" style="font-size: 10px; color: #008080">JupyterHub</a> <a href="/tags/KMS/" style="font-size: 10px; color: #008080">KMS</a> <a href="/tags/Libraries/" style="font-size: 10px; color: #008080">Libraries</a> <a href="/tags/Load-Resource/" style="font-size: 10px; color: #008080">Load Resource</a> <a href="/tags/Micro-Service/" style="font-size: 10px; color: #008080">Micro Service</a> <a href="/tags/Mono/" style="font-size: 10px; color: #008080">Mono</a> <a href="/tags/MySQL/" style="font-size: 11.67px; color: #006b80">MySQL</a> <a href="/tags/Mybatis/" style="font-size: 10px; color: #008080">Mybatis</a> <a href="/tags/NodeJs/" style="font-size: 10px; color: #008080">NodeJs</a> <a href="/tags/Notebook/" style="font-size: 10px; color: #008080">Notebook</a> <a href="/tags/Oauth2/" style="font-size: 11.67px; color: #006b80">Oauth2</a> <a href="/tags/Oracle-JDK/" style="font-size: 10px; color: #008080">Oracle JDK</a> <a href="/tags/Package/" style="font-size: 10px; color: #008080">Package</a> <a href="/tags/Postgre-SQL/" style="font-size: 11.67px; color: #006b80">Postgre SQL</a> <a href="/tags/Profile/" style="font-size: 10px; color: #008080">Profile</a> <a href="/tags/Project/" style="font-size: 10px; color: #008080">Project</a> <a href="/tags/Rails/" style="font-size: 15px; color: #004080">Rails</a> <a href="/tags/Redis/" style="font-size: 10px; color: #008080">Redis</a> <a href="/tags/Resources/" style="font-size: 10px; color: #008080">Resources</a> <a href="/tags/Ruby/" style="font-size: 11.67px; color: #006b80">Ruby</a> <a href="/tags/Security/" style="font-size: 11.67px; color: #006b80">Security</a> <a href="/tags/Shiro/" style="font-size: 10px; color: #008080">Shiro</a> <a href="/tags/Solr/" style="font-size: 10px; color: #008080">Solr</a> <a href="/tags/Spring-Boot/" style="font-size: 18.33px; color: #001580">Spring Boot</a> <a href="/tags/Spring-Cloud/" style="font-size: 10px; color: #008080">Spring Cloud</a> <a href="/tags/Spring-Security/" style="font-size: 10px; color: #008080">Spring Security</a> <a href="/tags/Sunsport/" style="font-size: 10px; color: #008080">Sunsport</a> <a href="/tags/Test/" style="font-size: 10px; color: #008080">Test</a> <a href="/tags/Thin-Jar/" style="font-size: 10px; color: #008080">Thin Jar</a> <a href="/tags/Tree/" style="font-size: 10px; color: #008080">Tree</a> <a href="/tags/Web/" style="font-size: 10px; color: #008080">Web</a> <a href="/tags/WebFlux/" style="font-size: 10px; color: #008080">WebFlux</a> <a href="/tags/WebSocket/" style="font-size: 10px; color: #008080">WebSocket</a> <a href="/tags/Websocket/" style="font-size: 10px; color: #008080">Websocket</a> <a href="/tags/kubernetes/" style="font-size: 11.67px; color: #006b80">kubernetes</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px; color: #008080">二叉树</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px; color: #002b80">前端</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px; color: #000080">技术</a> <a href="/tags/%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81/" style="font-size: 10px; color: #008080">摩斯电码</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px; color: #008080">数据结构</a> <a href="/tags/%E7%AB%99%E5%86%85%E6%A3%80%E7%B4%A2/" style="font-size: 10px; color: #008080">站内检索</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px; color: #008080">编码</a>
+        </div>
+    </div>
+
+
+  
+</aside>
+            
+        </div>
+        <footer id="footer">
+    
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2024 MuTou<br>
+            Powered by <a href="/" target="_blank">HW</a>
+        </div>
+    </div>
+
+    <!-- 启用 mermaid 引入js依赖 -->
+    
+        <script src='/js/mermaid/8.4/mermaid.min.js'></script>
+        <script>
+            if (window.mermaid) {
+                mermaid.initialize({theme: 'forest'});
+            }
+        </script>
+    
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!--TODO choose the fast cdn of jquery.-->
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+</div>
+</body>
+</html>

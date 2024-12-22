@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Spring Boot 特性 - Application | 两条鱼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Spring Boot 提供了很多特性，可以满足很多应用场景的功能需求。一个Spring Boot Application，一般的做法是在 Application 主类中提供一个main函数入口，然后调用SpringApplication.run方法。   SpringBootApplication提供一个懒加载的功能，当启用这个功能时，Spring管理的Bean不会在系统启动的时候创建。使用懒加">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot 特性 - Application">
+<meta property="og:url" content="https://twofishcn.github.io/blog/2020/04/05/2020/2020-04-05-SpringBoot-Features-app/index.html">
+<meta property="og:site_name" content="两条鱼">
+<meta property="og:description" content="Spring Boot 提供了很多特性，可以满足很多应用场景的功能需求。一个Spring Boot Application，一般的做法是在 Application 主类中提供一个main函数入口，然后调用SpringApplication.run方法。   SpringBootApplication提供一个懒加载的功能，当启用这个功能时，Spring管理的Bean不会在系统启动的时候创建。使用懒加">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-05T09:13:00.000Z">
+<meta property="article:modified_time" content="2020-04-11T09:48:31.882Z">
+<meta property="article:author" content="MuTou">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="Best Practices">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="两条鱼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/static/favicon.ico">
+  
+  
+
+  <!--TODO if google api is too slow. have to change css config.-->
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163343208-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-163343208-1');
+</script>
+<!-- End Google Analytics -->
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+<div id="container">
+    <div id="wrap">
+        <style type="text/css">
+    
+
+    
+
+    #banner {
+        background: url(/img/bg/post-bg-nature-river-sky-fog.jpg) center #000;
+    }
+</style>
+<header id="header">
+
+    <div id="banner"></div>
+
+    <div id="header-outer" class="outer">
+
+        <div id="header-title" class="inner">
+            
+
+                <div class="post-header-title">
+    <div>
+        <div class="tags">
+            
+                <a class="tag" href="/tags/Spring-Boot/"
+                   title="Spring Boot">Spring Boot</a>
+            
+                <a class="tag" href="/tags/Best-Practices/"
+                   title="Best Practices">Best Practices</a>
+            
+        </div>
+        <h1 id="logo-wrap">
+            <a href="/2020/04/05/2020/2020-04-05-SpringBoot-Features-app/" id="logo">Spring Boot 特性 - Application</a>
+        </h1>
+        
+            <h2 id="subtitle-wrap">
+                <a href="/2020/04/05/2020/2020-04-05-SpringBoot-Features-app/" id="subtitle"> &#34;Spring Boot Application 的一些特性&#34;</a>
+            </h2>
+        
+        <span class="meta">
+        Posted by Hw on
+        2020-04-05
+    </span>
+    </div>
+</div>
+
+
+            
+        </div>
+
+        <div id="header-inner" class="inner">
+            <nav id="main-nav">
+                <a id="main-nav-toggle" class="nav-icon"></a>
+                
+                    <a class="main-nav-link"
+                       href="/">
+                        <i class="fa home-icon"></i>
+                        主页
+                    </a>
+                
+                    <a class="main-nav-link"
+                       href="/archives">
+                        <i class="fa archives-icon"></i>
+                        归档
+                    </a>
+                
+            </nav>
+            <nav id="sub-nav">
+                
+                    <a id="nav-rss-link" class="nav-icon" href="/atom.xml"
+                       title="RSS Feed"></a>
+                
+                <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+            </nav>
+            <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://twofishcn.github.io/blog"></form>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="outer">
+            <section id="main"><article id="post-2020/2020-04-05-SpringBoot-Features-app" class="article article-type-post" itemscope
+         itemprop="blogPost">
+    <div class="article-meta">
+        <a href="/2020/04/05/2020/2020-04-05-SpringBoot-Features-app/" class="article-date">
+  <time datetime="2020-04-05T09:13:00.000Z" itemprop="datePublished">2020-04-05</time>
+</a>
+        
+    </div>
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      Spring Boot 特性 - Application
+    </h1>
+  
+
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                <h1 id="Spring-Boot-Application"><a href="#Spring-Boot-Application" class="headerlink" title="Spring Boot Application"></a>Spring Boot Application</h1><p>Spring Boot 提供了很多特性，可以满足很多应用场景的功能需求。一个Spring Boot Application，一般的做法是在 Application 主类中<br>提供一个main函数入口，然后调用SpringApplication.run方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Application</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(MySpringConfiguration.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="懒加载-Lazy-Initialization"><a href="#懒加载-Lazy-Initialization" class="headerlink" title="懒加载 - Lazy Initialization"></a>懒加载 - Lazy Initialization</h2><p>SpringBootApplication提供一个懒加载的功能，当启用这个功能时，Spring管理的Bean不会在系统启动的时候创建。使用懒加载的好处<br>在于可以减少应用程序的启动时间。在一个Web应用中，当开启懒加载功能时，很多关于网络的Bean不会被初始话，直到接受到一个Http请求。</p>
+<p>懒加载也存在一些缺点，比如他会让应用问题暴露的更晚。比如，当使用懒加载时，如果存在一个配置存在错误的Bean，那么不会<br>在系统启动时就发现这个错误，而是在这个Bean被初始话时才会发现问题。又或者，Jvm内存配置并不能容纳所有的Bean对象，<br>而在使用懒加载时，大量Bean未被初始话而不占用内存，此时内存够用，等用了一段时间大量Bean被加载起来之后，内存出现故障<br>就麻烦了。基于这些问题，懒加载默认不会被启用，并且推荐在使用懒加载功能时，要检查Jvm堆内存是不是真的够用。</p>
+<p>你可以调用 SpringApplicationBuilder 的lazyInitialization方法，或者在SpringApplication上调<br>用setLazyInitialization 方法来启用懒加载功能 。也可以，通过配置文件，配置 <code>spring.main.lazy-initialization</code> 来<br>控制懒加载的启用和关闭。</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.main.lazy-initialization</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+
+<p>**TIPS：如果在系统中有明确哪一个Bean不想被懒加载，可以在这个Bean上使用 <code>@Lazy(false)</code> 来明确静止此Bean被用于懒加载。 **</p>
+<h2 id="定制Banner-Customizing-the-Banner"><a href="#定制Banner-Customizing-the-Banner" class="headerlink" title="定制Banner - Customizing the Banner"></a>定制Banner - Customizing the Banner</h2><p>当在使用SpringBootApplication时，你肯定见过这样一个启动日志。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  .   ____          _            __ _ _</span><br><span class="line"> /\\ / ___&#x27;_ __ _ _(_)_ __  __ _ \ \ \ \</span><br><span class="line">( ( )\___ | &#x27;_ | &#x27;_| | &#x27;_ \/ _` | \ \ \ \</span><br><span class="line"> \\/  ___)| |_)| | | | | || (_| |  ) ) ) )</span><br><span class="line">  &#x27;  |____| .__|_| |_|_| |_\__, | / / / /</span><br><span class="line"> =========|_|==============|___/=/_/_/_/</span><br><span class="line"> :: Spring Boot ::   v2.2.6.RELEASE</span><br><span class="line"></span><br><span class="line">2019-04-31 13:09:54.117  INFO 56603 --- [           main] o.s.b.s.app.SampleApplication            : Starting SampleApplication v0.1.0 on mycomputer with PID 56603 (/apps/myapp.jar started by pwebb)</span><br><span class="line">2019-04-31 13:09:54.166  INFO 56603 --- [           main] ationConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6e5a8246: startup date [Wed Jul 31 00:08:16 PDT 2013]; root of context hierarchy</span><br><span class="line">2019-04-01 13:09:56.912  INFO 41370 --- [           main] .t.TomcatServletWebServerFactory : Server initialized with port: 8080</span><br><span class="line">2019-04-01 13:09:57.501  INFO 41370 --- [           main] o.s.b.s.app.SampleApplication            : Started SampleApplication in 2.992 seconds (JVM running for 3.658)</span><br></pre></td></tr></table></figure>
+
+<p>看到那一副字符画了吗。你也许想要定义一个你自己的字符画，用在日志文件的开头。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> _______            ______ _     _         </span><br><span class="line">|__   __|          |  ____(_)   | |        </span><br><span class="line">   | |_      _____ | |__   _ ___| |__  ___ </span><br><span class="line">   | \ \ /\ / / _ \|  __| | / __| &#x27;_ \/ __|</span><br><span class="line">   | |\ V  V / (_) | |    | \__ \ | | \__ \</span><br><span class="line">   |_| \_/\_/ \___/|_|    |_|___/_| |_|___/</span><br></pre></td></tr></table></figure>
+
+<p>SpringBoot提供了全面的自定义能力，你可以提供一个<code>banner.txt</code>到你的classpath环境中，或者通过设置<code>spring.banner.location</code>配置<br>来控制。如果你的文件不是UTF-8，还可以通过设置<code>spring.banner.charset</code>来设置你的字符类型。除了使用文本文件，<br>你还可以添加<code>banner.gif</code>, <code>banner.jpg</code>, <code>banner.png</code> 图片文件到你的classpath中，或者使用<code>spring.banner.image.location</code>配置<br>你的Banner。当使用图片文件是，会被转换为文本字符画然后打印到文本输出中。</p>
+<p>如果使用<code>banner.txt</code>， 可以使用一些占位符，来动态改变banner内容。</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>${application.version}</td>
+<td>The version number of your application, as declared in MANIFEST.MF. For example, Implementation-Version: 1.0 is printed as 1.0.</td>
+</tr>
+<tr>
+<td>${application.formatted-version}</td>
+<td>The version number of your application, as declared in MANIFEST.MF and formatted for display (surrounded with brackets and prefixed with v). For example (v1.0).</td>
+</tr>
+<tr>
+<td>${spring-boot.version}</td>
+<td>The Spring Boot version that you are using. For example 2.2.6.RELEASE.</td>
+</tr>
+<tr>
+<td>${spring-boot.formatted-version}</td>
+<td>The Spring Boot version that you are using, formatted for display (surrounded with brackets and prefixed with v). For example (v2.2.6.RELEASE).</td>
+</tr>
+<tr>
+<td>${Ansi.NAME} (or ${AnsiColor.NAME}, ${AnsiBackground.NAME}, ${AnsiStyle.NAME})</td>
+<td>Where NAME is the name of an ANSI escape code. See AnsiPropertySource for details.</td>
+</tr>
+<tr>
+<td>${application.title}</td>
+<td>The title of your application, as declared in MANIFEST.MF. For example Implementation-Title: MyApp is printed as MyApp.</td>
+</tr>
+</tbody></table>
+<p><strong>TIPS：如果你想写一段代码来输出banner的内容，你可以用SpringApplication.setBanner(…​)来设置一个自动生成程序。<br>并且你的自动生成程序需要实现org.springframework.boot.Banner接口的printBanner()方法。</strong></p>
+<p>你还可以通过配置<code>spring.main.banner-mode</code>来控制banner是否输出。</p>
+<p>控制banner打印的程序是被注册到Spring的Bean中的，名字是<code>springBootBanner</code>。</p>
+<h2 id="定制Application-Customizing-SpringApplication"><a href="#定制Application-Customizing-SpringApplication" class="headerlink" title="定制Application - Customizing SpringApplication"></a>定制Application - Customizing SpringApplication</h2><p>如果SpringApplication并不是的默认程序，可以手动创建一个实例并定制一些内容。比如关掉Banner显示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Application</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">SpringApplication</span> <span class="variable">app</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SpringApplication</span>(MySpringConfiguration.class);</span><br><span class="line">        app.setBannerMode(Banner.Mode.OFF);</span><br><span class="line">        app.run(args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>INFO: 注意到例子代码SpringApplication的构造参数是Spring Bean的配置源。一般就是@Configuration的类，同样的这部分可以通过<br>XML来配置，也可以被包扫描器扫描识别</strong></p>
+<p>虽然可以这样使用，但是一般会把这些配置都放在application.yml的配置文件中。</p>
+<h2 id="Fluent-Builder-API"><a href="#Fluent-Builder-API" class="headerlink" title="Fluent Builder API"></a>Fluent Builder API</h2><p>有时候可能需要定制有层级关系的ApplicationContext（多个上下文之间存在父子级关系），有一个SpringApplicationBuilder可以使用。<br>SpringApplicationBuilder提供链式调用的方式类配置ApplicationContext。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Application</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">SpringApplicationBuilder</span>()</span><br><span class="line">                .sources(Parent.class)</span><br><span class="line">                .child(Application.class)</span><br><span class="line">                .bannerMode(Banner.Mode.OFF)</span><br><span class="line">                .run(args);    </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>INFO:在使用SpringApplicationBuilder时有一些限制，例如Web组件必须包含在子的Context中，还必须和父级别的Context使用一样<br>的<code>Environment</code>。可以阅读 <a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/2.2.6.RELEASE/api//org/springframework/boot/builder/SpringApplicationBuilder.html">SpringApplicationBuilder Javadoc</a><br>文档，查看详细的使用内容。</strong></p>
+<h2 id="Application-Events-and-Listeners"><a href="#Application-Events-and-Listeners" class="headerlink" title="Application Events and Listeners"></a>Application Events and Listeners</h2><p>Spring Application在启动过程中有很多环节，Spring给提供了很多控制扩展的能力。通过注册一些事件<br>监听，可以在不同环节触发一些自定义的控制功能。除了通常的Spring框架事件之外，例如<code>ContextRefreshedEvent</code>,<br>SpringApplication 还会发送很多额外的其他事件。</p>
+<p><strong>INTO: 有一些事件的触发会在 <code>ApplicationContext</code>创建之前，因此不能通过@Bean去注册监听器。但可以使用<br>SpringApplication.addListeners(…​) 方法，或者 SpringApplicationBuilder.listeners(…​) 方法。</strong></p>
+<p><strong>如果想让监听器自动注册，而不用关心Application是否被创建，可以添加 <code>META-INF/spring.factories</code>文件<br>到项目中，并通过 <code>org.springframework.context.ApplicationListener</code> 来配置监听器</strong></p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">org.springframework.context.ApplicationListener</span>=<span class="string">com.example.project.MyListener</span></span><br></pre></td></tr></table></figure>
+
+<p>在Application启动后，Application Event会按照如下顺序发送：</p>
+<ol>
+<li><p>ApplicationStartingEvent 会发送在系统启动并在所有处理之前发送，除了监听器的注册和初始化。</p>
+</li>
+<li><p>ApplicationEnvironmentPreparedEvent 会发送在 <code>Environment</code> 被Context使用，而Content被创建起来之前。</p>
+</li>
+<li><p>ApplicationContextInitializedEvent 此时<code>ApplicationContext</code> 准备完成并且ApplicationContextInitializers被调用，<br>但是所有的Bean还没有被加载。</p>
+</li>
+<li><p>ApplicationPreparedEvent 被发送在刷新之前，在所有bean加载之后。</p>
+</li>
+<li><p>ApplicationStartedEvent 被发送在Context刷新完成之后，但是此时应用的Command-line都还没有被执行。</p>
+</li>
+<li><p>ApplicationReadyEvent 此事件会在Command-line之后，此事件表示应用已经准备好去处理一个服务请求了。</p>
+</li>
+<li><p>ApplicationFailedEvent 在启动过程中发生异常，将会发送此事件。</p>
+</li>
+</ol>
+<p>上面的事件只包括绑定到SpringApplication的SpringApplicationEvent。除了上面这些事件，还有一些事件会在<br>ApplicationPreparedEvent 之后，ApplicationStartedEvent之前被发送。</p>
+<ol>
+<li><p>ContextRefreshedEvent 会被发送当一个 ApplicationContext 刷新完成。</p>
+</li>
+<li><p>WebServerInitializedEvent 会在WebServer准备好时发送，相同的事件 ServletWebServerInitializedEvent 和<br> ReactiveWebServerInitializedEvent 这两个事件是Servlet 和 Reactive 两种web系统下的事件变体。</p>
+</li>
+</ol>
+<p><strong>INFO：虽然开发应用过程中使用Spring Event的情况不多，但是SpringBoot依赖事件系统处理了很多任务</strong></p>
+<p>事件系统依赖Spring框架的事件发布机制，这个事件发布机制会使得子Context中的事件传递给所有祖先的Context中去，<br>因此如果使用了带层级的SpringApplication实例，那么一个监听器可能会接受到多个相同的应用事件。</p>
+<p>为了区分事件是来自自己层级的Context还是来自子层级Context，可以把Content注入到监听器中，并在程序中比较<br>注入的Context和接收到的事件的Context。注入Context可以通过实现 <code>ApplicationContextAware</code> 类，如果监听器是一个<br>Bean也可以通过 <code>@Autowired</code> 注解实现注入。</p>
+<h2 id="Web-Environment"><a href="#Web-Environment" class="headerlink" title="Web Environment"></a>Web Environment</h2><p>自Spring Boot 2.0 之后，Spring Boot提供一个响应式的Web框架。Spring MVC是基于Servlet的和响应式框架<br>并不兼容。因此SpringApplication启动是会自动选择使用哪一个Web环境。Spring Boot确定WebApplicationType<br>的方法很好理解：</p>
+<ul>
+<li>如果Spring MVC被提供，那么使用 <code>AnnotationConfigServletWebServerApplicationContext</code></li>
+<li>如果Spring MVC没有提供，又提供了 Spring WebFlux，那么使用 <code>AnnotationConfigReactiveWebServerApplicationContext</code></li>
+<li>其他情况，使用 <code>AnnotationConfigApplicationContext</code></li>
+</ul>
+<p>正因为这种确定方法，如果使用SpringMVC并且创建了一个Spring WebFlux的WebClient在同一个Application中，<br>那么Spring MVC将被默认使用。虽然如此，任然可以通过调用 <code>setWebApplicationType(WebApplicationType)</code><br>来覆盖这种选择方法。</p>
+<p><strong>TIPS: 当在Junit中做测试时，大多都会调用setWebApplicationType(WebApplicationType.NONE)来控制WEB环境设置</strong></p>
+<h2 id="Accessing-Application-Arguments"><a href="#Accessing-Application-Arguments" class="headerlink" title="Accessing Application Arguments"></a>Accessing Application Arguments</h2><p>有时候可能在应用程序中需要访问传给 <code>SpringApplication.run(…​)</code> 的参数，可以注入<br><code>org.springframework.boot.ApplicationArguments</code>。<code>ApplicationArguments</code> 接口提供访问原生字符串数组<br>或者可选和不可选参数的功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.*;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.*;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyBean</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyBean</span><span class="params">(ApplicationArguments args)</span> &#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">debug</span> <span class="operator">=</span> args.containsOption(<span class="string">&quot;debug&quot;</span>);</span><br><span class="line">        List&lt;String&gt; files = args.getNonOptionArgs();</span><br><span class="line">        <span class="comment">// if run with &quot;--debug logfile.txt&quot; debug=true, files=[&quot;logfile.txt&quot;]</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>TIPS：Spring Boot 在 <code>Environment</code> 中注册了一个 <code>CommandLinePropertySource</code>，因此可以通过<br><code>@Value</code> 注入单个参数去使用。</strong></p>
+<h2 id="Using-the-ApplicationRunner-or-CommandLineRunner"><a href="#Using-the-ApplicationRunner-or-CommandLineRunner" class="headerlink" title="Using the ApplicationRunner or CommandLineRunner"></a>Using the ApplicationRunner or CommandLineRunner</h2><p>如果需要在启动时执行一些一次性的代码，可以实现 <code>ApplicationRunner</code> 或者 <code>CommandLineRunner</code> 接口。<br>两个接口的工作方式是一样的，都仅需要实现一个 <code>run</code> 方法，而且都会在 <code>SpringApplication.run(…​)</code> 完成之前执行。</p>
+<p>不同的是，<code>CommandLineRunner</code> 接口通过字符串数组的方式访问Application的参数，而 <code>ApplicationRunner</code> 则是<br>通过 <code>ApplicationArguments</code> 接口去访问。</p>
+<ul>
+<li>CommandLineRunner</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.*;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyBean</span> <span class="keyword">implements</span> <span class="title class_">CommandLineRunner</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">(String... args)</span> &#123;</span><br><span class="line">        <span class="comment">// Do something...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ApplicationRunner</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.ApplicationArguments;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.ApplicationRunner;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyBean</span> <span class="keyword">implements</span> <span class="title class_">ApplicationRunner</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">(ApplicationArguments args)</span> &#123;</span><br><span class="line">        <span class="comment">// Do something...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当多个Runner存在有需要有一定的执行顺序是，可以通过实现 <code>org.springframework.core.Ordered</code> 接口或者<br>使用 <code>org.springframework.core.annotation.Order</code> 注解。</p>
+<h2 id="Application-Exit"><a href="#Application-Exit" class="headerlink" title="Application Exit"></a>Application Exit</h2><p>SpringApplication 会注册 shutdown hook 到JVM确保ApplicationContext优雅的关闭。Spring 声明周期回调可以被使用。<br>例如，DisposableBean 接口或者@PreDestroy。</p>
+<p>除此之外，Beans还可以实现 <code>org.springframework.boot.ExitCodeGenerator</code> 接口，去返回特殊的状态码。<br>它会在SpringApplication.exit()被调用是调用。而且状态码会被传递到System.exit()。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExitCodeApplication</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> ExitCodeGenerator <span class="title function_">exitCodeGenerator</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> () -&gt; <span class="number">42</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.exit(SpringApplication.exit(SpringApplication.run(ExitCodeApplication.class, args)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ExitCodeGenerator 接口的功能也可以通过异常来实现。当一个异常发生时，Spring Boot返回getExitCode()方法取得的错误码。 </p>
+<h2 id="管理员功能-Admin-Features"><a href="#管理员功能-Admin-Features" class="headerlink" title="管理员功能 - Admin Features"></a>管理员功能 - Admin Features</h2><p>通过指定spring.application.admin.enabled属性，可以为应用程序启用与管理员相关的功能。<br>这将在平台MBeanServer上公开SpringApplicationAdminMXBean。您可以使用此功能来远程管理Spring Boot应用程序。<br>对于任何服务包装器实现，此功能也可能很有用。</p>
+
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="https://twofishcn.github.io/blog/2020/04/05/2020/2020-04-05-SpringBoot-Features-app/" data-id="cm4z53jcp0018nguyapqn4qtb"
+               class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Best-Practices/" rel="tag">Best Practices</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li></ul>
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+  
+    <a href="/2020/04/08/2020/2020-04-08-SpringBoot-executable-jar/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spring Boot 特性 - Executable Jar
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/04/2020/2020-04-04-SpringBoot-best-practices/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Spring Boot 特性 - 最佳实践</div>
+    </a>
+  
+</nav>
+
+    
+</article>
+
+
+</section>
+            
+                <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/27/2020/2020-06-27-browser-http-Homologous/">同源政策</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/14/2020/2020-06-14-ECMAScript-async-await/">ECMAScript 6 - 异步函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/">ECMAScript 6 - 声明关键字</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/30/2020/2020-05-30-ECMAScript-Generator/">ECMAScript 6 - Generator 函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/2020/2020-05-24-css-position/">CSS - Position</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+    <div class="widget-wrap">
+        <h3 class="widget-title">关于我</h3>
+        <div class="widget about">
+            <img src="/img/static/avatar.jpg">
+
+            <div>
+                <a target="_blank" href="https://github.com/HwMuTou">
+                    <i class="fa fa-2x fa-github"></i> GitHub
+                </a>
+
+                <a target="_blank" href="mailto:hw-hewei@foxmail.com">
+                    <i class="fa fa-2x fa-email"></i>
+                    Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 10px; color: #008080">Android</a> <a href="/tags/Apache-Kafka/" style="font-size: 10px; color: #008080">Apache Kafka</a> <a href="/tags/Aria2/" style="font-size: 10px; color: #008080">Aria2</a> <a href="/tags/Authentication/" style="font-size: 10px; color: #008080">Authentication</a> <a href="/tags/Best-Practices/" style="font-size: 11.67px; color: #006b80">Best Practices</a> <a href="/tags/Browser/" style="font-size: 10px; color: #008080">Browser</a> <a href="/tags/CSS/" style="font-size: 10px; color: #008080">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px; color: #008080">CentOS</a> <a href="/tags/Classpath/" style="font-size: 10px; color: #008080">Classpath</a> <a href="/tags/Code/" style="font-size: 10px; color: #008080">Code</a> <a href="/tags/Data-Structure/" style="font-size: 10px; color: #008080">Data Structure</a> <a href="/tags/Database/" style="font-size: 15px; color: #004080">Database</a> <a href="/tags/Docker/" style="font-size: 10px; color: #008080">Docker</a> <a href="/tags/Download/" style="font-size: 10px; color: #008080">Download</a> <a href="/tags/ECMAScript/" style="font-size: 13.33px; color: #005580">ECMAScript</a> <a href="/tags/Executable-Jar/" style="font-size: 10px; color: #008080">Executable Jar</a> <a href="/tags/FLux/" style="font-size: 10px; color: #008080">FLux</a> <a href="/tags/File-Monitor/" style="font-size: 10px; color: #008080">File Monitor</a> <a href="/tags/Flume/" style="font-size: 10px; color: #008080">Flume</a> <a href="/tags/Format/" style="font-size: 10px; color: #008080">Format</a> <a href="/tags/GIN%E7%B4%A2%E5%BC%95/" style="font-size: 10px; color: #008080">GIN索引</a> <a href="/tags/Http/" style="font-size: 10px; color: #008080">Http</a> <a href="/tags/JRuby/" style="font-size: 10px; color: #008080">JRuby</a> <a href="/tags/Java/" style="font-size: 16.67px; color: #002b80">Java</a> <a href="/tags/JavaScript/" style="font-size: 13.33px; color: #005580">JavaScript</a> <a href="/tags/Junit/" style="font-size: 10px; color: #008080">Junit</a> <a href="/tags/JupyterHub/" style="font-size: 10px; color: #008080">JupyterHub</a> <a href="/tags/KMS/" style="font-size: 10px; color: #008080">KMS</a> <a href="/tags/Libraries/" style="font-size: 10px; color: #008080">Libraries</a> <a href="/tags/Load-Resource/" style="font-size: 10px; color: #008080">Load Resource</a> <a href="/tags/Micro-Service/" style="font-size: 10px; color: #008080">Micro Service</a> <a href="/tags/Mono/" style="font-size: 10px; color: #008080">Mono</a> <a href="/tags/MySQL/" style="font-size: 11.67px; color: #006b80">MySQL</a> <a href="/tags/Mybatis/" style="font-size: 10px; color: #008080">Mybatis</a> <a href="/tags/NodeJs/" style="font-size: 10px; color: #008080">NodeJs</a> <a href="/tags/Notebook/" style="font-size: 10px; color: #008080">Notebook</a> <a href="/tags/Oauth2/" style="font-size: 11.67px; color: #006b80">Oauth2</a> <a href="/tags/Oracle-JDK/" style="font-size: 10px; color: #008080">Oracle JDK</a> <a href="/tags/Package/" style="font-size: 10px; color: #008080">Package</a> <a href="/tags/Postgre-SQL/" style="font-size: 11.67px; color: #006b80">Postgre SQL</a> <a href="/tags/Profile/" style="font-size: 10px; color: #008080">Profile</a> <a href="/tags/Project/" style="font-size: 10px; color: #008080">Project</a> <a href="/tags/Rails/" style="font-size: 15px; color: #004080">Rails</a> <a href="/tags/Redis/" style="font-size: 10px; color: #008080">Redis</a> <a href="/tags/Resources/" style="font-size: 10px; color: #008080">Resources</a> <a href="/tags/Ruby/" style="font-size: 11.67px; color: #006b80">Ruby</a> <a href="/tags/Security/" style="font-size: 11.67px; color: #006b80">Security</a> <a href="/tags/Shiro/" style="font-size: 10px; color: #008080">Shiro</a> <a href="/tags/Solr/" style="font-size: 10px; color: #008080">Solr</a> <a href="/tags/Spring-Boot/" style="font-size: 18.33px; color: #001580">Spring Boot</a> <a href="/tags/Spring-Cloud/" style="font-size: 10px; color: #008080">Spring Cloud</a> <a href="/tags/Spring-Security/" style="font-size: 10px; color: #008080">Spring Security</a> <a href="/tags/Sunsport/" style="font-size: 10px; color: #008080">Sunsport</a> <a href="/tags/Test/" style="font-size: 10px; color: #008080">Test</a> <a href="/tags/Thin-Jar/" style="font-size: 10px; color: #008080">Thin Jar</a> <a href="/tags/Tree/" style="font-size: 10px; color: #008080">Tree</a> <a href="/tags/Web/" style="font-size: 10px; color: #008080">Web</a> <a href="/tags/WebFlux/" style="font-size: 10px; color: #008080">WebFlux</a> <a href="/tags/WebSocket/" style="font-size: 10px; color: #008080">WebSocket</a> <a href="/tags/Websocket/" style="font-size: 10px; color: #008080">Websocket</a> <a href="/tags/kubernetes/" style="font-size: 11.67px; color: #006b80">kubernetes</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px; color: #008080">二叉树</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px; color: #002b80">前端</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px; color: #000080">技术</a> <a href="/tags/%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81/" style="font-size: 10px; color: #008080">摩斯电码</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px; color: #008080">数据结构</a> <a href="/tags/%E7%AB%99%E5%86%85%E6%A3%80%E7%B4%A2/" style="font-size: 10px; color: #008080">站内检索</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px; color: #008080">编码</a>
+        </div>
+    </div>
+
+
+  
+</aside>
+            
+        </div>
+        <footer id="footer">
+    
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2024 MuTou<br>
+            Powered by <a href="/" target="_blank">HW</a>
+        </div>
+    </div>
+
+    <!-- 启用 mermaid 引入js依赖 -->
+    
+        <script src='/js/mermaid/8.4/mermaid.min.js'></script>
+        <script>
+            if (window.mermaid) {
+                mermaid.initialize({theme: 'forest'});
+            }
+        </script>
+    
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!--TODO choose the fast cdn of jquery.-->
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+</div>
+</body>
+</html>

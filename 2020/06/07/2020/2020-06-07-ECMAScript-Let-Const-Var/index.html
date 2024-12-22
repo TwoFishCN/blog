@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ECMAScript 6 - 声明关键字 | 两条鱼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="保留了var、function，新增加let、const、class和import。 这其中function、class、import有着特殊场景，本文主要讨论 var、let与const这几个声明之间的异同点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMAScript 6 - 声明关键字">
+<meta property="og:url" content="https://twofishcn.github.io/blog/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/index.html">
+<meta property="og:site_name" content="两条鱼">
+<meta property="og:description" content="保留了var、function，新增加let、const、class和import。 这其中function、class、import有着特殊场景，本文主要讨论 var、let与const这几个声明之间的异同点。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-07T09:13:00.000Z">
+<meta property="article:modified_time" content="2020-06-14T13:49:51.097Z">
+<meta property="article:author" content="MuTou">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="ECMAScript">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="两条鱼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/static/favicon.ico">
+  
+  
+
+  <!--TODO if google api is too slow. have to change css config.-->
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163343208-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-163343208-1');
+</script>
+<!-- End Google Analytics -->
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+<div id="container">
+    <div id="wrap">
+        <style type="text/css">
+    
+
+    
+
+    #banner {
+        background: url(/img/bg/post-bg-equinox-angkor.jpg) center #000;
+    }
+</style>
+<header id="header">
+
+    <div id="banner"></div>
+
+    <div id="header-outer" class="outer">
+
+        <div id="header-title" class="inner">
+            
+
+                <div class="post-header-title">
+    <div>
+        <div class="tags">
+            
+                <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF/"
+                   title="技术">技术</a>
+            
+                <a class="tag" href="/tags/JavaScript/"
+                   title="JavaScript">JavaScript</a>
+            
+                <a class="tag" href="/tags/ECMAScript/"
+                   title="ECMAScript">ECMAScript</a>
+            
+                <a class="tag" href="/tags/%E5%89%8D%E7%AB%AF/"
+                   title="前端">前端</a>
+            
+        </div>
+        <h1 id="logo-wrap">
+            <a href="/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/" id="logo">ECMAScript 6 - 声明关键字</a>
+        </h1>
+        
+            <h2 id="subtitle-wrap">
+                <a href="/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/" id="subtitle"> &#34; let const var &#34;</a>
+            </h2>
+        
+        <span class="meta">
+        Posted by Hw on
+        2020-06-07
+    </span>
+    </div>
+</div>
+
+
+            
+        </div>
+
+        <div id="header-inner" class="inner">
+            <nav id="main-nav">
+                <a id="main-nav-toggle" class="nav-icon"></a>
+                
+                    <a class="main-nav-link"
+                       href="/">
+                        <i class="fa home-icon"></i>
+                        主页
+                    </a>
+                
+                    <a class="main-nav-link"
+                       href="/archives">
+                        <i class="fa archives-icon"></i>
+                        归档
+                    </a>
+                
+            </nav>
+            <nav id="sub-nav">
+                
+                    <a id="nav-rss-link" class="nav-icon" href="/atom.xml"
+                       title="RSS Feed"></a>
+                
+                <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+            </nav>
+            <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://twofishcn.github.io/blog"></form>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="outer">
+            <section id="main"><article id="post-2020/2020-06-07-ECMAScript-Let-Const-Var" class="article article-type-post" itemscope
+         itemprop="blogPost">
+    <div class="article-meta">
+        <a href="/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/" class="article-date">
+  <time datetime="2020-06-07T09:13:00.000Z" itemprop="datePublished">2020-06-07</time>
+</a>
+        
+    </div>
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      ECMAScript 6 - 声明关键字
+    </h1>
+  
+
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                <h1 id="ES6-声明的几个关键字"><a href="#ES6-声明的几个关键字" class="headerlink" title="ES6 声明的几个关键字"></a>ES6 声明的几个关键字</h1><p>保留了var、function，新增加let、const、class和import。</p>
+<p>这其中function、class、import有着特殊场景，本文主要讨论 var、let与const这几个声明之间的异同点。</p>
+<h1 id="变量声明-var"><a href="#变量声明-var" class="headerlink" title="变量声明 var"></a>变量声明 var</h1><p>在JavaScript较早版本中，最先使用的声明关键字。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>var声明的变量其作用域是 “函数块”。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">varTest</span> (<span class="params"></span>) &#123;</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line"> &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (i) &#123;</span><br><span class="line">    <span class="keyword">var</span> j = <span class="number">10</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(j)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">varTest</span>()</span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码输出结果是</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 i 和 j 两个变量的定义都在大括号 {} 之下，而在 大括号{}之外可访问。这个原因就是var的作用域是整个方法块。</p>
+<h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p>var声明变量会发生变量提升, 发生变量提升是说JavaScript可以使用未定义的变量，其value是undefined。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo); <span class="comment">// 输出undefined</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这样写代码程序不会出错，任然会执行，只是其结果是否是想要的就需要再思考了。另外一个变量声明关键字let可以避免这种难理解的事件，<br>使用未被let定义的变量，发抛出异常（后续let小结展示详细例子）</p>
+<h2 id="允许重复声明"><a href="#允许重复声明" class="headerlink" title="允许重复声明"></a>允许重复声明</h2><p>var允许对一个变量重复声明</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="string">&#x27;foo&#x27;</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码任然可以正确执行，不会发生错误。</p>
+<h1 id="变量声明-let"><a href="#变量声明-let" class="headerlink" title="变量声明 let"></a>变量声明 let</h1><h2 id="作用域-1"><a href="#作用域-1" class="headerlink" title="作用域"></a>作用域</h2><p>let 声明的变量作用域是块级。块级作用域和var的方法块作用域形成对比。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">letTest</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i) <span class="comment">// ReferenceError: i is not defined</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> j = <span class="number">10</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(j) <span class="comment">// ReferenceError: j is not defined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">letTest</span>()</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码会直接报错，无法执行。</p>
+<h2 id="不存在变量提升"><a href="#不存在变量提升" class="headerlink" title="不存在变量提升"></a>不存在变量提升</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo); <span class="comment">// ReferenceError: foo is not defined</span></span><br><span class="line"><span class="keyword">let</span> foo = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码会直接报错，无法执行。</p>
+<h2 id="不允许重复声明"><a href="#不允许重复声明" class="headerlink" title="不允许重复声明"></a>不允许重复声明</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo = <span class="string">&#x27;foo&#x27;</span></span><br><span class="line"><span class="keyword">let</span> foo = <span class="number">1</span> <span class="comment">// SyntaxError: Identifier &#x27;foo&#x27; has already been declared</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo)</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码会直接报错，无法执行。</p>
+<h1 id="const-声明"><a href="#const-声明" class="headerlink" title="const 声明"></a>const 声明</h1><p>const声明一个只读的常量。一旦声明，常量的值就不能改变。const一旦声明变量，就必须立即初始化，不能留到以后赋值。<br>const命令声明的常量也是不提升，只能在声明的位置后面使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">PI</span> = <span class="number">3.1415</span>;</span><br><span class="line"><span class="variable constant_">PI</span> <span class="comment">// 3.1415</span></span><br><span class="line"></span><br><span class="line"><span class="variable constant_">PI</span> = <span class="number">3</span>;</span><br><span class="line"><span class="comment">// TypeError: Assignment to constant variable.</span></span><br></pre></td></tr></table></figure>
+
+<p>对于复合类型的变量，变量名不指向数据，而是指向数据所在的地址。const命令只是保证变量名指向的地址不变，<br>并不保证该地址的数据不变，所以将一个对象声明为常量必须非常小心</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = [];</span><br><span class="line">a.<span class="title function_">push</span>(<span class="string">&#x27;Hello&#x27;</span>); <span class="comment">// 可执行</span></span><br><span class="line">a.<span class="property">length</span> = <span class="number">0</span>;    <span class="comment">// 可执行</span></span><br><span class="line">a = [<span class="string">&#x27;Dave&#x27;</span>];    <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，常量a是一个数组，这个数组本身是可写的，但是如果将另一个数组赋值给a，就会报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = &#123;&#125;;</span><br><span class="line">foo.<span class="property">prop</span> = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">foo.<span class="property">prop</span></span><br><span class="line"><span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line">foo = &#123;&#125;; <span class="comment">// TypeError: &quot;foo&quot; is read-only</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，常量foo储存的是一个地址，这个地址指向一个对象。不可变的只是这个地址，即不能把foo指向另一个地址，但对象本身是可变的，所以依然可以为其添加新属性。</p>
+<p>如果真的想将对象冻结，应该使用Object.freeze方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="title class_">Object</span>.<span class="title function_">freeze</span>(&#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 常规模式时，下面一行不起作用；</span></span><br><span class="line"><span class="comment">// 严格模式时，该行会报错</span></span><br><span class="line">foo.<span class="property">prop</span> = <span class="number">123</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果连对象的属性也需要冻结则还需要更多的设置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title function_">constantize</span> = (<span class="params">obj</span>) =&gt; &#123;</span><br><span class="line">  <span class="title class_">Object</span>.<span class="title function_">freeze</span>(obj);</span><br><span class="line">  <span class="title class_">Object</span>.<span class="title function_">keys</span>(obj).<span class="title function_">forEach</span>( <span class="function">(<span class="params">key, value</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="keyword">typeof</span> obj[key] === <span class="string">&#x27;object&#x27;</span> ) &#123;</span><br><span class="line">      <span class="title function_">constantize</span>( obj[key] );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="let和const-暂时性死区"><a href="#let和const-暂时性死区" class="headerlink" title="let和const 暂时性死区"></a>let和const 暂时性死区</h1><p>只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tmp = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  tmp = <span class="string">&#x27;abc&#x27;</span>; <span class="comment">// ReferenceError: tmp is not defined</span></span><br><span class="line">  <span class="keyword">let</span> tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tmp = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  tmp = <span class="string">&#x27;abc&#x27;</span>; <span class="comment">// ReferenceError: tmp is not defined</span></span><br><span class="line">  <span class="keyword">const</span> tmp = <span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码会报错 “ReferenceError: tmp is not defined”, let 会“绑定”块这个区域。ES6明确规定，如果区块中存在let和const命令，<br>这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。</p>
+
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="https://twofishcn.github.io/blog/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/" data-id="cm4z53jcs001onguybc53887v"
+               class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript/" rel="tag">ECMAScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+  
+    <a href="/2020/06/14/2020/2020-06-14-ECMAScript-async-await/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ECMAScript 6 - 异步函数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/30/2020/2020-05-30-ECMAScript-Generator/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ECMAScript 6 - Generator 函数</div>
+    </a>
+  
+</nav>
+
+    
+</article>
+
+
+</section>
+            
+                <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/27/2020/2020-06-27-browser-http-Homologous/">同源政策</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/14/2020/2020-06-14-ECMAScript-async-await/">ECMAScript 6 - 异步函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/">ECMAScript 6 - 声明关键字</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/30/2020/2020-05-30-ECMAScript-Generator/">ECMAScript 6 - Generator 函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/2020/2020-05-24-css-position/">CSS - Position</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+    <div class="widget-wrap">
+        <h3 class="widget-title">关于我</h3>
+        <div class="widget about">
+            <img src="/img/static/avatar.jpg">
+
+            <div>
+                <a target="_blank" href="https://github.com/HwMuTou">
+                    <i class="fa fa-2x fa-github"></i> GitHub
+                </a>
+
+                <a target="_blank" href="mailto:hw-hewei@foxmail.com">
+                    <i class="fa fa-2x fa-email"></i>
+                    Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 10px; color: #008080">Android</a> <a href="/tags/Apache-Kafka/" style="font-size: 10px; color: #008080">Apache Kafka</a> <a href="/tags/Aria2/" style="font-size: 10px; color: #008080">Aria2</a> <a href="/tags/Authentication/" style="font-size: 10px; color: #008080">Authentication</a> <a href="/tags/Best-Practices/" style="font-size: 11.67px; color: #006b80">Best Practices</a> <a href="/tags/Browser/" style="font-size: 10px; color: #008080">Browser</a> <a href="/tags/CSS/" style="font-size: 10px; color: #008080">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px; color: #008080">CentOS</a> <a href="/tags/Classpath/" style="font-size: 10px; color: #008080">Classpath</a> <a href="/tags/Code/" style="font-size: 10px; color: #008080">Code</a> <a href="/tags/Data-Structure/" style="font-size: 10px; color: #008080">Data Structure</a> <a href="/tags/Database/" style="font-size: 15px; color: #004080">Database</a> <a href="/tags/Docker/" style="font-size: 10px; color: #008080">Docker</a> <a href="/tags/Download/" style="font-size: 10px; color: #008080">Download</a> <a href="/tags/ECMAScript/" style="font-size: 13.33px; color: #005580">ECMAScript</a> <a href="/tags/Executable-Jar/" style="font-size: 10px; color: #008080">Executable Jar</a> <a href="/tags/FLux/" style="font-size: 10px; color: #008080">FLux</a> <a href="/tags/File-Monitor/" style="font-size: 10px; color: #008080">File Monitor</a> <a href="/tags/Flume/" style="font-size: 10px; color: #008080">Flume</a> <a href="/tags/Format/" style="font-size: 10px; color: #008080">Format</a> <a href="/tags/GIN%E7%B4%A2%E5%BC%95/" style="font-size: 10px; color: #008080">GIN索引</a> <a href="/tags/Http/" style="font-size: 10px; color: #008080">Http</a> <a href="/tags/JRuby/" style="font-size: 10px; color: #008080">JRuby</a> <a href="/tags/Java/" style="font-size: 16.67px; color: #002b80">Java</a> <a href="/tags/JavaScript/" style="font-size: 13.33px; color: #005580">JavaScript</a> <a href="/tags/Junit/" style="font-size: 10px; color: #008080">Junit</a> <a href="/tags/JupyterHub/" style="font-size: 10px; color: #008080">JupyterHub</a> <a href="/tags/KMS/" style="font-size: 10px; color: #008080">KMS</a> <a href="/tags/Libraries/" style="font-size: 10px; color: #008080">Libraries</a> <a href="/tags/Load-Resource/" style="font-size: 10px; color: #008080">Load Resource</a> <a href="/tags/Micro-Service/" style="font-size: 10px; color: #008080">Micro Service</a> <a href="/tags/Mono/" style="font-size: 10px; color: #008080">Mono</a> <a href="/tags/MySQL/" style="font-size: 11.67px; color: #006b80">MySQL</a> <a href="/tags/Mybatis/" style="font-size: 10px; color: #008080">Mybatis</a> <a href="/tags/NodeJs/" style="font-size: 10px; color: #008080">NodeJs</a> <a href="/tags/Notebook/" style="font-size: 10px; color: #008080">Notebook</a> <a href="/tags/Oauth2/" style="font-size: 11.67px; color: #006b80">Oauth2</a> <a href="/tags/Oracle-JDK/" style="font-size: 10px; color: #008080">Oracle JDK</a> <a href="/tags/Package/" style="font-size: 10px; color: #008080">Package</a> <a href="/tags/Postgre-SQL/" style="font-size: 11.67px; color: #006b80">Postgre SQL</a> <a href="/tags/Profile/" style="font-size: 10px; color: #008080">Profile</a> <a href="/tags/Project/" style="font-size: 10px; color: #008080">Project</a> <a href="/tags/Rails/" style="font-size: 15px; color: #004080">Rails</a> <a href="/tags/Redis/" style="font-size: 10px; color: #008080">Redis</a> <a href="/tags/Resources/" style="font-size: 10px; color: #008080">Resources</a> <a href="/tags/Ruby/" style="font-size: 11.67px; color: #006b80">Ruby</a> <a href="/tags/Security/" style="font-size: 11.67px; color: #006b80">Security</a> <a href="/tags/Shiro/" style="font-size: 10px; color: #008080">Shiro</a> <a href="/tags/Solr/" style="font-size: 10px; color: #008080">Solr</a> <a href="/tags/Spring-Boot/" style="font-size: 18.33px; color: #001580">Spring Boot</a> <a href="/tags/Spring-Cloud/" style="font-size: 10px; color: #008080">Spring Cloud</a> <a href="/tags/Spring-Security/" style="font-size: 10px; color: #008080">Spring Security</a> <a href="/tags/Sunsport/" style="font-size: 10px; color: #008080">Sunsport</a> <a href="/tags/Test/" style="font-size: 10px; color: #008080">Test</a> <a href="/tags/Thin-Jar/" style="font-size: 10px; color: #008080">Thin Jar</a> <a href="/tags/Tree/" style="font-size: 10px; color: #008080">Tree</a> <a href="/tags/Web/" style="font-size: 10px; color: #008080">Web</a> <a href="/tags/WebFlux/" style="font-size: 10px; color: #008080">WebFlux</a> <a href="/tags/WebSocket/" style="font-size: 10px; color: #008080">WebSocket</a> <a href="/tags/Websocket/" style="font-size: 10px; color: #008080">Websocket</a> <a href="/tags/kubernetes/" style="font-size: 11.67px; color: #006b80">kubernetes</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px; color: #008080">二叉树</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px; color: #002b80">前端</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px; color: #000080">技术</a> <a href="/tags/%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81/" style="font-size: 10px; color: #008080">摩斯电码</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px; color: #008080">数据结构</a> <a href="/tags/%E7%AB%99%E5%86%85%E6%A3%80%E7%B4%A2/" style="font-size: 10px; color: #008080">站内检索</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px; color: #008080">编码</a>
+        </div>
+    </div>
+
+
+  
+</aside>
+            
+        </div>
+        <footer id="footer">
+    
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2024 MuTou<br>
+            Powered by <a href="/" target="_blank">HW</a>
+        </div>
+    </div>
+
+    <!-- 启用 mermaid 引入js依赖 -->
+    
+        <script src='/js/mermaid/8.4/mermaid.min.js'></script>
+        <script>
+            if (window.mermaid) {
+                mermaid.initialize({theme: 'forest'});
+            }
+        </script>
+    
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!--TODO choose the fast cdn of jquery.-->
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+</div>
+</body>
+</html>

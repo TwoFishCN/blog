@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>同源政策 | 两条鱼</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="浏览器为了在多服务访问之间保证安全，加入了一些限制 同源政策。据说，在1995年，同源政策由 Netscape 公司引入浏览器。目前，所有浏览器都实行这个政策。 “同源”指的是“三个相同”。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="同源政策">
+<meta property="og:url" content="https://twofishcn.github.io/blog/2020/06/27/2020/2020-06-27-browser-http-Homologous/index.html">
+<meta property="og:site_name" content="两条鱼">
+<meta property="og:description" content="浏览器为了在多服务访问之间保证安全，加入了一些限制 同源政策。据说，在1995年，同源政策由 Netscape 公司引入浏览器。目前，所有浏览器都实行这个政策。 “同源”指的是“三个相同”。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-27T12:38:00.000Z">
+<meta property="article:modified_time" content="2020-06-27T10:46:51.633Z">
+<meta property="article:author" content="MuTou">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Browser">
+<meta property="article:tag" content="Http">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="两条鱼" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/static/favicon.ico">
+  
+  
+
+  <!--TODO if google api is too slow. have to change css config.-->
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163343208-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-163343208-1');
+</script>
+<!-- End Google Analytics -->
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+<div id="container">
+    <div id="wrap">
+        <style type="text/css">
+    
+
+    
+
+    #banner {
+        background: url(/img/bg/post-bg-nature-fog-land.png) center #000;
+    }
+</style>
+<header id="header">
+
+    <div id="banner"></div>
+
+    <div id="header-outer" class="outer">
+
+        <div id="header-title" class="inner">
+            
+
+                <div class="post-header-title">
+    <div>
+        <div class="tags">
+            
+                <a class="tag" href="/tags/%E6%8A%80%E6%9C%AF/"
+                   title="技术">技术</a>
+            
+                <a class="tag" href="/tags/%E5%89%8D%E7%AB%AF/"
+                   title="前端">前端</a>
+            
+                <a class="tag" href="/tags/Browser/"
+                   title="Browser">Browser</a>
+            
+                <a class="tag" href="/tags/Http/"
+                   title="Http">Http</a>
+            
+        </div>
+        <h1 id="logo-wrap">
+            <a href="/2020/06/27/2020/2020-06-27-browser-http-Homologous/" id="logo">同源政策</a>
+        </h1>
+        
+            <h2 id="subtitle-wrap">
+                <a href="/2020/06/27/2020/2020-06-27-browser-http-Homologous/" id="subtitle"> &#34; Http协议下的安全限制 同源政策&#34;</a>
+            </h2>
+        
+        <span class="meta">
+        Posted by Hw on
+        2020-06-27
+    </span>
+    </div>
+</div>
+
+
+            
+        </div>
+
+        <div id="header-inner" class="inner">
+            <nav id="main-nav">
+                <a id="main-nav-toggle" class="nav-icon"></a>
+                
+                    <a class="main-nav-link"
+                       href="/">
+                        <i class="fa home-icon"></i>
+                        主页
+                    </a>
+                
+                    <a class="main-nav-link"
+                       href="/archives">
+                        <i class="fa archives-icon"></i>
+                        归档
+                    </a>
+                
+            </nav>
+            <nav id="sub-nav">
+                
+                    <a id="nav-rss-link" class="nav-icon" href="/atom.xml"
+                       title="RSS Feed"></a>
+                
+                <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+            </nav>
+            <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://twofishcn.github.io/blog"></form>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="outer">
+            <section id="main"><article id="post-2020/2020-06-27-browser-http-Homologous" class="article article-type-post" itemscope
+         itemprop="blogPost">
+    <div class="article-meta">
+        <a href="/2020/06/27/2020/2020-06-27-browser-http-Homologous/" class="article-date">
+  <time datetime="2020-06-27T12:38:00.000Z" itemprop="datePublished">2020-06-27</time>
+</a>
+        
+    </div>
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      同源政策
+    </h1>
+  
+
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+                <p>浏览器为了在多服务访问之间保证安全，加入了一些限制 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Same-origin_policy">同源政策</a>。<br>据说，在1995年，同源政策由 Netscape 公司引入浏览器。目前，所有浏览器都实行这个政策。</p>
+<p>“同源”指的是“三个相同”。</p>
+<pre><code>协议相同
+域名相同
+端口相同（这点可以忽略，但现阶段浏览器不会检查端口）
+</code></pre>
+<p>例如，<code>http://www.example.com/dir/page.html</code> 这个网址，协议是 <code>http://</code> ，域名是 <code>www.example.com</code> ，端口<br>是80（省略情况即为默认端口80），它的同源情况如下</p>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>判断</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="http://www.example.com/dir/other.html">http://www.example.com:80/dir/other.html</a></td>
+<td>看情况</td>
+<td>显示提供端口， 这一样依赖浏览器实现，Chrome浏览器会</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.example.com/dir/other.html">https://www.example.com/dir/other.html</a></td>
+<td>不同源</td>
+<td>协议不同</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.example.com:81/dir/other.html">http://www.example.com:81/dir/other.html</a></td>
+<td>不同源</td>
+<td>端口不同</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://v2.www.example.com/dir/other.html">http://v2.www.example.com/dir/other.html</a></td>
+<td>不同源</td>
+<td>域名不同 (exact match required)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://example.com/dir/other.html">http://example.com/dir/other.html</a></td>
+<td>不同源</td>
+<td>域名不同 (exact match required)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://en.example.com/dir/other.html">http://en.example.com/dir/other.html</a></td>
+<td>不同源</td>
+<td>域名不同</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.example.com/dir2/other.html">http://www.example.com/dir2/other.html</a></td>
+<td>同源</td>
+<td>一样的协议，域名，端口</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.example.com/dir/page2.html">http://www.example.com/dir/page2.html</a></td>
+<td>同源</td>
+<td>一样的协议，域名，端口</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://username:password@www.example.com/dir2/other.html">http://username:password@www.example.com/dir2/other.html</a></td>
+<td>同源</td>
+<td>一样的协议，域名，端口</td>
+</tr>
+</tbody></table>
+<p>上面的描述是标准策略，在实际情况中同源的含义有不完全相同。</p>
+<h1 id="限制范围"><a href="#限制范围" class="headerlink" title="限制范围"></a>限制范围</h1><p>Cookie、LocalStorage、 IndexedDB的读写，DOM访问，AJAX 请求</p>
+<p>另外，通过 JavaScript 脚本可以拿到其他窗口的window对象。如果是非同源的网页，<br>目前允许一个窗口可以接触其他网页的window对象的九个属性和四个方法。</p>
+<pre><code>window.closed
+window.frames
+window.length
+window.location
+window.opener
+window.parent
+window.self
+window.top
+window.window
+window.blur()
+window.close()
+window.focus()
+window.postMessage()
+</code></pre>
+<p>上面的九个属性之中，只有window.location是可读写的，其他八个全部都是只读。而且，即使是location对象，非同源的情况下，<br>也只允许调用location.replace()方法和写入location.href属性。</p>
+<h1 id="各限制的浏览器实现"><a href="#各限制的浏览器实现" class="headerlink" title="各限制的浏览器实现"></a>各限制的浏览器实现</h1><h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>如果两个网页一级域名相同，只是次级域名不同，浏览器允许通过设置 <code>document.domain</code> 共享 <code>Cookie</code>。</p>
+<p>例如：A站 <code>http://w1.example.com/a.html</code> 和B站 <code>http://w2.example.com/b.html</code> 都可以拿到 <code>domain</code> 是 <code>.example.com</code><br>的 <code>Cookie</code>。<br>需要注意的点是，如果存在 <code>domain</code> 是 <code>.w1.example.com</code> 的 <code>Cookie</code> 时，A站会优先使用 <code>domain</code> 是 <code>.w1.example.com</code> 的<br><code>Cookie</code> 属性。因此如果 <code>domain</code> 是 <code>.w1.example.com</code> 的 <code>Cookie</code> 有一个 <code>JSESSION</code> 同时 <code>domain</code> 是 <code>.example.com</code> 的<br> <code>Cookie</code> 也有这个属性的情况下，会优先使用 <code>domain</code> 是 <code>.w1.example.com</code> 的 <code>Cookie</code> 中的 <code>JSESSION</code>。</p>
+<h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><p>同源政策规定，AJAX 请求只能发给同源的网址，否则就报错。</p>
+<p>除了架设服务器代理 , 还有其他的方式。</p>
+<pre><code>JSONP
+CORS
+</code></pre>
+<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><p>JsonP的原理是利用浏览器获取资源时，没有同源策略限制的特性。</p>
+<p>详细流程如下：</p>
+<p>第一步、通过 <code>dom</code> 操作网页添加一个 <code>&lt;script&gt;</code> 元素，向服务器请求一个脚本，这不受同源政策限制，可以跨域请求</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://api.foo.com?callback=bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>第二步、服务器收到请求后，将要发送的数据构建拼接为一个js脚本，将 JSON 数据放在函数名里面，作为字符串返回。</p>
+<figure class="highlight plaintext"><figcaption><span>6</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function bar() &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    value: &quot;hello&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第三步、客户端会将服务器返回的字符串，作为代码解析，因为浏览器认为，这是 <code>&lt;script&gt;</code> 标签请求的脚本内容。这时，<br>客户端只要定义了<code>bar()</code>函数，就能在该函数体内，拿到服务器返回的 JSON 数据。</p>
+<p>这种方法需要服务器支持，浏览器端使用也需要配套的策略，有额外的维护成本，会在一定程度上降低了服务的通用性。</p>
+<h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><p>CORS 是跨源资源分享（Cross-Origin Resource Sharing）的缩写。它是 W3C 标准，是跨源 AJAX 请求的根本解决方法。<br>相比 JSONP 只能发GET请求，CORS 允许任何类型的请求，同时服务器提供的API是标准Http协议不会引起副作用。</p>
+<h3 id="两种请求"><a href="#两种请求" class="headerlink" title="两种请求"></a>两种请求</h3><p>CORS 请求分成两类：简单请求（simple request）和非简单请求（not-so-simple request）。</p>
+<p>只要同时满足以下两大条件，就属于简单请求。</p>
+<p>（1）请求方法是以下三种方法之一</p>
+<pre><code>HEAD
+GET
+POST
+</code></pre>
+<p>（2）HTTP 的头信息不超出以下几种字段</p>
+<pre><code>Accept
+Accept-Language
+Content-Language
+Last-Event-ID
+Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain
+</code></pre>
+<p>凡是不同时满足上面两个条件，就属于非简单请求。</p>
+<p>这样划分的原因是，表单在历史上一直可以跨域发出请求。简单请求就是表单请求，浏览器沿袭了传统的处理方式，<br>并未把行为复杂化，否则开发者可能转而使用表单，规避 CORS 的限制。对于非简单请求，浏览器会采用新的处理方式。</p>
+<h3 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h3><p>对于简单请求，浏览器直接发出 CORS 请求。在头信息之中，增加一个Origin字段。</p>
+<p>下面是一个例子，浏览器发现这次跨域 AJAX 请求是一个简单请求，就自动在头信息之中，添加一个Origin字段。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET /cors HTTP/1.1</span><br><span class="line">Origin: http://api.bob.com</span><br><span class="line">Host: api.alice.com</span><br><span class="line">Accept-Language: en-US</span><br><span class="line">Connection: keep-alive</span><br><span class="line">User-Agent: Mozilla/5.0...</span><br></pre></td></tr></table></figure>
+
+<h3 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h3><p>简单请求是那种对服务器提出特殊要求的请求，比如请求方法是PUT或DELETE，或者<code>Content-Type</code>字段的类型是<code>application/json</code>。</p>
+<p>非简单请求的 CORS 请求，会在正式通信之前，增加一次 HTTP 查询请求，称为“预检”请求（preflight）。浏览器先询问服务器，<br>当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些 HTTP 方法和头信息字段。只有得到肯定答复，<br>浏览器才会发出正式的XMLHttpRequest请求，否则就报错。这是为了防止这些新增的请求，对传统的没有 CORS 支持的服务器形成压力，<br>给服务器一个提前拒绝的机会，这样可以防止服务器收到大量DELETE和PUT请求，这些传统的表单不可能跨域发出的请求。</p>
+<p>例如，如果使用下面的的代码发请求，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;http://api.alice.com/cors&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;PUT&#x27;</span>, url, <span class="literal">true</span>);</span><br><span class="line">xhr.<span class="title function_">setRequestHeader</span>(<span class="string">&#x27;X-Custom-Header&#x27;</span>, <span class="string">&#x27;value&#x27;</span>);</span><br><span class="line">xhr.<span class="title function_">send</span>();</span><br></pre></td></tr></table></figure>
+
+<p>浏览器发现，这是一个非简单请求，就自动发出一个“预检”请求，要求服务器确认可以这样请求。下面是这个“预检”请求的 HTTP 头信息。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">OPTIONS /cors HTTP/1.1</span><br><span class="line">Origin: http://api.bob.com</span><br><span class="line">Access-Control-Request-Method: PUT</span><br><span class="line">Access-Control-Request-Headers: X-Custom-Header</span><br><span class="line">Host: api.alice.com</span><br><span class="line">Accept-Language: en-US</span><br><span class="line">Connection: keep-alive</span><br><span class="line">User-Agent: Mozilla/5.0...</span><br></pre></td></tr></table></figure>
+
+<p>预检”请求用的请求方法是OPTIONS，表示这个请求是用来询问的。头信息里面，关键字段是Origin，表示请求来自哪个源。</p>
+<p>除了Origin字段，“预检”请求的头信息包括两个特殊字段。</p>
+<p>(1)、Access-Control-Request-Method</p>
+<p>该字段是必须的，用来列出浏览器的 CORS 请求会用到哪些 HTTP 方法，上例是PUT。</p>
+<p>(2)、Access-Control-Request-Headers</p>
+<p>该字段是一个逗号分隔的字符串，指定浏览器 CORS 请求会额外发送的头信息字段，上例是<code>X-Custom-Header</code>。</p>
+<p>只有得到肯定的响应，浏览器才发送正式的请求。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Mon, 01 Dec 2008 01:15:39 GMT</span><br><span class="line">Server: Apache/2.0.61 (Unix)</span><br><span class="line">Access-Control-Allow-Origin: http://api.bob.com</span><br><span class="line">Access-Control-Allow-Methods: GET, POST, PUT</span><br><span class="line">Access-Control-Allow-Headers: X-Custom-Header</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Length: 0</span><br><span class="line">Keep-Alive: timeout=2, max=100</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">Content-Type: text/plain</span><br></pre></td></tr></table></figure>
+
+<p>上面的 HTTP 回应中，关键的是<code>Access-Control-Allow-Origin</code>字段，表示<code>http://api.bob.com</code>可以请求数据。<br>该字段也可以设为星号，表示同意任意跨源请求。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: *</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器否定了“预检”请求，会返回一个正常的 HTTP 回应，但是没有任何 CORS 相关的头信息字段，或者明确表示请求不符合条件。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">OPTIONS http://api.bob.com HTTP/1.1</span><br><span class="line">Status: 200</span><br><span class="line">Access-Control-Allow-Origin: https://notyourdomain.com</span><br><span class="line">Access-Control-Allow-Method: POST</span><br></pre></td></tr></table></figure>
+
+<p>上面的服务器回应，<code>Access-Control-Allow-Origin</code>字段明确不包括发出请求的<code>http://api.bob.com</code>。</p>
+<p>这时，浏览器就会认定，服务器不同意预检请求，因此触发一个错误，被<code>XMLHttpRequest</code>对象的<code>onerror</code>回调函数捕获。<br>控制台会打印出如下的报错信息。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">XMLHttpRequest cannot load http://api.alice.com.</span><br><span class="line">Origin http://api.bob.com is not allowed by Access-Control-Allow-Origin.</span><br></pre></td></tr></table></figure>
+
+<p>服务器回应的其他 CORS 相关字段如下</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Methods: GET, POST, PUT</span><br><span class="line">Access-Control-Allow-Headers: X-Custom-Header</span><br><span class="line">Access-Control-Allow-Credentials: true</span><br><span class="line">Access-Control-Max-Age: 1728000</span><br></pre></td></tr></table></figure>
+
+<p>（1）Access-Control-Allow-Methods</p>
+<p>该字段必需，它的值是逗号分隔的一个字符串，表明服务器支持的所有跨域请求的方法。注意，返回的是所有支持的方法，<br>而不单是浏览器请求的那个方法。这是为了避免多次“预检”请求。</p>
+<p>（2）Access-Control-Allow-Headers</p>
+<p>如果浏览器请求包括<code>Access-Control-Request-Headers</code>字段，则<code>Access-Control-Allow-Headers</code>字段是必需的。它也是一个逗号分隔的字符串，<br>表明服务器支持的所有头信息字段，不限于浏览器在“预检”中请求的字段。</p>
+<p>（3）Access-Control-Allow-Credentials</p>
+<p>该字段与简单请求时的含义相同。</p>
+<p>（4）Access-Control-Max-Age</p>
+<p>该字段可选，用来指定本次预检请求的有效期，单位为秒。上面结果中，有效期是20天（1728000秒），即允许缓存该条回应1728000秒（即20天），<br>在此期间，不用发出另一条预检请求。</p>
+<p>预检完成之后浏览器会发送正式请求以获取数据。</p>
+<p>以上是同源策略协议的部分，很多服务安全策略不同，可能会直接拒绝所有的<code>Cors</code>请求，因此在具体场景下需要更多方面的考虑。 </p>
+
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="https://twofishcn.github.io/blog/2020/06/27/2020/2020-06-27-browser-http-Homologous/" data-id="cm4z53jda0072nguybkyi65nr"
+               class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Browser/" rel="tag">Browser</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Http/" rel="tag">Http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/14/2020/2020-06-14-ECMAScript-async-await/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ECMAScript 6 - 异步函数</div>
+    </a>
+  
+</nav>
+
+    
+</article>
+
+
+</section>
+            
+                <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/27/2020/2020-06-27-browser-http-Homologous/">同源政策</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/14/2020/2020-06-14-ECMAScript-async-await/">ECMAScript 6 - 异步函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/07/2020/2020-06-07-ECMAScript-Let-Const-Var/">ECMAScript 6 - 声明关键字</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/30/2020/2020-05-30-ECMAScript-Generator/">ECMAScript 6 - Generator 函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/2020/2020-05-24-css-position/">CSS - Position</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+    <div class="widget-wrap">
+        <h3 class="widget-title">关于我</h3>
+        <div class="widget about">
+            <img src="/img/static/avatar.jpg">
+
+            <div>
+                <a target="_blank" href="https://github.com/HwMuTou">
+                    <i class="fa fa-2x fa-github"></i> GitHub
+                </a>
+
+                <a target="_blank" href="mailto:hw-hewei@foxmail.com">
+                    <i class="fa fa-2x fa-email"></i>
+                    Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 10px; color: #008080">Android</a> <a href="/tags/Apache-Kafka/" style="font-size: 10px; color: #008080">Apache Kafka</a> <a href="/tags/Aria2/" style="font-size: 10px; color: #008080">Aria2</a> <a href="/tags/Authentication/" style="font-size: 10px; color: #008080">Authentication</a> <a href="/tags/Best-Practices/" style="font-size: 11.67px; color: #006b80">Best Practices</a> <a href="/tags/Browser/" style="font-size: 10px; color: #008080">Browser</a> <a href="/tags/CSS/" style="font-size: 10px; color: #008080">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px; color: #008080">CentOS</a> <a href="/tags/Classpath/" style="font-size: 10px; color: #008080">Classpath</a> <a href="/tags/Code/" style="font-size: 10px; color: #008080">Code</a> <a href="/tags/Data-Structure/" style="font-size: 10px; color: #008080">Data Structure</a> <a href="/tags/Database/" style="font-size: 15px; color: #004080">Database</a> <a href="/tags/Docker/" style="font-size: 10px; color: #008080">Docker</a> <a href="/tags/Download/" style="font-size: 10px; color: #008080">Download</a> <a href="/tags/ECMAScript/" style="font-size: 13.33px; color: #005580">ECMAScript</a> <a href="/tags/Executable-Jar/" style="font-size: 10px; color: #008080">Executable Jar</a> <a href="/tags/FLux/" style="font-size: 10px; color: #008080">FLux</a> <a href="/tags/File-Monitor/" style="font-size: 10px; color: #008080">File Monitor</a> <a href="/tags/Flume/" style="font-size: 10px; color: #008080">Flume</a> <a href="/tags/Format/" style="font-size: 10px; color: #008080">Format</a> <a href="/tags/GIN%E7%B4%A2%E5%BC%95/" style="font-size: 10px; color: #008080">GIN索引</a> <a href="/tags/Http/" style="font-size: 10px; color: #008080">Http</a> <a href="/tags/JRuby/" style="font-size: 10px; color: #008080">JRuby</a> <a href="/tags/Java/" style="font-size: 16.67px; color: #002b80">Java</a> <a href="/tags/JavaScript/" style="font-size: 13.33px; color: #005580">JavaScript</a> <a href="/tags/Junit/" style="font-size: 10px; color: #008080">Junit</a> <a href="/tags/JupyterHub/" style="font-size: 10px; color: #008080">JupyterHub</a> <a href="/tags/KMS/" style="font-size: 10px; color: #008080">KMS</a> <a href="/tags/Libraries/" style="font-size: 10px; color: #008080">Libraries</a> <a href="/tags/Load-Resource/" style="font-size: 10px; color: #008080">Load Resource</a> <a href="/tags/Micro-Service/" style="font-size: 10px; color: #008080">Micro Service</a> <a href="/tags/Mono/" style="font-size: 10px; color: #008080">Mono</a> <a href="/tags/MySQL/" style="font-size: 11.67px; color: #006b80">MySQL</a> <a href="/tags/Mybatis/" style="font-size: 10px; color: #008080">Mybatis</a> <a href="/tags/NodeJs/" style="font-size: 10px; color: #008080">NodeJs</a> <a href="/tags/Notebook/" style="font-size: 10px; color: #008080">Notebook</a> <a href="/tags/Oauth2/" style="font-size: 11.67px; color: #006b80">Oauth2</a> <a href="/tags/Oracle-JDK/" style="font-size: 10px; color: #008080">Oracle JDK</a> <a href="/tags/Package/" style="font-size: 10px; color: #008080">Package</a> <a href="/tags/Postgre-SQL/" style="font-size: 11.67px; color: #006b80">Postgre SQL</a> <a href="/tags/Profile/" style="font-size: 10px; color: #008080">Profile</a> <a href="/tags/Project/" style="font-size: 10px; color: #008080">Project</a> <a href="/tags/Rails/" style="font-size: 15px; color: #004080">Rails</a> <a href="/tags/Redis/" style="font-size: 10px; color: #008080">Redis</a> <a href="/tags/Resources/" style="font-size: 10px; color: #008080">Resources</a> <a href="/tags/Ruby/" style="font-size: 11.67px; color: #006b80">Ruby</a> <a href="/tags/Security/" style="font-size: 11.67px; color: #006b80">Security</a> <a href="/tags/Shiro/" style="font-size: 10px; color: #008080">Shiro</a> <a href="/tags/Solr/" style="font-size: 10px; color: #008080">Solr</a> <a href="/tags/Spring-Boot/" style="font-size: 18.33px; color: #001580">Spring Boot</a> <a href="/tags/Spring-Cloud/" style="font-size: 10px; color: #008080">Spring Cloud</a> <a href="/tags/Spring-Security/" style="font-size: 10px; color: #008080">Spring Security</a> <a href="/tags/Sunsport/" style="font-size: 10px; color: #008080">Sunsport</a> <a href="/tags/Test/" style="font-size: 10px; color: #008080">Test</a> <a href="/tags/Thin-Jar/" style="font-size: 10px; color: #008080">Thin Jar</a> <a href="/tags/Tree/" style="font-size: 10px; color: #008080">Tree</a> <a href="/tags/Web/" style="font-size: 10px; color: #008080">Web</a> <a href="/tags/WebFlux/" style="font-size: 10px; color: #008080">WebFlux</a> <a href="/tags/WebSocket/" style="font-size: 10px; color: #008080">WebSocket</a> <a href="/tags/Websocket/" style="font-size: 10px; color: #008080">Websocket</a> <a href="/tags/kubernetes/" style="font-size: 11.67px; color: #006b80">kubernetes</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px; color: #008080">二叉树</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px; color: #002b80">前端</a> <a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 20px; color: #000080">技术</a> <a href="/tags/%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81/" style="font-size: 10px; color: #008080">摩斯电码</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px; color: #008080">数据结构</a> <a href="/tags/%E7%AB%99%E5%86%85%E6%A3%80%E7%B4%A2/" style="font-size: 10px; color: #008080">站内检索</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px; color: #008080">编码</a>
+        </div>
+    </div>
+
+
+  
+</aside>
+            
+        </div>
+        <footer id="footer">
+    
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2024 MuTou<br>
+            Powered by <a href="/" target="_blank">HW</a>
+        </div>
+    </div>
+
+    <!-- 启用 mermaid 引入js依赖 -->
+    
+        <script src='/js/mermaid/8.4/mermaid.min.js'></script>
+        <script>
+            if (window.mermaid) {
+                mermaid.initialize({theme: 'forest'});
+            }
+        </script>
+    
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!--TODO choose the fast cdn of jquery.-->
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+</div>
+</body>
+</html>

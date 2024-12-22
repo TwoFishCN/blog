@@ -351,9 +351,9 @@ Kafka的支持。这里说的支持，主要是是 auto-configuration 。&lt;/p&
     
     
     
-    <category term="Database" scheme="https://twofishcn.github.io/blog/tags/Database/"/>
-    
     <category term="Postgre SQL" scheme="https://twofishcn.github.io/blog/tags/Postgre-SQL/"/>
+    
+    <category term="Database" scheme="https://twofishcn.github.io/blog/tags/Database/"/>
     
     <category term="GIN索引" scheme="https://twofishcn.github.io/blog/tags/GIN%E7%B4%A2%E5%BC%95/"/>
     
@@ -424,9 +424,9 @@ JUnit 5 &amp;#x3D; JUnit Platform + JUnit Jupiter + JUnit Vintage&lt;/p&gt;
     
     
     
-    <category term="MySQL" scheme="https://twofishcn.github.io/blog/tags/MySQL/"/>
-    
     <category term="Database" scheme="https://twofishcn.github.io/blog/tags/Database/"/>
+    
+    <category term="MySQL" scheme="https://twofishcn.github.io/blog/tags/MySQL/"/>
     
     <category term="数据结构" scheme="https://twofishcn.github.io/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
@@ -481,9 +481,9 @@ JUnit 5 &amp;#x3D; JUnit Platform + JUnit Jupiter + JUnit Vintage&lt;/p&gt;
     
     
     
-    <category term="MySQL" scheme="https://twofishcn.github.io/blog/tags/MySQL/"/>
-    
     <category term="Database" scheme="https://twofishcn.github.io/blog/tags/Database/"/>
+    
+    <category term="MySQL" scheme="https://twofishcn.github.io/blog/tags/MySQL/"/>
     
   </entry>
   
